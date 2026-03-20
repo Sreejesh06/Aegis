@@ -165,88 +165,215 @@
     </style>
 </head>
 <body class="bg-background font-body text-on-surface antialiased overflow-x-hidden">
-<!-- TopNavBar -->
-<nav class="fixed top-0 left-0 right-0 z-50 bg-[#f0f1f2] dark:bg-zinc-900 no-border tonal-shift">
-<div class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
-<div class="text-2xl font-black tracking-tighter text-black dark:text-white flex items-center gap-2 uppercase">
-<div class="w-12 h-12 bg-[#9c3f00] dark:bg-[#fe6b00]" style="-webkit-mask-image: url('logo.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; mask-image: url('logo.png'); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"></div>
-                Aegis
-            </div>
-<div class="hidden md:flex items-center gap-8">
-<a class="text-black dark:text-white opacity-70 hover:opacity-100 transition-opacity font-medium" href="#">Coverage Tiers</a>
-<a class="text-black dark:text-white opacity-70 hover:opacity-100 transition-opacity font-medium" href="#">How it Works</a>
-<a class="text-black dark:text-white opacity-70 hover:opacity-100 transition-opacity font-medium" href="#">For Gig Workers</a>
-<a class="text-black dark:text-white opacity-70 hover:opacity-100 transition-opacity font-medium" href="#">Resources</a>
+<div class="fixed inset-0 z-[-1] pointer-events-none">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
 </div>
-<div class="flex items-center gap-4">
-<button class="px-6 py-2 rounded-full font-black text-black dark:text-white hover:bg-[#f0f1f2] dark:hover:bg-zinc-800 transition-all scale-95 active:scale-90">Log in</button>
-</div>
-</div>
+<!-- TopNavBar: Neo-Brutalist Compact Panel -->
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] rounded-2xl bg-white border-[3px] border-black shadow-[6px_6px_0_rgba(0,0,0,1)] flex items-center justify-between px-5 md:px-8 py-3 w-[95%] max-w-5xl transition-all hover:-translate-y-0.5 hover:shadow-[8px_8px_0_rgba(0,0,0,1)] backdrop-blur-md">
+  
+  <!-- Left side: Title/Logo -->
+  <div class="flex items-center gap-3">
+    <div class="w-7 h-7 bg-[#fe6b00]" style="-webkit-mask-image: url('logo.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; mask-image: url('logo.png'); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"></div>
+    <span class="text-xl font-black tracking-tighter text-black uppercase mt-1">Aegis</span>
+  </div>
+
+  <!-- Center: Minimalist Bold Navigation Links -->
+  <div class="hidden md:flex items-center gap-8 px-6">
+    <a href="#coverage" class="font-black text-black uppercase tracking-widest text-[11px] hover:text-[#fe6b00] hover:-translate-y-0.5 transition-transform text-decoration-none">Cover</a>
+    <a href="#how-it-works" class="font-black text-black uppercase tracking-widest text-[11px] hover:text-[#fe6b00] hover:-translate-y-0.5 transition-transform text-decoration-none">Flow</a>
+    <a href="#core-processor" class="font-black text-black uppercase tracking-widest text-[11px] hover:text-[#fe6b00] hover:-translate-y-0.5 transition-transform text-decoration-none">Engine</a>
+    <a href="#platforms" class="font-black text-black uppercase tracking-widest text-[11px] hover:text-[#fe6b00] hover:-translate-y-0.5 transition-transform text-decoration-none">Partners</a>
+  </div>
+
+  <!-- Right side: Status LED & Action -->
+  <div class="flex items-center gap-4 pl-4 border-l-[3px] border-black">
+    <!-- Glowing Red LED from image, brutalist style -->
+    <div class="flex items-center gap-2">
+      <div class="w-3 h-3 rounded-full bg-[#ff3b30] border-2 border-black animate-pulse shadow-[2px_2px_0_#000]"></div>
+      <span class="text-[10px] font-black text-black uppercase tracking-widest mt-0.5 hidden sm:block pr-2">Live</span>
+    </div>
+  </div>
+
 </nav>
 
 <main class="relative">
 <section class="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-12 overflow-hidden">
-<!-- Floating Elements Container -->
-<div class="absolute inset-0 pointer-events-none select-none">
-<!-- Element 1: Top Left - Rain Cloud -->
-<div class="absolute top-[15%] left-[10%] -rotate-12 z-20">
-<div class="glass p-5 rounded-lg shadow-2xl flex items-center gap-4 animate-float">
-<div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-<span class="material-symbols-outlined text-3xl" data-icon="cloud_sync">cloud_sync</span>
-</div>
-<div>
-<div class="text-[10px] uppercase tracking-widest font-black opacity-40">Weather Alert</div>
-<div class="text-lg font-black text-on-surface">60mm Rain</div>
-</div>
-</div>
-</div>
-<!-- Element 2: Middle Left - Map Pin -->
-<div class="absolute top-[40%] left-[5%] rotate-6 z-0">
-<div class="bg-on-surface text-surface-container-lowest p-5 rounded-lg shadow-2xl flex items-center gap-4">
-<div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-<span class="material-symbols-outlined text-2xl text-inverse-primary" data-icon="location_on">location_on</span>
-</div>
-<div class="text-sm font-bold tracking-tight">Bengaluru, KA</div>
-</div>
-</div>
-<!-- Element 3: Top Right - Toggle Switch -->
-<div class="absolute top-[20%] right-[12%] rotate-12 z-20">
-<div class="bg-surface-container-lowest p-4 rounded-full shadow-2xl flex items-center gap-3 pr-2">
-<span class="text-xs font-black uppercase tracking-tighter pl-2">Protection</span>
-<div class="bg-emerald-500 w-12 h-7 rounded-full relative flex items-center px-1">
-<div class="bg-white w-5 h-5 rounded-full shadow-sm ml-auto"></div>
-</div>
-<span class="text-xs font-black text-emerald-600 uppercase pr-2">On</span>
-</div>
-</div>
-<!-- Element 4: Bottom Right - Shield -->
-<div class="absolute bottom-[25%] right-[8%] -rotate-6 z-30">
-<div class="glass p-6 rounded-lg shadow-2xl border border-white/20">
-<span class="material-symbols-outlined text-5xl text-inverse-primary" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
-</div>
-</div>
-<!-- Element 5: Bottom Center - Lightning -->
-<div class="absolute bottom-[10%] left-1/2 -translate-x-1/2 z-10">
-<div class="w-16 h-16 rounded-full bg-yellow-400 flex items-center justify-center shadow-[0_0_50px_rgba(250,204,21,0.4)]">
-<span class="material-symbols-outlined text-4xl text-black" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
-</div>
-</div>
+<!-- Floating Elements Container (Neo-Brutalist Pop-Art Style) -->
+<div class="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
+  
+  <!-- CSS Grid Graphic Top Left -->
+  <div class="absolute top-[8%] left-[2%] md:left-[8%] w-40 h-40 md:w-56 md:h-56 border-[3px] border-black bg-[#fcfaf5]" style="background-image: linear-gradient(black 2px, transparent 2px), linear-gradient(90deg, black 2px, transparent 2px); background-size: 32px 32px; background-position: -2px -2px;"></div>
+  
+  <!-- Yellow/Green Circle Top Left hovering over Grid -->
+  <div class="absolute top-[5%] left-[1%] md:left-[4%] w-24 h-24 md:w-36 md:h-36 rounded-full bg-[#ccff00] border-[4px] border-black shadow-[8px_8px_0_rgba(0,0,0,1)] z-10 transition-all animate-bounce" style="animation-duration: 8s;"></div>
+
+  <!-- Small Purple Circle over Grid -->
+  <div class="absolute top-[18%] left-[12%] md:left-[15%] w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#a855f7] border-[3px] border-black shadow-[6px_6px_0_rgba(0,0,0,1)] z-10"></div>
+
+  <!-- Top Right Checkered Frame -->
+  <div class="absolute top-[5%] right-[2%] md:right-[5%] z-0 border-[6px] border-[#a855f7] p-2 md:p-4 shadow-[12px_12px_0_rgba(0,0,0,1)] bg-[#fe6b00] rotate-6 hover:-rotate-3 transition-transform duration-700">
+    <div class="w-32 h-40 md:w-48 md:h-64 border-4 border-black bg-white" style="background-image: repeating-conic-gradient(black 0 25%, white 0 50%); background-size: 24px 24px;"></div>
+  </div>
+
+  <!-- Cyan Half Circle Graphic Graphic above Checkered Frame -->
+  <div class="absolute top-[-2%] right-[20%] w-24 h-24 md:w-32 md:h-32 rounded-bl-full border-[4px] border-black bg-[#65e8c1] rotate-[15deg] z-0"></div>
+
+  <!-- Four Point Stars Top Center -->
+  <svg class="absolute top-[12%] left-[45%] w-12 h-12 md:w-16 md:h-16 text-black" viewBox="0 0 24 24" fill="currentColor">
+     <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 12 24C12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z" />
+  </svg>
+  <svg class="absolute top-[8%] left-[52%] w-6 h-6 md:w-8 md:h-8 text-black" viewBox="0 0 24 24" fill="currentColor">
+     <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z" />
+  </svg>
+
+  <!-- Left Pop-up Figma Window (Mimicking the image's editor window) -->
+  <div class="absolute bottom-[5%] left-[2%] md:left-[8%] w-56 md:w-80 border-[4px] border-black shadow-[12px_12px_0_rgba(0,0,0,1)] bg-[#fdfaf5] z-30">
+     <!-- Window Chrome bar -->
+     <div class="h-8 border-b-[4px] border-black bg-[#1a1a1a] flex items-center px-4 gap-2.5">
+       <div class="w-3 h-3 rounded-full bg-white"></div>
+       <div class="w-3 h-3 rounded-full bg-white"></div>
+       <div class="w-3 h-3 rounded-full bg-white"></div>
+     </div>
+     <div class="p-6 relative flex items-end justify-center min-h-[140px] md:min-h-[180px]">
+       <!-- Graphic inside window: Vector Arc with drag handles -->
+       <div class="w-[120px] md:w-[160px] h-[60px] md:h-[80px] bg-[#65e8c1] border-[3px] border-black rounded-t-full relative">
+         <div class="absolute -top-[30px] md:-top-[40px] left-1/2 -translate-x-1/2 w-[120px] md:w-[160px] border-t-2 border-black border-dashed h-[30px] flex justify-between">
+           <!-- 3 Vector Anchor Squares -->
+           <div class="w-2.5 h-2.5 md:w-3 md:h-3 border-2 border-black bg-white -mt-[6px] -ml-[6px]"></div>
+           <div class="w-2.5 h-2.5 md:w-3 md:h-3 border-2 border-black bg-white rounded-full -mt-[6px]"></div>
+           <div class="w-2.5 h-2.5 md:w-3 md:h-3 border-2 border-black bg-white -mt-[6px] -mr-[6px]"></div>
+         </div>
+       </div>
+     </div>
+  </div>
+
+  <!-- Giant Orange Donut bottom left -->
+  <div class="absolute -bottom-[5%] left-[10%] md:left-[22%] w-40 h-40 md:w-56 md:h-56 border-[6px] border-black rounded-full bg-[#fdfaf5] z-10 flex items-center justify-center">
+     <div class="absolute w-[60%] h-[60%] border-[6px] border-black rounded-full bg-[#fe6b00]"></div>
+  </div>
+
+  <!-- Geometric Stack behind the Figma Window -->
+  <div class="absolute bottom-[2%] left-[4%] w-12 h-24 border-[4px] border-black bg-[#ccff00] z-20"></div>
+  <div class="absolute bottom-[4%] left-[6%] w-12 h-24 border-[4px] border-black bg-[#a855f7] z-20"></div>
+
+
+  <!-- Abstract Floating Purple Card wrapped in Neon Green Band (Like Core Image Graphic!) -->
+  <div class="absolute top-[30%] right-[-5%] md:right-[-2%] z-0 hidden lg:block hover:translate-x-4 transition-transform duration-700">
+     <!-- Massive wrapper scaled up -->
+     <div class="relative w-[340px] h-[220px]">
+        
+        <!-- Back side of wrapping band -->
+        <div class="absolute top-[40%] -right-0 w-[140px] h-[180px] border-[6px] border-black bg-[#1a1a1a] rounded-[100px] -translate-y-1/2 z-0 transform skew-y-[20deg] skew-x-[-10deg]"></div>
+        
+        <!-- Purple Credit Card Graphic -->
+        <div class="absolute top-[10%] left-[-40px] w-full h-[180px] bg-[#a855f7] border-[5px] border-black rounded-3xl shadow-[12px_12px_0_rgba(0,0,0,1)] p-6 pl-8 flex flex-col justify-between z-10 transform -rotate-[22deg] skew-x-[15deg]">
+           <div class="flex items-center justify-between">
+             <div class="flex items-center gap-2">
+               <span class="material-symbols-outlined text-black font-black text-2xl">verified_user</span>
+               <span class="font-black text-3xl italic tracking-tighter text-black">Aegis.</span>
+             </div>
+             <!-- Lines top right -->
+             <div class="flex flex-col gap-1.5 items-end">
+                <div class="w-12 h-[3px] bg-black"></div>
+                <div class="w-8 h-[3px] bg-black"></div>
+                <div class="w-16 h-[3px] bg-black"></div>
+             </div>
+           </div>
+           
+           <div class="flex justify-between items-end pr-8">
+             <div class="w-16 h-10 border-[4px] border-black rounded-lg bg-[#ccff00] grid grid-cols-2 grid-rows-2 gap-1 p-1">
+               <div class="border-2 border-black rounded-sm"></div>
+               <div class="border-2 border-black rounded-sm"></div>
+               <div class="border-2 border-black rounded-sm"></div>
+               <div class="border-2 border-black rounded-sm"></div>
+             </div>
+             <div class="flex flex-col gap-2.5 w-[40%] mb-1">
+               <div class="w-full h-2.5 bg-black rounded-full"></div>
+               <div class="flex gap-2">
+                 <div class="w-2/3 h-2.5 bg-black rounded-full"></div>
+                 <div class="w-1/3 h-2.5 bg-black rounded-full"></div>
+               </div>
+               <div class="w-1/2 h-2.5 bg-black rounded-full"></div>
+             </div>
+           </div>
+        </div>
+
+        <!-- Front Neon Band overlapping Card -->
+        <div class="absolute top-[40%] -right-10 w-[120px] h-[190px] border-[6px] border-black bg-[#ccff00] rounded-r-[120px] rounded-l-[0px] -translate-y-1/2 z-20 pointer-events-none transform skew-y-[20deg] skew-x-[-10deg]"></div>
+
+        <!-- Floating Vector Mouse Pointer Cursor relative to Card space -->
+        <svg class="absolute -bottom-[20px] right-20 w-10 h-10 text-[#65e8c1] drop-shadow-[5px_5px_0_black] z-30" viewBox="0 0 24 24" fill="currentColor">
+           <path d="M4 0l16 11-7 1 4 8-3 2-4-8-6 5z" stroke="black" stroke-width="2"/>
+        </svg>
+        <!-- Connector Vector handle pointing to card stringent aesthetic -->
+        <div class="absolute bottom-[20px] left-[260px] w-px h-[100px] border-l-2 border-black border-dashed flex items-end">
+           <div class="w-2 h-2 bg-white border-2 border-black -ml-[5px] mb-[-5px]"></div>
+        </div>
+        <div class="absolute bottom-[120px] left-[260px] flex items-end">
+           <div class="w-2 h-2 bg-white border-2 border-black -ml-[5px] mb-[-5px]"></div>
+        </div>
+     </div>
+  </div>
+
+  <!-- Bottom right Grid -->
+  <div class="absolute bottom-[2%] md:bottom-[5%] right-[2%] md:right-[15%] z-0">
+    <div class="w-40 h-40 md:w-56 md:h-56 border-4 border-black bg-[#fcfaf5]" style="background-image: linear-gradient(black 2px, transparent 2px), linear-gradient(90deg, black 2px, transparent 2px); background-size: 32px 32px; background-position: -2px -2px;"></div>
+    <!-- Floating Circle Overlay -->
+    <div class="absolute top-[-10%] left-[-15%] w-12 h-12 md:w-16 md:h-16 border-[4px] border-black bg-[#a855f7] rounded-full shadow-[4px_4px_0_black]"></div>
+    <div class="absolute bottom-[-10%] right-[10%] w-24 h-24 md:w-32 md:h-32 border-[4px] border-black bg-[#fe6b00] rounded-full shadow-[8px_8px_0_black]"></div>
+  </div>
+  
+  <!-- Yellow Spiky Starburst Background Right Side -->
+  <div class="absolute bottom-[10%] right-[-5%] md:right-[2%] w-32 h-32 md:w-48 md:h-48 bg-[#ccff00] border-[4px] border-black shadow-[8px_8px_0_black] z-10 flex items-center justify-center animate-spin-slow" style="clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);">
+     <!-- Central black star inside -->
+     <svg class="w-6 h-6 md:w-10 md:h-10 text-black" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 12 24C12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z" />
+     </svg>
+  </div>
+
+   <!-- Left Side Funky 'View Architecture' Interactive Widget -->
+  <a href="#core-processor" class="hidden lg:flex absolute top-[45%] left-[2%] z-[60] group pointer-events-auto items-center justify-center -rotate-[8deg] hover:rotate-0 transition-transform duration-500 hover:scale-105 outline-none focus:outline-none focus:ring-none">
+    
+     <!-- Custom Hand-Drawn SVG Arrow Pointing directly at it, from top right -->
+     <div class="absolute -top-[90px] -right-[60px] text-black transform rotate-[10deg] pointer-events-none group-hover:rotate-[0deg] group-hover:-translate-x-2 group-hover:translate-y-2 transition-all duration-300 z-10">
+        <svg width="120" height="120" viewBox="0 0 100 100" fill="none" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(4px 4px 0px #ccff00);">
+           <path d="M90,10 Q60,30 20,80" stroke-dasharray="8 8" />
+           <path d="M20,80 L35,85" />
+           <path d="M20,80 L25,65" />
+           <text x="60" y="20" font-family="monospace" font-weight="900" font-size="16" fill="black" stroke="none" transform="rotate(-15 60 20)">DOCS!</text>
+        </svg>
+     </div>
+
+     <!-- Brutalist Button Box -->
+     <div class="relative bg-white border-[4px] border-black px-6 py-4 shadow-[8px_8px_0_#a855f7] group-hover:shadow-[12px_12px_0_#fe6b00] rounded-2xl flex items-center gap-4 transition-all z-20">
+        <div class="w-16 h-16 rounded-full border-[3px] border-black bg-[#ccff00] flex items-center justify-center overflow-hidden shrink-0">
+           <svg class="w-10 h-10 text-black animate-[spin_8s_linear_infinite]" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 12 24C12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z" />
+           </svg>
+        </div>
+        <div class="flex flex-col text-left">
+           <span class="font-black text-black text-sm uppercase tracking-widest leading-none mb-1">View</span>
+           <span class="font-black text-[#1a1a1a] text-2xl uppercase tracking-tighter leading-tight italic">Architecture</span>
+        </div>
+     </div>
+  </a>
+
 </div>
 
 <!-- Hero Content -->
-<div class="relative z-10 flex flex-col items-center text-center max-w-5xl">
-<h1 id="hero-heading" class="font-headline font-black text-[clamp(4rem,12vw,10rem)] tracking-tighter hero-title flex flex-col gap-0">
-<span class="text-on-surface"><span class="blur-word">Income</span>&nbsp;<span class="blur-word">safety</span></span>
-<span class="text-on-surface opacity-90"><span class="blur-word">that</span>&nbsp;<span class="blur-word">feels</span></span>
-<span class="text-inverse-primary italic"><span class="blur-word">effortless</span></span>
+<div class="relative z-50 flex flex-col items-center text-center max-w-5xl mix-blend-multiply">
+<h1 id="hero-heading" class="font-headline font-black text-[clamp(4rem,10vw,8.5rem)] tracking-tighter hero-title flex flex-col gap-0 leading-[0.9] mt-8 text-[#1a1a1a]">
+<span><span class="blur-word">Income</span>&nbsp;<span class="blur-word">safety</span></span>
+<span class="opacity-95"><span class="blur-word">that</span>&nbsp;<span class="blur-word">feels</span></span>
+<span class="text-[#fe6b00] italic drop-shadow-sm"><span class="blur-word">effortless</span></span>
 </h1>
-<p class="mt-12 text-on-surface-variant font-medium text-lg md:text-xl max-w-xl leading-relaxed">
+<p class="mt-8 text-[#4a4a4a] font-bold text-lg md:text-xl max-w-xl leading-relaxed">
                     Designed for India's gig economy. AI-powered income protection that pays out automatically for weather and disruptions—with zero manual claims.
                 </p>
 <div class="mt-12 flex flex-col md:flex-row items-center gap-6">
-<button class="bg-on-surface text-surface-container-lowest px-10 py-5 rounded-full font-black text-lg flex items-center gap-4 hover:scale-105 transition-transform shadow-2xl">
+<button class="bg-[#1a1a1a] text-white border-[3px] border-black px-10 py-5 rounded-xl font-black text-lg flex items-center gap-4 hover:-translate-y-1 transition-transform shadow-[6px_6px_0_rgba(0,0,0,1)] active:translate-y-1 active:shadow-[0px_0px_0_rgba(0,0,0,1)]">
                         Check weekly premium
-                        <span class="w-8 h-8 rounded-full bg-inverse-primary flex items-center justify-center text-on-surface">
+                        <span class="w-8 h-8 rounded-full bg-[#ccff00] border-2 border-black shadow-[2px_2px_0_rgba(0,0,0,1)] flex items-center justify-center text-black">
 <span class="material-symbols-outlined text-sm font-black" data-icon="arrow_forward">arrow_forward</span>
 </span>
 </button>
@@ -254,14 +381,26 @@
 </div>
 
 <!-- Partner Logos -->
-<div class="w-full max-w-5xl mt-auto pt-20">
-<div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-40 grayscale hover:opacity-100 transition-opacity duration-700">
-<span class="font-black text-2xl tracking-tighter">IMD</span>
-<span class="font-black text-2xl tracking-tighter">OpenAQ</span>
-<span class="font-black text-2xl tracking-tighter">UPI</span>
-<span class="font-black text-2xl tracking-tighter">Razorpay</span>
-<span class="font-black text-2xl tracking-tighter uppercase">Swiggy</span>
-<span class="font-black text-2xl tracking-tighter uppercase">Zomato</span>
+<div class="w-full max-w-5xl mt-auto pt-24 pb-8 z-50 relative pointer-events-auto">
+<div class="flex flex-wrap justify-center items-center gap-4 md:gap-6">
+  <div class="bg-white border-2 border-black px-5 py-2 hover:-translate-y-1 transition-transform shadow-[4px_4px_0_#000] rounded-sm transform -rotate-2">
+     <span class="font-black text-xl tracking-tighter text-black">IMD</span>
+  </div>
+  <div class="bg-[#ccff00] border-2 border-black px-5 py-2 hover:-translate-y-1 transition-transform shadow-[4px_4px_0_#000] rounded-full transform rotate-1">
+     <span class="font-black text-xl tracking-tighter text-black">OpenAQ</span>
+  </div>
+  <div class="bg-white border-2 border-black px-5 py-2 hover:-translate-y-1 transition-transform shadow-[4px_4px_0_#000] rounded-sm transform -rotate-1">
+     <span class="font-black text-xl tracking-tighter text-black">UPI</span>
+  </div>
+  <div class="bg-white border-2 border-black px-5 py-2 hover:-translate-y-1 transition-transform shadow-[4px_4px_0_#000] rounded-full transform rotate-2">
+     <span class="font-black text-xl tracking-tighter text-black">Razorpay</span>
+  </div>
+  <div class="bg-white border-[3px] border-black px-5 py-2 hover:-translate-y-1 transition-transform shadow-[4px_4px_0_#fe6b00] rounded-sm transform -rotate-[3deg] text-black">
+     <span class="font-black text-xl tracking-tighter uppercase text-[#fe6b00]">Swiggy</span>
+  </div>
+  <div class="bg-white border-[3px] border-black px-5 py-2 hover:-translate-y-1 transition-transform shadow-[4px_4px_0_#e23744] rounded-sm transform rotate-[3deg] text-black">
+     <span class="font-black text-xl tracking-tighter uppercase text-[#e23744]">Zomato</span>
+  </div>
 </div>
 </div>
 </section>
@@ -282,12 +421,12 @@
           <div class="marquee" style="background-color: #F8CB46;">
             <div class="marquee__inner-wrap">
               <div class="marquee__inner" aria-hidden="true">
-                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/blinkit.com');"></div></div>
-                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/blinkit.com');"></div></div>
-                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/blinkit.com');"></div></div>
-                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/blinkit.com');"></div></div>
-                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/blinkit.com');"></div></div>
-                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/blinkit.com');"></div></div>
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('./blinkit-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('./blinkit-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('./blinkit-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('./blinkit-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('./blinkit-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('./blinkit-logo.png');"></div></div>
               </div>
             </div>
           </div>
@@ -299,12 +438,12 @@
           <div class="marquee" style="background-color: #480e8e;">
             <div class="marquee__inner-wrap">
               <div class="marquee__inner" aria-hidden="true">
-                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/zeptonow.com');"></div></div>
-                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/zeptonow.com');"></div></div>
-                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/zeptonow.com');"></div></div>
-                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/zeptonow.com');"></div></div>
-                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/zeptonow.com');"></div></div>
-                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/zeptonow.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('./zepto-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('./zepto-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('./zepto-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('./zepto-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('./zepto-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('./zepto-logo.png');"></div></div>
               </div>
             </div>
           </div>
@@ -316,12 +455,12 @@
           <div class="marquee" style="background-color: #fc8019;">
             <div class="marquee__inner-wrap">
               <div class="marquee__inner" aria-hidden="true">
-                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/swiggy.com');"></div></div>
-                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/swiggy.com');"></div></div>
-                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/swiggy.com');"></div></div>
-                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/swiggy.com');"></div></div>
-                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/swiggy.com');"></div></div>
-                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/swiggy.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('./instamart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('./instamart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('./instamart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('./instamart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('./instamart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('./instamart-logo.png');"></div></div>
               </div>
             </div>
           </div>
@@ -333,12 +472,29 @@
           <div class="marquee" style="background-color: #84c225;">
             <div class="marquee__inner-wrap">
               <div class="marquee__inner" aria-hidden="true">
-                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/bigbasket.com');"></div></div>
-                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/bigbasket.com');"></div></div>
-                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/bigbasket.com');"></div></div>
-                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/bigbasket.com');"></div></div>
-                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/bigbasket.com');"></div></div>
-                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/bigbasket.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('./bigbasket-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('./bigbasket-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('./bigbasket-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('./bigbasket-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('./bigbasket-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('./bigbasket-logo.png');"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- JioMart -->
+        <div class="menu__item uppercase">
+          <a class="menu__item-link" href="#">JioMart</a>
+          <div class="marquee" style="background-color: #e51d27;">
+            <div class="marquee__inner-wrap">
+              <div class="marquee__inner" aria-hidden="true">
+                <div class="marquee__part" style="color: #fff;"><span>JioMart</span><div class="marquee__img" style="background-image: url('./jiomart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>JioMart</span><div class="marquee__img" style="background-image: url('./jiomart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>JioMart</span><div class="marquee__img" style="background-image: url('./jiomart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>JioMart</span><div class="marquee__img" style="background-image: url('./jiomart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>JioMart</span><div class="marquee__img" style="background-image: url('./jiomart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>JioMart</span><div class="marquee__img" style="background-image: url('./jiomart-logo.png');"></div></div>
               </div>
             </div>
           </div>
@@ -350,329 +506,666 @@
 </section>
 
 <!-- Section 1: What we cover -->
-<section class="py-32 px-6 max-w-7xl mx-auto">
-<div class="text-center mb-24">
-<h2 class="text-7xl font-headline font-black tracking-tighter mb-8">What we cover</h2>
-<p class="text-xl text-on-surface-variant max-w-2xl mx-auto font-medium">
-                    Flexible weekly protection <span class="bg-gray-200 px-3 py-1 rounded-md">designed for gig workers</span> to cover immediate income loss from external disruptions.
-                </p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-<!-- Card 1 -->
-<div class="bg-surface-container-lowest rounded-3xl shadow-xl p-8 h-[420px] hover:scale-[1.02] transition-transform flex flex-col group">
-<div class="mb-12">
-<div class="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center rotate-6 group-hover:rotate-0 transition-transform">
-<span class="material-symbols-outlined text-4xl text-blue-600" data-icon="rainy">rainy</span>
-</div>
-</div>
-<div class="mt-auto">
-<h3 class="text-3xl font-black mb-4">Severe Weather</h3>
-<p class="text-on-surface-variant">Automatic payouts when rainfall exceeds critical limits for deliveries.</p>
-</div>
-</div>
+<section class="py-24 md:py-32 px-6 overflow-hidden bg-[#ccff00] border-t-[4px] border-b-[4px] border-black" id="coverage">
+  <div class="max-w-[1400px] mx-auto">
+    
+    <!-- Split Header: massive title left, description right -->
+    <div class="flex flex-col lg:flex-row lg:items-end gap-8 lg:gap-20 mb-16 md:mb-24">
+      <div class="lg:w-[55%]">
+        <h2 class="text-[clamp(3.5rem,8vw,7rem)] font-headline font-black tracking-tighter leading-[0.9] text-black">What we<br/>cover.</h2>
+      </div>
+      <div class="lg:w-[45%] pb-2">
+        <p class="text-lg md:text-xl font-bold text-black/70 leading-relaxed max-w-lg">
+          <span class="text-black font-black">Flexible weekly protection:</span><br/>
+          Personalized. Parametric. Instant. Built for India's gig workers.
+        </p>
+      </div>
+    </div>
 
-<!-- Card 2: Highlight -->
-<div class="bg-zinc-900 text-white rounded-3xl shadow-2xl p-10 h-[460px] md:scale-110 hover:scale-[1.12] transition-transform flex flex-col z-10 relative overflow-hidden group">
-<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container blur-[80px] opacity-20"></div>
-<div class="mb-12">
-<div class="w-24 h-24 bg-white/10 rounded-2xl flex items-center justify-center rotate-12 group-hover:rotate-0 transition-transform border border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.1)]">
-<span class="material-symbols-outlined text-5xl text-inverse-primary" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
-</div>
-</div>
-<div class="mt-auto">
-<h3 class="text-4xl font-black mb-6 leading-tight">Zero Manual Claims</h3>
-<p class="text-white/70 text-lg">Our engine verifies data instantly. Money lands in your account before you even ask.</p>
-</div>
-</div>
+    <!-- Three Editorial Cards Row -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 items-stretch">
+      
+      <!-- Card 1: Severe Weather -->
+      <div class="border-[3px] border-black bg-white rounded-3xl flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-500 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:shadow-[12px_12px_0_rgba(0,0,0,1)]">
+        
+        <!-- Card Header Bar -->
+        <div class="flex items-center justify-between px-6 py-5 border-b-[3px] border-black">
+          <span class="text-[15px] font-black tracking-tight text-black">/01</span>
+          <span class="material-symbols-outlined text-3xl text-black" style="font-variation-settings: 'FILL' 1;">rainy</span>
+        </div>
+        
+        <!-- Card Title + Description -->
+        <div class="px-6 pt-6 pb-4">
+          <h3 class="text-[2rem] md:text-[2.2rem] font-black tracking-tight leading-[1.1] text-black mb-3">Severe Weather</h3>
+          <p class="text-[13px] text-black/60 font-medium leading-relaxed">
+            One-of-a-kind protection built on YOUR delivery zone's weather data.
+          </p>
+        </div>
 
-<!-- Card 3 -->
-<div class="bg-surface-container-lowest rounded-3xl shadow-xl p-8 h-[420px] hover:scale-[1.02] transition-transform flex flex-col group">
-<div class="mb-12">
-<div class="w-20 h-20 bg-orange-50 rounded-2xl flex items-center justify-center -rotate-6 group-hover:rotate-0 transition-transform">
-<span class="material-symbols-outlined text-4xl text-primary" data-icon="location_off">location_off</span>
-</div>
-</div>
-<div class="mt-auto">
-<h3 class="text-3xl font-black mb-4">City-Wide Disruptions</h3>
-<p class="text-on-surface-variant">Coverage for unforeseen events that shut down logistics across your working zone.</p>
-</div>
-</div>
-</div>
-</section>
+        <!-- Embedded UI Mockup: Rainfall Gauge -->
+        <div class="mx-6 mb-6 border-[2px] border-black/15 rounded-2xl bg-[#f7f7f5] p-5 flex flex-col gap-4">
+          <!-- Gauge Header -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px] text-black/60">water_drop</span>
+              <span class="text-[11px] font-black uppercase tracking-widest text-black/50">Rainfall</span>
+            </div>
+            <span class="text-[10px] font-bold text-black/40 bg-black/5 px-2 py-1 rounded">JAN 2026</span>
+          </div>
+          <!-- Big Number -->
+          <div class="flex items-baseline gap-1.5">
+            <span class="text-[3.5rem] font-black tracking-tighter text-black leading-none">60</span>
+            <span class="text-[16px] font-bold text-black/40">mm</span>
+          </div>
+          <!-- Progress Bar / Threshold -->
+          <div class="relative w-full h-3 bg-black/10 rounded-full overflow-hidden">
+            <div class="absolute left-0 top-0 h-full w-[72%] bg-gradient-to-r from-[#0088ff] to-[#00c6ff] rounded-full"></div>
+            <div class="absolute left-[60%] top-[-4px] w-0.5 h-[20px] bg-[#ff3b30]"></div>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-bold text-black/40">0mm</span>
+            <span class="text-[10px] font-bold text-[#ff3b30]">← Threshold</span>
+            <span class="text-[10px] font-bold text-black/40">100mm</span>
+          </div>
+          <!-- Status -->
+          <div class="bg-[#ccff00] border-[2px] border-black rounded-xl px-4 py-2.5 flex items-center gap-3 mt-1">
+            <div class="w-2.5 h-2.5 rounded-full bg-black animate-pulse"></div>
+            <span class="text-[11px] font-black text-black uppercase tracking-wider">IMD Data: Monitoring Live</span>
+          </div>
+        </div>
 
-<!-- Section 2: What powers every policy -->
-<section class="py-32 px-6 relative overflow-hidden bg-background">
-<div class="max-w-7xl mx-auto relative z-10 flex flex-col items-center">
-<h2 class="text-7xl font-headline font-black text-center mb-32">What powers every policy</h2>
+        <!-- Bottom Text -->
+        <div class="px-6 pb-4 mt-auto">
+          <p class="text-[12px] text-black/50 font-medium leading-relaxed">
+            Automatic payouts when rainfall exceeds critical limits, verified by India Meteorological Department data feeds.
+          </p>
+        </div>
 
-<!-- Floating Pills Container -->
-<div class="w-full flex flex-wrap justify-center gap-6 mb-24 relative min-h-[300px]">
-<!-- Pill 1 -->
-<div class="bg-surface-container-lowest px-6 py-4 rounded-full shadow-md flex items-center gap-3 absolute top-0 left-10 md:left-[10%] animate-float">
-<span class="material-symbols-outlined text-on-surface-variant" data-icon="person_search">person_search</span>
-<span class="font-bold text-sm">Worker Profiling</span>
-</div>
+        <!-- CTA Button -->
+        <div class="px-6 pb-6">
+          <button class="w-full py-3.5 bg-[#ccff00] border-[3px] border-black rounded-xl font-black text-[12px] text-black uppercase tracking-widest hover:-translate-y-0.5 shadow-[4px_4px_0_#000] hover:shadow-[6px_6px_0_#000] active:translate-y-0.5 active:shadow-[0_0_0_#000] transition-all">Get Started</button>
+        </div>
+      </div>
 
-<!-- Pill 2: Special -->
-<div class="bg-surface-container-lowest px-8 py-5 rounded-full shadow-lg flex items-center gap-4 absolute top-12 left-[35%] md:left-[25%] rotate-3 z-20">
-<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
-<span class="material-symbols-outlined text-sm font-bold" data-icon="offline_bolt">offline_bolt</span>
-</div>
-<span class="font-black text-lg">Parametric Triggers</span>
-<div class="absolute -bottom-4 -right-2 transform translate-x-2">
-<svg class="drop-shadow-sm" fill="none" height="24" viewbox="0 0 24 24" width="24">
-<path d="M4 4L11 20L13.5 13.5L20 11L4 4Z" fill="#3B82F6" stroke="white" stroke-width="2"></path>
-</svg>
-</div>
-</div>
+      <!-- Card 2: Zero Manual Claims -->
+      <div class="border-[3px] border-black bg-white rounded-3xl flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-500 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:shadow-[12px_12px_0_rgba(0,0,0,1)]">
+        
+        <!-- Card Header Bar -->
+        <div class="flex items-center justify-between px-6 py-5 border-b-[3px] border-black bg-black">
+          <span class="text-[15px] font-black tracking-tight text-white">/02</span>
+          <span class="material-symbols-outlined text-3xl text-[#ccff00]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+        </div>
+        
+        <!-- Card Title + Description -->
+        <div class="px-6 pt-6 pb-4">
+          <h3 class="text-[2rem] md:text-[2.2rem] font-black tracking-tight leading-[1.1] text-black mb-3">Zero Claims</h3>
+          <p class="text-[13px] text-black/60 font-medium leading-relaxed">
+            Your first fully automated experience. No paperwork. No waiting.
+          </p>
+        </div>
 
-<!-- Pill 3 -->
-<div class="bg-surface-container-lowest px-6 py-4 rounded-full shadow-md flex items-center gap-3 absolute top-0 right-10 md:right-[15%] animate-float-delayed">
-<span class="material-symbols-outlined text-on-surface-variant" data-icon="psychology">psychology</span>
-<span class="font-bold text-sm">AI Risk Engine</span>
-</div>
+        <!-- Embedded UI Mockup: Checklist Dashboard -->
+        <div class="mx-6 mb-6 border-[2px] border-black/15 rounded-2xl bg-[#f7f7f5] overflow-hidden">
+          <!-- Checklist Items -->
+          <div class="divide-y divide-black/10">
+            <div class="flex items-center justify-between px-5 py-3.5">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-[16px] text-black/50">cloud</span>
+                <span class="text-[13px] font-bold text-black">Weather Data</span>
+              </div>
+              <div class="w-7 h-7 rounded-lg bg-[#ccff00] border-[2px] border-black flex items-center justify-center">
+                <span class="material-symbols-outlined text-[16px] text-black font-black">check</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-5 py-3.5">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-[16px] text-black/50">my_location</span>
+                <span class="text-[13px] font-bold text-black">GPS Zone Match</span>
+              </div>
+              <div class="w-7 h-7 rounded-lg bg-[#ccff00] border-[2px] border-black flex items-center justify-center">
+                <span class="material-symbols-outlined text-[16px] text-black font-black">check</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-5 py-3.5">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-[16px] text-black/50">policy</span>
+                <span class="text-[13px] font-bold text-black">Policy Active</span>
+              </div>
+              <div class="w-7 h-7 rounded-lg bg-[#ccff00] border-[2px] border-black flex items-center justify-center">
+                <span class="material-symbols-outlined text-[16px] text-black font-black">check</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-5 py-3.5">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-[16px] text-black/50">account_balance_wallet</span>
+                <span class="text-[13px] font-bold text-black">Instant Payout</span>
+              </div>
+              <div class="w-7 h-7 rounded-lg bg-[#ccff00] border-[2px] border-black flex items-center justify-center">
+                <span class="material-symbols-outlined text-[16px] text-black font-black">check</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-5 py-3.5">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-[16px] text-black/50">security</span>
+                <span class="text-[13px] font-bold text-black">Fraud Check</span>
+              </div>
+              <div class="w-7 h-7 rounded-lg bg-[#ccff00] border-[2px] border-black flex items-center justify-center">
+                <span class="material-symbols-outlined text-[16px] text-black font-black">check</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<!-- Pill 4 -->
-<div class="bg-surface-container-lowest px-6 py-4 rounded-full shadow-md flex items-center gap-3 absolute bottom-24 left-[15%] md:left-[20%] animate-float-delayed">
-<span class="material-symbols-outlined text-on-surface-variant" data-icon="security">security</span>
-<span class="font-bold text-sm">Fraud Detection</span>
-</div>
+        <!-- Bottom Text -->
+        <div class="px-6 pb-4 mt-auto">
+          <p class="text-[12px] text-black/50 font-medium leading-relaxed">
+            Our AI engine verifies weather, GPS zone, and policy data in milliseconds. Money lands in your account before you even ask.
+          </p>
+        </div>
 
-<!-- Pill 5 -->
-<div class="bg-surface-container-lowest px-6 py-4 rounded-full shadow-md flex items-center gap-3 absolute bottom-32 right-[20%] md:right-[30%] animate-float">
-<span class="material-symbols-outlined text-emerald-600" data-icon="account_balance_wallet">account_balance_wallet</span>
-<span class="font-bold text-sm">Instant Payouts</span>
-</div>
-</div>
+        <!-- CTA Button -->
+        <div class="px-6 pb-6">
+          <button class="w-full py-3.5 bg-black border-[3px] border-black rounded-xl font-black text-[12px] text-[#ccff00] uppercase tracking-widest hover:-translate-y-0.5 shadow-[4px_4px_0_#ccff00] hover:shadow-[6px_6px_0_#ccff00] active:translate-y-0.5 active:shadow-[0_0_0_#ccff00] transition-all">Get Started</button>
+        </div>
+      </div>
 
-<!-- System Core Visualization -->
-<div class="relative w-64 h-32 border-[3px] border-black rounded-sm flex items-center justify-center mt-[-40px]">
-<div class="absolute -top-6 -left-1 w-24 h-[3px] bg-black rotate-[25deg] origin-right"></div>
-<div class="absolute -top-6 -right-1 w-24 h-[3px] bg-black -rotate-[25deg] origin-left"></div>
-<div class="font-black text-sm tracking-widest uppercase opacity-40">Core Processor</div>
-</div>
-</div>
+      <!-- Card 3: City-Wide Disruptions -->
+      <div class="border-[3px] border-black bg-white rounded-3xl flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-500 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:shadow-[12px_12px_0_rgba(0,0,0,1)]">
+        
+        <!-- Card Header Bar -->
+        <div class="flex items-center justify-between px-6 py-5 border-b-[3px] border-black">
+          <span class="text-[15px] font-black tracking-tight text-black">/03</span>
+          <span class="material-symbols-outlined text-3xl text-black" style="font-variation-settings: 'FILL' 1;">location_city</span>
+        </div>
+        
+        <!-- Card Title + Description -->
+        <div class="px-6 pt-6 pb-4">
+          <h3 class="text-[2rem] md:text-[2.2rem] font-black tracking-tight leading-[1.1] text-black mb-3">City Disruptions</h3>
+          <p class="text-[13px] text-black/60 font-medium leading-relaxed">
+            Move forward even when the city can't. Coverage for zone-wide shutdowns.
+          </p>
+        </div>
 
-<!-- Giant BG Text -->
-<div class="absolute bottom-[-50px] left-1/2 -translate-x-1/2 select-none pointer-events-none w-full text-center">
-<span class="text-[200px] font-black text-gray-200 opacity-40 tracking-tighter leading-none">AUTOMATION</span>
-</div>
+        <!-- Embedded UI Mockup: Energy/Healthspan-style chart -->
+        <div class="mx-6 mb-6 border-[2px] border-black/15 rounded-2xl bg-[#f7f7f5] p-5 flex flex-col gap-3">
+          <!-- Chart Header -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px] text-black/60">monitoring</span>
+              <span class="text-[11px] font-black uppercase tracking-widest text-black/50">Zone Status</span>
+            </div>
+            <span class="text-[10px] font-bold text-black/40 bg-black/5 px-2 py-1 rounded">Live ▼</span>
+          </div>
+          <!-- Mini sparkline chart area -->
+          <div class="relative w-full h-[80px] mt-2">
+            <svg class="w-full h-full" viewBox="0 0 300 80" fill="none" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#ccff00" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#ccff00" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,60 Q30,55 60,50 T120,35 T180,20 T240,30 T300,15" stroke="black" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M0,60 Q30,55 60,50 T120,35 T180,20 T240,30 T300,15 L300,80 L0,80Z" fill="url(#chartFill)"/>
+              <!-- Data point -->
+              <circle cx="240" cy="30" r="5" fill="black" stroke="#ccff00" stroke-width="3"/>
+            </svg>
+            <!-- Annotation -->
+            <div class="absolute top-0 right-[15%] bg-black text-[#ccff00] text-[10px] font-black px-2 py-1 rounded-lg shadow-lg">
+              ↑ +23%
+            </div>
+          </div>
+          <!-- Zone Stat Boxes -->
+          <div class="grid grid-cols-2 gap-3 mt-2">
+            <div class="bg-white border-[2px] border-black/10 rounded-xl p-3 text-center">
+              <div class="text-xl font-black text-black leading-none">4</div>
+              <div class="text-[9px] font-bold text-black/40 uppercase tracking-wider mt-1">Zones Active</div>
+            </div>
+            <div class="bg-white border-[2px] border-black/10 rounded-xl p-3 text-center">
+              <div class="text-xl font-black text-[#ff3b30] leading-none">1</div>
+              <div class="text-[9px] font-bold text-black/40 uppercase tracking-wider mt-1">Disrupted</div>
+            </div>
+          </div>
+          <!-- Status -->
+          <div class="bg-black rounded-xl px-4 py-2.5 flex items-center gap-3 mt-1">
+            <div class="w-2.5 h-2.5 rounded-full bg-[#ff3b30] animate-pulse"></div>
+            <span class="text-[11px] font-black text-white uppercase tracking-wider">Alert: Zone lockdown detected</span>
+          </div>
+        </div>
+
+        <!-- Bottom Text -->
+        <div class="px-6 pb-4 mt-auto">
+          <p class="text-[12px] text-black/50 font-medium leading-relaxed">
+            Hyper-local triggers mapped to specific pin-codes and logistics hubs. Direct-to-bank transfers the moment the threshold is crossed.
+          </p>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="px-6 pb-6">
+          <button class="w-full py-3.5 bg-[#ccff00] border-[3px] border-black rounded-xl font-black text-[12px] text-black uppercase tracking-widest hover:-translate-y-0.5 shadow-[4px_4px_0_#000] hover:shadow-[6px_6px_0_#000] active:translate-y-0.5 active:shadow-[0_0_0_#000] transition-all">Get Started</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
 <!-- Section 3: How it works -->
-<section class="py-32 px-6 max-w-7xl mx-auto">
-<div class="text-center mb-16">
-<h2 class="text-7xl font-headline font-black tracking-tighter mb-8">How it works</h2>
-<p class="text-xl text-on-surface-variant max-w-2xl mx-auto font-medium">
-            An automated system that <span class="bg-surface-container-high px-4 py-1 rounded-full font-bold">monitors real-time risks</span> to deliver instant payouts.
-        </p>
-</div>
+<section class="py-24 md:py-32 px-6 bg-[#f4f4f4] overflow-hidden relative" id="how-it-works">
+  
+  <!-- Subtle grid background -->
+  <div class="absolute inset-0 opacity-[0.06]" style="background-image: linear-gradient(black 1px, transparent 1px), linear-gradient(90deg, black 1px, transparent 1px); background-size: 40px 40px;"></div>
 
-<!-- Massive White Card -->
-<div class="bg-surface-container-lowest rounded-3xl shadow-xl border border-outline-variant/10 overflow-hidden relative">
-<canvas id="dataflow-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-40"></canvas>
-<!-- Tab Navigation -->
-<div class="flex justify-center gap-4 py-8 border-b border-surface-container">
-<button class="px-6 py-2 rounded-full font-bold bg-on-surface text-surface-container-lowest shadow-lg">Parametric Triggers</button>
-<button class="px-6 py-2 rounded-full font-bold text-on-surface-variant hover:bg-surface-container transition-colors">AI Risk Engine</button>
-<button class="px-6 py-2 rounded-full font-bold text-on-surface-variant hover:bg-surface-container transition-colors">Fraud Detection</button>
-</div>
+  <div class="max-w-[1000px] mx-auto relative z-10">
+    
+    <!-- Header -->
+    <div class="text-center mb-20 md:mb-28">
+      <h2 class="text-[clamp(3.5rem,8vw,7rem)] font-headline font-black tracking-tighter leading-[0.9] text-black mb-6">How it works.</h2>
+      <p class="text-lg md:text-xl font-bold text-black/40 leading-relaxed max-w-2xl mx-auto">
+        From weather event to money in your bank.<br/>
+        <span class="text-[#fe6b00] font-black">Zero human intervention.</span>
+      </p>
+    </div>
 
-<!-- Flowchart Diagram -->
-<div class="p-12 md:p-20 flex flex-col items-center">
-<div class="w-full flex flex-col md:flex-row items-center justify-between gap-12 relative">
-<!-- Left: Inputs -->
-<div class="flex flex-col gap-6 w-full md:w-auto">
-<div class="bg-surface-container px-6 py-4 rounded-2xl flex items-center gap-4 border border-outline-variant/20 animate-float">
-<span class="material-symbols-outlined text-blue-500" data-icon="water_drop">water_drop</span>
-<div class="text-sm font-black uppercase tracking-tight">IMD Weather Data</div>
-</div>
-<div class="bg-surface-container px-6 py-4 rounded-2xl flex items-center gap-4 border border-outline-variant/20 animate-float-delayed">
-<span class="material-symbols-outlined text-emerald-500" data-icon="my_location">my_location</span>
-<div class="text-sm font-black uppercase tracking-tight">Worker GPS Zone</div>
-</div>
-</div>
+    <!-- THE FLOW -->
+    <div class="flex flex-col items-center gap-0">
 
-<!-- Connectors Left -->
-<div class="hidden md:block absolute left-[220px] right-[calc(50%+120px)] top-1/2 -translate-y-1/2">
-<div class="h-[2px] w-full flow-line"></div>
-</div>
+      <!-- Input Sources Row -->
+      <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-0">
+        <div class="flex items-center gap-2.5 bg-black/5 border-[2px] border-black/15 rounded-full px-5 py-3 hover:border-[#fe6b00]/50 transition-colors">
+          <span class="material-symbols-outlined text-[18px] text-black" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+          <span class="text-[12px] font-black text-black/70 uppercase tracking-wider">IMD Weather</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-black/5 border-[2px] border-black/15 rounded-full px-5 py-3 hover:border-[#fe6b00]/50 transition-colors">
+          <span class="material-symbols-outlined text-[18px] text-black" style="font-variation-settings: 'FILL' 1;">my_location</span>
+          <span class="text-[12px] font-black text-black/70 uppercase tracking-wider">GPS Zone</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-black/5 border-[2px] border-black/15 rounded-full px-5 py-3 hover:border-[#fe6b00]/50 transition-colors">
+          <span class="material-symbols-outlined text-[18px] text-black" style="font-variation-settings: 'FILL' 1;">description</span>
+          <span class="text-[12px] font-black text-black/70 uppercase tracking-wider">Policy Data</span>
+        </div>
+      </div>
 
-<!-- Center: Engine -->
-<div class="relative z-10">
-<div class="absolute -inset-8 bg-blue-500/20 blur-3xl rounded-full"></div>
-<div class="bg-blue-600 text-white px-10 py-10 rounded-3xl shadow-[0_0_50px_rgba(37,99,235,0.4)] flex flex-col items-center gap-4 border border-blue-400/30 scale-110">
-<span class="material-symbols-outlined text-5xl animate-spin" data-icon="settings" style="animation-duration: 4s;">settings</span>
-<div class="text-center">
-<div class="text-xs font-black uppercase tracking-[0.2em] opacity-60 mb-1">Processing</div>
-<div class="text-xl font-black">Parametric Trigger Engine</div>
-</div>
-</div>
+      <!-- Connector: Inputs to Node 1 -->
+      <div class="flex flex-col items-center py-1">
+        <svg width="4" height="60" class="overflow-visible">
+          <line x1="2" y1="0" x2="2" y2="56" stroke="#ccff00" stroke-width="3" stroke-dasharray="8 6">
+            <animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.5s" repeatCount="indefinite"/>
+          </line>
+          <polygon points="-1,54 5,54 2,62" fill="#ccff00"/>
+        </svg>
+      </div>
 
-<!-- Top Nodes -->
-<div class="absolute -top-24 left-1/2 -translate-x-1/2 flex gap-4">
-<div class="flex flex-col items-center gap-2">
-<div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center text-white shadow-lg">
-<span class="material-symbols-outlined text-xl" data-icon="check">check</span>
-</div>
-<span class="text-[10px] font-black uppercase opacity-40">Threshold</span>
-</div>
-<div class="flex flex-col items-center gap-2 mt-4">
-<div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center text-white shadow-lg">
-<span class="material-symbols-outlined text-xl" data-icon="check">check</span>
-</div>
-<span class="text-[10px] font-black uppercase opacity-40">Zone</span>
-</div>
-<div class="flex flex-col items-center gap-2">
-<div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center text-white shadow-lg">
-<span class="material-symbols-outlined text-xl" data-icon="check">check</span>
-</div>
-<span class="text-[10px] font-black uppercase opacity-40">Policy</span>
-</div>
-</div>
-</div>
+      <!-- NODE 1: Parametric Trigger -->
+      <div class="w-full border-[3px] border-black/15 bg-white shadow-[8px_8px_0_rgba(0,0,0,1)] rounded-3xl overflow-hidden group hover:border-[#ccff00] transition-all duration-500 hover:shadow-[0_0_60px_rgba(204,255,0,0.08)]">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-[40%] flex items-center justify-center p-8 md:p-12 border-b-[3px] md:border-b-0 md:border-r-[3px] border-black/10 bg-[#f9f9f5] relative min-h-[200px]">
+            <div class="relative w-28 h-28">
+              <div class="absolute inset-0 rounded-full border-2 border-[#ccff00]/20 animate-ping" style="animation-duration: 3s;"></div>
+              <div class="absolute inset-3 rounded-full border-2 border-[#ccff00]/30 animate-ping" style="animation-duration: 3s; animation-delay: 0.5s;"></div>
+              <div class="absolute inset-6 rounded-full border-2 border-[#ccff00]/50 animate-ping" style="animation-duration: 3s; animation-delay: 1s;"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-12 h-12 rounded-full bg-[#ccff00] border-[3px] border-black flex items-center justify-center shadow-[0_0_30px_rgba(204,255,0,0.5)]">
+                  <span class="material-symbols-outlined text-black text-xl" style="font-variation-settings: 'FILL' 1;">sensors</span>
+                </div>
+              </div>
+            </div>
+            <div class="absolute top-4 right-4 bg-[#ccff00] border-[2px] border-black px-3 py-1 rounded-full shadow-[3px_3px_0_#000]">
+              <span class="text-[10px] font-black text-black tracking-tight">60mm &#8593;</span>
+            </div>
+          </div>
+          <div class="md:w-[60%] p-6 md:p-10 flex flex-col justify-center">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-lg bg-[#ccff00] border-[2px] border-black flex items-center justify-center">
+                <span class="text-black font-black text-sm">01</span>
+              </div>
+              <span class="text-[11px] font-black text-black/30 uppercase tracking-[0.2em]">Detect</span>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-black text-black tracking-tight mb-3">Parametric Trigger</h3>
+            <p class="text-[14px] text-black/50 font-medium leading-relaxed mb-5">
+              Real-time weather data from IMD crosses your zone's threshold. The event is detected instantly&#8212;no claim form, no phone call.
+            </p>
+            <div class="flex items-center gap-2.5 bg-black/5 border border-black/10 rounded-xl px-4 py-2.5 w-fit">
+              <div class="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse shadow-[0_0_8px_rgba(204,255,0,0.6)]"></div>
+              <span class="text-[10px] font-black text-black/50 uppercase tracking-wider">Always monitoring</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<!-- Connectors Right -->
-<div class="hidden md:block absolute right-[180px] left-[calc(50%+120px)] top-1/2 -translate-y-1/2">
-<div class="h-[2px] w-full flow-line"></div>
-</div>
+      <!-- Connector 1 to 2 with label -->
+      <div class="flex flex-col items-center py-1 relative">
+        <svg width="4" height="70" class="overflow-visible">
+          <line x1="2" y1="0" x2="2" y2="66" stroke="#fe6b00" stroke-width="3" stroke-dasharray="8 6">
+            <animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.5s" repeatCount="indefinite"/>
+          </line>
+          <polygon points="-1,64 5,64 2,72" fill="#fe6b00"/>
+        </svg>
+        <div class="absolute top-1/2 -translate-y-1/2 left-[calc(50%+20px)] bg-[#fe6b00] border-[2px] border-black px-3 py-1 rounded-full shadow-[3px_3px_0_#000] whitespace-nowrap">
+          <span class="text-[9px] font-black text-black uppercase tracking-wider">threshold crossed &#8594;</span>
+        </div>
+      </div>
 
-<!-- Right: Success -->
-<div class="bg-emerald-500 text-white p-8 rounded-2xl shadow-2xl flex flex-col items-center gap-4 text-center group">
-<div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center animate-pulse">
-<span class="material-symbols-outlined text-4xl" data-icon="payments">payments</span>
-</div>
-<div>
-<div class="text-2xl font-black tracking-tight leading-none mb-1">Auto-Approved Payout</div>
-<div class="text-xs font-bold opacity-80 uppercase tracking-widest">Sent via Razorpay</div>
-</div>
-</div>
-</div>
-</div>
+      <!-- NODE 2: AI Risk Engine -->
+      <div class="w-full border-[3px] border-black/15 bg-white shadow-[8px_8px_0_rgba(0,0,0,1)] rounded-3xl overflow-hidden group hover:border-[#fe6b00] transition-all duration-500 hover:shadow-[0_0_60px_rgba(254,107,0,0.08)]">
+        <div class="flex flex-col md:flex-row-reverse">
+          <div class="md:w-[40%] flex items-center justify-center p-8 md:p-12 border-b-[3px] md:border-b-0 md:border-l-[3px] border-black/10 bg-[#f9f9f5] relative min-h-[200px]">
+            <div class="relative w-28 h-28 flex items-center justify-center">
+              <div class="absolute inset-0 rounded-full border-[3px] border-dashed border-[#fe6b00]/30 animate-[spin_10s_linear_infinite]"></div>
+              <div class="absolute inset-4 rounded-full border-[3px] border-dashed border-black/10 animate-[spin_7s_linear_infinite_reverse]"></div>
+              <div class="w-14 h-14 rounded-2xl bg-[#fe6b00] border-[3px] border-black flex items-center justify-center shadow-[0_0_25px_rgba(254,107,0,0.4)] animate-[spin_20s_linear_infinite]">
+                <span class="material-symbols-outlined text-black text-2xl" style="font-variation-settings: 'FILL' 1;">settings</span>
+              </div>
+            </div>
+            <div class="absolute top-5 left-5 w-7 h-7 rounded bg-black/5 border border-black/10 flex items-center justify-center animate-bounce" style="animation-duration: 3s;">
+              <span class="material-symbols-outlined text-[12px] text-black/40">security</span>
+            </div>
+            <div class="absolute bottom-5 right-5 w-7 h-7 rounded bg-black/5 border border-black/10 flex items-center justify-center animate-bounce" style="animation-duration: 3s; animation-delay: 1s;">
+              <span class="material-symbols-outlined text-[12px] text-black/40">policy</span>
+            </div>
+          </div>
+          <div class="md:w-[60%] p-6 md:p-10 flex flex-col justify-center">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-lg bg-[#fe6b00] border-[2px] border-black flex items-center justify-center">
+                <span class="text-black font-black text-sm">02</span>
+              </div>
+              <span class="text-[11px] font-black text-black/30 uppercase tracking-[0.2em]">Verify</span>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-black text-black tracking-tight mb-3">AI Risk Engine</h3>
+            <p class="text-[14px] text-black/50 font-medium leading-relaxed mb-5">
+              Cross-validates GPS zone, policy status, and fraud signals in milliseconds. Three checks. Zero manual steps.
+            </p>
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center gap-2.5">
+                <div class="w-5 h-5 rounded bg-[#fe6b00] flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[12px] text-black font-black">check</span></div>
+                <span class="text-[11px] font-bold text-black/50">Threshold verified</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <div class="w-5 h-5 rounded bg-[#fe6b00] flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[12px] text-black font-black">check</span></div>
+                <span class="text-[11px] font-bold text-black/50">Zone + Policy matched</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <div class="w-5 h-5 rounded bg-[#fe6b00] flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[12px] text-black font-black">check</span></div>
+                <span class="text-[11px] font-bold text-black/50">Fraud score: Clean</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<!-- Three Pillars -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-surface-container">
-<div class="p-10 border-r border-surface-container flex flex-col gap-4">
-<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center">
-<span class="material-symbols-outlined text-on-surface-variant" data-icon="timer">timer</span>
-</div>
-<div>
-<h4 class="text-xl font-black mb-1">Zero delays</h4>
-<p class="text-sm text-on-surface-variant leading-relaxed">Claims processed in milliseconds using edge computing nodes.</p>
-</div>
-</div>
-<div class="p-10 border-r border-surface-container flex flex-col gap-4">
-<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center">
-<span class="material-symbols-outlined text-on-surface-variant" data-icon="map">map</span>
-</div>
-<div>
-<h4 class="text-xl font-black mb-1">Zone-level precision</h4>
-<p class="text-sm text-on-surface-variant leading-relaxed">Hyper-local triggers mapped to specific pin-codes and logistics hubs.</p>
-</div>
-</div>
-<div class="p-10 flex flex-col gap-4">
-<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center">
-<span class="material-symbols-outlined text-on-surface-variant" data-icon="bolt">bolt</span>
-</div>
-<div>
-<h4 class="text-xl font-black mb-1">Instant settlement</h4>
-<p class="text-sm text-on-surface-variant leading-relaxed">Direct-to-bank transfers as soon as the event threshold is crossed.</p>
-</div>
-</div>
-</div>
-</div>
+      <!-- Connector 2 to 3 with label -->
+      <div class="flex flex-col items-center py-1 relative">
+        <svg width="4" height="70" class="overflow-visible">
+          <line x1="2" y1="0" x2="2" y2="66" stroke="#a855f7" stroke-width="3" stroke-dasharray="8 6">
+            <animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.5s" repeatCount="indefinite"/>
+          </line>
+          <polygon points="-1,64 5,64 2,72" fill="#a855f7"/>
+        </svg>
+        <div class="absolute top-1/2 -translate-y-1/2 right-[calc(50%+20px)] bg-[#a855f7] border-[2px] border-black px-3 py-1 rounded-full shadow-[3px_3px_0_#000] whitespace-nowrap">
+          <span class="text-[9px] font-black text-black uppercase tracking-wider">&#8592; all checks passed</span>
+        </div>
+      </div>
+
+      <!-- NODE 3: Instant Payout -->
+      <div class="w-full border-[3px] border-black/15 bg-white shadow-[8px_8px_0_rgba(0,0,0,1)] rounded-3xl overflow-hidden group hover:border-[#a855f7] transition-all duration-500 hover:shadow-[0_0_60px_rgba(168,85,247,0.08)]">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-[40%] flex items-center justify-center p-8 md:p-12 border-b-[3px] md:border-b-0 md:border-r-[3px] border-black/10 bg-[#f9f9f5] relative min-h-[200px]">
+            <div class="relative w-28 h-28 flex items-center justify-center">
+              <div class="absolute inset-0 rounded-full border-2 border-[#a855f7]/20 animate-ping" style="animation-duration: 2s;"></div>
+              <div class="absolute inset-4 rounded-full border-2 border-[#a855f7]/30 animate-ping" style="animation-duration: 2s; animation-delay: 0.4s;"></div>
+              <div class="w-16 h-16 rounded-full bg-[#a855f7] border-[3px] border-black flex items-center justify-center shadow-[0_0_30px_rgba(168,85,247,0.5)] animate-bounce" style="animation-duration: 2s;">
+                <span class="material-symbols-outlined text-black text-3xl font-black">check</span>
+              </div>
+            </div>
+            <div class="absolute top-4 left-1/2 -translate-x-1/2 bg-[#a855f7] border-[2px] border-black px-4 py-1.5 rounded-full shadow-[3px_3px_0_#000]">
+              <span class="text-[11px] font-black text-black tracking-tight">&#8377;500 Credited</span>
+            </div>
+          </div>
+          <div class="md:w-[60%] p-6 md:p-10 flex flex-col justify-center">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-lg bg-[#a855f7] border-[2px] border-black flex items-center justify-center">
+                <span class="text-black font-black text-sm">03</span>
+              </div>
+              <span class="text-[11px] font-black text-black/30 uppercase tracking-[0.2em]">Pay</span>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-black text-black tracking-tight mb-3">Instant Payout</h3>
+            <p class="text-[14px] text-black/50 font-medium leading-relaxed mb-5">
+              Approved. Sent. Done. Direct-to-bank transfer via Razorpay the moment all checks pass. No delays, no paperwork.
+            </p>
+            <div class="flex items-center gap-3 bg-[#a855f7]/10 border border-[#a855f7]/30 rounded-xl px-4 py-2.5 w-fit">
+              <div class="w-2 h-2 rounded-full bg-[#a855f7] animate-pulse shadow-[0_0_8px_rgba(168,85,247,0.6)]"></div>
+              <span class="text-[10px] font-black text-[#a855f7] uppercase tracking-wider">Payout complete</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Final Output Connector -->
+      <div class="flex flex-col items-center py-1">
+        <svg width="4" height="50" class="overflow-visible">
+          <line x1="2" y1="0" x2="2" y2="46" stroke="black" stroke-width="3" stroke-dasharray="8 6" stroke-opacity="0.2">
+            <animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.5s" repeatCount="indefinite"/>
+          </line>
+          <polygon points="-1,44 5,44 2,52" fill="black" fill-opacity="0.3"/>
+        </svg>
+      </div>
+
+      <!-- Final Output: Settlement Confirmed -->
+      <div class="bg-[#ccff00] border-[3px] border-black rounded-2xl px-8 py-5 shadow-[8px_8px_0_#000] flex items-center gap-4 hover:-translate-y-1 hover:shadow-[10px_10px_0_#000] transition-all">
+        <div class="w-10 h-10 rounded-full bg-black flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-[#ccff00] text-xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+        </div>
+        <div>
+          <span class="text-[13px] font-black text-black uppercase tracking-wider">Settlement Complete</span>
+          <span class="text-[11px] font-bold text-black/50 block mt-0.5">Via Razorpay &#8594; Direct to bank</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Stats Row -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16 md:mt-20">
+      <div class="border-[3px] border-black/10 rounded-2xl px-6 py-5 flex items-center gap-4 group hover:border-[#ccff00]/50 transition-colors bg-white">
+        <div class="w-10 h-10 rounded-lg bg-[#ccff00] border-[2px] border-black flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-black text-lg" style="font-variation-settings: 'FILL' 1;">timer</span>
+        </div>
+        <div>
+          <div class="text-xl font-black text-black tracking-tight">0.0s</div>
+          <div class="text-[10px] font-bold text-black/30 uppercase tracking-widest mt-0.5">Processing</div>
+        </div>
+      </div>
+      <div class="border-[3px] border-black/10 rounded-2xl px-6 py-5 flex items-center gap-4 group hover:border-[#fe6b00]/50 transition-colors bg-white">
+        <div class="w-10 h-10 rounded-lg bg-[#fe6b00] border-[2px] border-black flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-black text-lg" style="font-variation-settings: 'FILL' 1;">map</span>
+        </div>
+        <div>
+          <div class="text-xl font-black text-black tracking-tight">Pin-code</div>
+          <div class="text-[10px] font-bold text-black/30 uppercase tracking-widest mt-0.5">Zone precision</div>
+        </div>
+      </div>
+      <div class="border-[3px] border-black/10 rounded-2xl px-6 py-5 flex items-center gap-4 group hover:border-[#a855f7]/50 transition-colors bg-white">
+        <div class="w-10 h-10 rounded-lg bg-[#a855f7] border-[2px] border-black flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-black text-lg" style="font-variation-settings: 'FILL' 1;">bolt</span>
+        </div>
+        <div>
+          <div class="text-xl font-black text-black tracking-tight">Instant</div>
+          <div class="text-[10px] font-bold text-black/30 uppercase tracking-widest mt-0.5">Bank settlement</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<!-- Section 4: Powered by trusted data -->
-<section class="py-32 px-6">
-<div class="max-w-7xl mx-auto bg-gray-100/60 rounded-5xl p-12 md:p-24">
-<div class="text-center mb-24">
-<h2 class="text-7xl font-headline font-black tracking-tighter mb-8">Powered by trusted data</h2>
-</div>
 
-<!-- Bento Grid -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[280px]">
-<!-- Top Left: Weather APIs -->
-<div class="bg-white rounded-3xl p-8 shadow-sm flex flex-col justify-between hover:shadow-xl transition-shadow border border-gray-200/50">
-<div class="flex justify-between items-start">
-<div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center">
-<span class="material-symbols-outlined text-blue-500" data-icon="thermostat">thermostat</span>
-</div>
-<span class="text-[10px] font-black uppercase tracking-widest opacity-30">Global Nodes</span>
-</div>
-<div>
-<h4 class="text-2xl font-black mb-2">Weather APIs</h4>
-<p class="text-sm text-on-surface-variant">Real-time telemetry from 50,000+ monitoring stations worldwide.</p>
-</div>
-</div>
+<!-- Section 4: What powers every policy -->
+<section class="py-24 md:py-32 px-6 relative overflow-hidden bg-white" id="core-processor">
+  
+  <!-- Giant Background Text -->
+  <div class="absolute bottom-0 left-0 w-full flex justify-center pointer-events-none select-none overflow-hidden z-0">
+    <h3 class="text-[clamp(6rem,18vw,16rem)] font-black text-black/[0.03] tracking-tighter leading-none whitespace-nowrap translate-y-6 uppercase">
+      ENGINE
+    </h3>
+  </div>
 
-<!-- Center: Data & Platform Partners (Double Height) -->
-<div class="md:row-span-2 bg-white rounded-3xl p-10 shadow-xl border border-gray-200/50 flex flex-col items-center justify-center relative overflow-hidden group">
-<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-50/50 to-transparent"></div>
-<h4 class="text-3xl font-black mb-12 relative z-10">Data &amp; Platform Partners</h4>
-<!-- Floating Pills -->
-<div class="relative w-full h-48 flex items-center justify-center mb-12">
-<div class="absolute top-0 left-4 bg-surface-container px-6 py-3 rounded-full font-black text-sm shadow-md animate-float">IMD</div>
-<div class="absolute top-10 right-4 bg-surface-container px-6 py-3 rounded-full font-black text-sm shadow-md animate-float-delayed">OpenAQ</div>
-<div class="absolute bottom-10 left-8 bg-surface-container px-6 py-3 rounded-full font-black text-sm shadow-md animate-float-delayed">Swiggy</div>
-<div class="absolute bottom-2 right-12 bg-surface-container px-6 py-3 rounded-full font-black text-sm shadow-md animate-float">Zomato</div>
-<div class="bg-on-surface text-white p-6 rounded-3xl shadow-2xl scale-110 z-20">
-<span class="material-symbols-outlined text-4xl" data-icon="hub">hub</span>
-</div>
-</div>
-<!-- Green Toggle -->
-<div class="bg-emerald-50 px-6 py-4 rounded-2xl flex items-center gap-4 relative z-10">
-<span class="text-xs font-black uppercase tracking-widest">Active Sync</span>
-<div class="bg-emerald-500 w-12 h-7 rounded-full relative flex items-center px-1">
-<div class="bg-white w-5 h-5 rounded-full shadow-sm ml-auto"></div>
-</div>
-<span class="text-xs font-black text-emerald-600 uppercase">ON</span>
-</div>
-</div>
+  <div class="max-w-[1100px] mx-auto relative z-10">
+    
+    <!-- Header -->
+    <div class="text-center mb-16 md:mb-20">
+      <div class="inline-flex items-center gap-2 bg-black border-[2px] border-black px-4 py-1.5 rounded-full mb-6 shadow-[4px_4px_0_#fe6b00]">
+        <div class="w-2 h-2 rounded-full bg-[#fe6b00] animate-pulse"></div>
+        <span class="text-[10px] font-black text-white uppercase tracking-widest">Core Architecture</span>
+      </div>
+      <h2 class="text-[clamp(2.5rem,6vw,4.5rem)] font-headline font-black tracking-tighter leading-[0.95] text-black mb-5">
+        What powers<br/>every policy.
+      </h2>
+      <p class="text-base md:text-lg font-medium text-black/40 max-w-xl mx-auto leading-relaxed">
+        Five interconnected modules working in milliseconds to detect, verify, and settle&#8212;automatically.
+      </p>
+    </div>
 
-<!-- Top Right: Platform Integrations -->
-<div class="bg-white rounded-3xl p-8 shadow-sm flex flex-col justify-between hover:shadow-xl transition-shadow border border-gray-200/50">
-<div class="flex justify-between items-start">
-<div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center">
-<span class="material-symbols-outlined text-orange-500" data-icon="api">api</span>
-</div>
-<span class="text-[10px] font-black uppercase tracking-widest opacity-30">SDK Ready</span>
-</div>
-<div>
-<h4 class="text-2xl font-black mb-2">Platform Integrations</h4>
-<p class="text-sm text-on-surface-variant">Native hooks into major delivery and ride-sharing platform backends.</p>
-</div>
-</div>
+    <!-- Bento Grid -->
+    <div style="display: grid;" class="grid-cols-1 md:grid-cols-12 gap-5">
 
-<!-- Bottom Left: Govt Alerts -->
-<div class="bg-white rounded-3xl p-8 shadow-sm flex flex-col justify-between hover:shadow-xl transition-shadow border border-gray-200/50">
-<div class="flex justify-between items-start">
-<div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center">
-<span class="material-symbols-outlined text-red-500" data-icon="notification_important">notification_important</span>
-</div>
-<span class="text-[10px] font-black uppercase tracking-widest opacity-30">Direct Feed</span>
-</div>
-<div>
-<h4 class="text-2xl font-black mb-2">Govt Alerts</h4>
-<p class="text-sm text-on-surface-variant">Official disaster management and municipal authority notification feeds.</p>
-</div>
-</div>
+      <!-- HERO Card: Parametric Triggers (Spans 7 cols) -->
+      <div class="md:col-span-7 bg-[#1a1a1a] border-[3px] border-black rounded-3xl p-8 md:p-10 flex flex-col justify-between min-h-[320px] relative overflow-hidden group hover:-translate-y-1 transition-all duration-500 shadow-[6px_6px_0_#fe6b00]">
+        <!-- Decorative grid -->
+        <div class="absolute inset-0 opacity-[0.05]" style="background-image: linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px); background-size: 30px 30px;"></div>
+        <div class="relative z-10">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-[#fe6b00] border-[2px] border-black flex items-center justify-center shadow-[3px_3px_0_#000]">
+              <span class="material-symbols-outlined text-black text-2xl" style="font-variation-settings: 'FILL' 1;">offline_bolt</span>
+            </div>
+            <div class="bg-[#fe6b00]/20 border border-[#fe6b00]/40 px-3 py-1 rounded-full">
+              <span class="text-[10px] font-black text-[#fe6b00] uppercase tracking-wider">Primary Engine</span>
+            </div>
+          </div>
+          <h3 class="text-3xl md:text-4xl font-black text-white tracking-tight mb-3">Parametric Triggers</h3>
+          <p class="text-[14px] text-white/40 font-medium leading-relaxed max-w-md">
+            Rules-based automated execution. When environmental thresholds are crossed, the system fires instantly&#8212;no human in the loop.
+          </p>
+        </div>
+        <!-- Bottom embedded data viz -->
+        <div class="relative z-10 flex items-center gap-3 mt-6">
+          <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5">
+            <div class="w-2 h-2 rounded-full bg-[#fe6b00] animate-pulse"></div>
+            <span class="text-[10px] font-black text-white/50 uppercase tracking-wider">Live</span>
+          </div>
+          <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5">
+            <span class="text-[10px] font-black text-white/50 uppercase tracking-wider">12 Zones Active</span>
+          </div>
+          <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5">
+            <span class="text-[10px] font-black text-white/50 uppercase tracking-wider">&#60;200ms</span>
+          </div>
+        </div>
+      </div>
 
-<!-- Bottom Right: Instant Payouts -->
-<div class="bg-white rounded-3xl p-8 shadow-sm flex flex-col justify-between hover:shadow-xl transition-shadow border border-gray-200/50">
-<div class="flex justify-between items-start">
-<div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center">
-<span class="material-symbols-outlined text-emerald-500" data-icon="account_balance_wallet">account_balance_wallet</span>
-</div>
-<span class="text-[10px] font-black uppercase tracking-widest opacity-30">UPI Rails</span>
-</div>
-<div>
-<h4 class="text-2xl font-black mb-2">Instant Payouts</h4>
-<p class="text-sm text-on-surface-variant">Banking infrastructure that settles claims directly to your wallet or bank.</p>
-</div>
-</div>
-</div>
-</div>
+      <!-- Card: Worker Profiling (Spans 5 cols) -->
+      <div class="md:col-span-5 bg-[#f9f9f5] border-[3px] border-black rounded-3xl p-7 md:p-8 flex flex-col min-h-[320px] group hover:-translate-y-1 transition-all duration-500 shadow-[6px_6px_0_#000]">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-11 h-11 rounded-xl bg-black border-[2px] border-black flex items-center justify-center">
+            <span class="material-symbols-outlined text-white text-xl">person_search</span>
+          </div>
+          <span class="text-[10px] font-black text-black/30 uppercase tracking-widest">Identity Layer</span>
+        </div>
+        <h3 class="text-2xl font-black text-black tracking-tight mb-3">Worker Profiling</h3>
+        <p class="text-[13px] text-black/40 font-medium leading-relaxed mb-auto">
+          Verified historical identity and work patterns. Each gig worker gets a unique risk profile built over time.
+        </p>
+        <!-- Mini profile preview -->
+        <div class="mt-5 bg-white border-[2px] border-black/10 rounded-2xl p-4 flex items-center gap-4">
+          <div class="w-10 h-10 rounded-full bg-black/10 flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-lg text-black/40">person</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="h-2.5 bg-black/10 rounded-full w-24 mb-2"></div>
+            <div class="h-2 bg-black/5 rounded-full w-16"></div>
+          </div>
+          <div class="bg-green-100 border border-green-300 text-green-700 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shrink-0">Verified</div>
+        </div>
+      </div>
+
+      <!-- Card: AI Risk Engine (Spans 5 cols) -->
+      <div class="md:col-span-5 bg-[#f9f9f5] border-[3px] border-black rounded-3xl p-7 md:p-8 flex flex-col min-h-[280px] group hover:-translate-y-1 transition-all duration-500 shadow-[6px_6px_0_#000]">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-11 h-11 rounded-xl bg-[#a855f7] border-[2px] border-black flex items-center justify-center">
+            <span class="material-symbols-outlined text-white text-xl">psychology</span>
+          </div>
+          <span class="text-[10px] font-black text-black/30 uppercase tracking-widest">Intelligence</span>
+        </div>
+        <h3 class="text-2xl font-black text-black tracking-tight mb-3">AI Risk Engine</h3>
+        <p class="text-[13px] text-black/40 font-medium leading-relaxed mb-auto">
+          Dynamic underwriting powered by machine learning. Continuously adapts risk scoring based on weather patterns and claim history.
+        </p>
+        <!-- Mini neural network viz -->
+        <div class="mt-5 flex items-center justify-between gap-3">
+          <div class="flex flex-col gap-1.5">
+            <div class="w-3 h-3 rounded-full bg-[#a855f7] animate-pulse"></div>
+            <div class="w-3 h-3 rounded-full bg-[#a855f7]/60 animate-pulse" style="animation-delay: 0.3s;"></div>
+            <div class="w-3 h-3 rounded-full bg-[#a855f7]/30 animate-pulse" style="animation-delay: 0.6s;"></div>
+          </div>
+          <div class="flex-1 flex flex-col gap-1">
+            <div class="h-[2px] bg-[#a855f7]/20 rounded-full"></div>
+            <div class="h-[2px] bg-[#a855f7]/30 rounded-full w-[80%]"></div>
+            <div class="h-[2px] bg-[#a855f7]/20 rounded-full w-[60%]"></div>
+            <div class="h-[2px] bg-[#a855f7]/10 rounded-full w-[90%]"></div>
+          </div>
+          <div class="bg-[#a855f7] border-[2px] border-black px-3 py-1.5 rounded-lg shadow-[3px_3px_0_#000]">
+            <span class="text-[10px] font-black text-black uppercase tracking-wider">Score: 94</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Fraud Detection (Spans 4 cols) -->
+      <div class="md:col-span-4 bg-black border-[3px] border-black rounded-3xl p-7 md:p-8 flex flex-col min-h-[280px] group hover:-translate-y-1 transition-all duration-500 shadow-[6px_6px_0_#ccff00]">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-11 h-11 rounded-xl bg-[#ccff00] border-[2px] border-black flex items-center justify-center">
+            <span class="material-symbols-outlined text-black text-xl" style="font-variation-settings: 'FILL' 1;">security</span>
+          </div>
+          <span class="text-[10px] font-black text-white/30 uppercase tracking-widest">Security</span>
+        </div>
+        <h3 class="text-2xl font-black text-white tracking-tight mb-3">Fraud Detection</h3>
+        <p class="text-[13px] text-white/40 font-medium leading-relaxed mb-auto">
+          Real-time risk monitoring catches anomalies before payouts. Every claim cross-referenced against multiple data points.
+        </p>
+        <!-- Security status -->
+        <div class="mt-5 flex flex-col gap-2">
+          <div class="flex items-center justify-between bg-white/5 border border-white/10 rounded-lg px-3 py-2">
+            <span class="text-[10px] font-bold text-white/40">GPS Match</span>
+            <div class="w-4 h-4 rounded bg-[#ccff00] flex items-center justify-center"><span class="material-symbols-outlined text-[10px] text-black font-black">check</span></div>
+          </div>
+          <div class="flex items-center justify-between bg-white/5 border border-white/10 rounded-lg px-3 py-2">
+            <span class="text-[10px] font-bold text-white/40">Velocity Check</span>
+            <div class="w-4 h-4 rounded bg-[#ccff00] flex items-center justify-center"><span class="material-symbols-outlined text-[10px] text-black font-black">check</span></div>
+          </div>
+          <div class="flex items-center justify-between bg-white/5 border border-white/10 rounded-lg px-3 py-2">
+            <span class="text-[10px] font-bold text-white/40">Pattern Analysis</span>
+            <div class="w-4 h-4 rounded bg-[#ccff00] flex items-center justify-center"><span class="material-symbols-outlined text-[10px] text-black font-black">check</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Instant Payouts (Spans 3 cols) -->
+      <div class="md:col-span-3 bg-[#fe6b00] border-[3px] border-black rounded-3xl p-7 md:p-8 flex flex-col min-h-[280px] group hover:-translate-y-1 transition-all duration-500 shadow-[6px_6px_0_#000]">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-11 h-11 rounded-xl bg-black border-[2px] border-black flex items-center justify-center">
+            <span class="material-symbols-outlined text-[#fe6b00] text-xl" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+          </div>
+        </div>
+        <h3 class="text-2xl font-black text-black tracking-tight mb-3">Instant Payouts</h3>
+        <p class="text-[13px] text-black/60 font-medium leading-relaxed mb-auto">
+          Direct UPI settlement. Straight to bank.
+        </p>
+        <!-- Amount animation -->
+        <div class="mt-5 bg-black border-[2px] border-black rounded-2xl p-4 flex flex-col items-center text-center shadow-[4px_4px_0_rgba(0,0,0,0.3)]">
+          <span class="text-3xl font-black text-[#fe6b00] tracking-tight">&#8377;500</span>
+          <span class="text-[9px] font-black text-white/40 uppercase tracking-widest mt-1">Auto-credited</span>
+          <div class="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse mt-2 shadow-[0_0_8px_rgba(204,255,0,0.6)]"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
 <!-- Section 5: Dark CTA Card -->
@@ -705,79 +1198,78 @@
   </div>
 </section>
 
-<!-- Section 6: The Footer -->
-<footer class="bg-background pt-24 pb-12 px-6 relative overflow-hidden">
-<div class="max-w-7xl mx-auto">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
-<!-- Col 1 -->
-<div class="flex flex-col gap-6">
-<div class="text-2xl font-black tracking-tighter text-black flex items-center gap-2 uppercase">
-<div class="w-12 h-12 bg-[#9c3f00]" style="-webkit-mask-image: url('logo.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; mask-image: url('logo.png'); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"></div>
-                    Aegis
-                </div>
-<p class="text-on-surface-variant text-sm max-w-xs">
-                    Building the financial safety net for the next billion gig workers through parametric intelligence.
-                </p>
-<div class="flex gap-4">
-<a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors text-on-surface" href="#">
-<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
-</a>
-<a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors text-on-surface" href="#">
-<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
-</a>
-<a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors text-on-surface" href="#">
-<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
-</a>
-</div>
-</div>
+<!-- Section 6: Animated Footer -->
+<section class="relative w-full mt-20 overflow-hidden bg-background">
+  <footer class="border-t border-outline-variant/10 relative pt-10">
+    <div class="max-w-7xl flex flex-col justify-between mx-auto min-h-[30rem] sm:min-h-[35rem] md:min-h-[40rem] relative p-4 py-10">
+      
+      <!-- Top Content -->
+      <div class="flex flex-col mb-12 sm:mb-20 md:mb-0 w-full z-20">
+        <div class="w-full flex flex-col items-center">
+          <div class="space-y-4 flex flex-col items-center flex-1">
+            <div class="flex items-center gap-2">
+              <span class="text-on-surface text-4xl font-black uppercase tracking-tighter">Aegis</span>
+            </div>
+            <p class="text-on-surface-variant font-medium text-center w-full max-w-sm sm:w-96 px-4 sm:px-0">
+              Building the financial safety net for the next billion gig workers through parametric intelligence.
+            </p>
+          </div>
 
-<!-- Col 2 -->
-<div>
-<h5 class="font-black uppercase tracking-widest text-xs mb-6 opacity-40">Coverage</h5>
-<ul class="flex flex-col gap-4 text-sm font-semibold text-on-surface-variant">
-<li><a class="hover:text-primary transition-colors" href="#">Basic Tier</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Standard Tier</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Premium Tier</a></li>
-</ul>
-</div>
+          <!-- Social Links -->
+          <div class="flex mb-8 mt-6 gap-6">
+            <a href="#" class="text-on-surface-variant hover:text-primary transition-colors hover:scale-110 duration-300">
+              <span class="material-symbols-outlined text-3xl" data-icon="share">share</span>
+            </a>
+            <a href="#" class="text-on-surface-variant hover:text-primary transition-colors hover:scale-110 duration-300">
+              <span class="material-symbols-outlined text-3xl" data-icon="dataset">dataset</span>
+            </a>
+            <a href="#" class="text-on-surface-variant hover:text-primary transition-colors hover:scale-110 duration-300">
+              <span class="material-symbols-outlined text-3xl" data-icon="email">email</span>
+            </a>
+          </div>
 
-<!-- Col 3 -->
-<div>
-<h5 class="font-black uppercase tracking-widest text-xs mb-6 opacity-40">Tech</h5>
-<ul class="flex flex-col gap-4 text-sm font-semibold text-on-surface-variant">
-<li><a class="hover:text-primary transition-colors" href="#">Parametric Triggers</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">AI Risk Engine</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Fraud Detection</a></li>
-</ul>
-</div>
+          <!-- Nav Links -->
+          <div class="flex flex-wrap justify-center gap-6 text-sm font-bold text-on-surface-variant max-w-full px-4">
+            <a class="hover:text-primary duration-300 uppercase tracking-widest" href="#">Coverage Tiers</a>
+            <a class="hover:text-primary duration-300 uppercase tracking-widest" href="#">AI Risk Engine</a>
+            <a class="hover:text-primary duration-300 uppercase tracking-widest" href="#">Documentation</a>
+            <a class="hover:text-primary duration-300 uppercase tracking-widest" href="#">Partner Portal</a>
+          </div>
+        </div>
+      </div>
 
-<!-- Col 4 -->
-<div>
-<h5 class="font-black uppercase tracking-widest text-xs mb-6 opacity-40">Resources</h5>
-<ul class="flex flex-col gap-4 text-sm font-semibold text-on-surface-variant">
-<li><a class="hover:text-primary transition-colors" href="#">Documentation</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Partner Portal</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Support</a></li>
-</ul>
-</div>
-</div>
+      <!-- Bottom Credits -->
+      <div class="mt-20 md:mt-24 flex flex-col gap-2 md:gap-1 items-center justify-center md:flex-row md:items-center md:justify-between px-4 md:px-0 z-20">
+        <p class="text-sm font-semibold text-on-surface-variant text-center md:text-left">
+          © 2026 Aegis. All rights reserved.
+        </p>
+        <nav class="flex gap-4">
+          <a href="#" class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors duration-300">Privacy Policy</a>
+          <a href="#" class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors duration-300">Terms of Service</a>
+        </nav>
+      </div>
+    </div>
 
-<div class="pt-8 border-t border-surface-container flex flex-col md:flex-row justify-between items-center gap-4">
-<span class="text-xs font-medium text-on-surface-variant">© 2026 Aegis. All rights reserved.</span>
-<div class="flex gap-6 text-xs font-medium text-on-surface-variant">
-<a class="hover:text-on-surface" href="#">Privacy Policy</a>
-<span class="opacity-20">|</span>
-<a class="hover:text-on-surface" href="#">Terms of Service</a>
-</div>
-</div>
-</div>
-</footer>
+    <!-- Large background text -->
+    <div class="absolute left-1/2 -translate-x-1/2 bottom-[140px] md:bottom-[120px] font-headline font-black tracking-tighter pointer-events-none select-none text-center px-4 w-full" style="font-size: clamp(6rem, 20vw, 18rem); max-width: 95vw;">
+      <span class="bg-gradient-to-b from-on-surface/10 via-on-surface/5 to-transparent bg-clip-text text-transparent leading-none block">AEGIS</span>
+    </div>
 
-<!-- Section 7: Giant Embossed Wordmark -->
-<section class="relative h-[250px] md:h-[400px] bg-background flex items-end justify-center pointer-events-none select-none overflow-hidden">
-<h1 class="font-headline font-black text-[clamp(10rem,40vw,60rem)] leading-none embossed-text absolute bottom-0 translate-y-1/2">
-        AEGIS
-    </h1>
+    <!-- Bottom logo highlighted -->
+    <div class="absolute hover:border-primary duration-500 drop-shadow-[0_0px_30px_rgba(255,107,0,0.5)] dark:drop-shadow-[0_0px_30px_rgba(255,107,0,0.5)] bottom-24 md:bottom-20 backdrop-blur-md rounded-[2rem] bg-surface-container-lowest/60 left-1/2 border-2 border-outline-variant/30 flex items-center justify-center p-3 -translate-x-1/2 z-20 group cursor-pointer transition-colors">
+      <div class="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-gradient-to-br from-[#9c3f00] to-[#fe6b00] rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-105 transition-transform duration-500">
+        <!-- Logo masked -->
+        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white" style="-webkit-mask-image: url('logo.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; mask-image: url('logo.png'); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"></div>
+      </div>
+    </div>
+
+    <!-- Bottom line -->
+    <div class="absolute bottom-32 sm:bottom-34 backdrop-blur-sm h-[2px] bg-gradient-to-r from-transparent via-outline-variant/30 to-transparent w-full left-1/2 -translate-x-1/2 z-10"></div>
+
+    <!-- Bottom shadow wrapper -->
+    <div class="bg-gradient-to-t from-background via-background/80 blur-[1em] to-transparent absolute bottom-0 w-full h-32 z-10 pointer-events-none"></div>
+
+  </footer>
 </section>
 </main>
 <script>
@@ -1065,5 +1557,116 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Initialize Lenis for buttery smooth scrolling
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical',
+        gestureDirection: 'vertical',
+        smooth: true,
+        mouseMultiplier: 1,
+        smoothTouch: false,
+        touchMultiplier: 2,
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0, 0);
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 2. Global Viewport Reveals (Shopify Editions Style)
+    // Reveal all major headings and paragraphs
+    const headings = gsap.utils.toArray('h2, h3, p.text-xl, p.text-lg');
+    headings.forEach(el => {
+        gsap.from(el, {
+            scrollTrigger: {
+                trigger: el,
+                start: "top 90%",
+                toggleActions: "play none none reverse"
+            },
+            y: 40,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out"
+        });
+    });
+
+    // Reveal the grids with Stagger
+    const cardGrids = gsap.utils.toArray('.grid');
+    cardGrids.forEach(grid => {
+        const cards = Array.from(grid.children);
+        if(cards.length > 0) {
+            gsap.from(cards, {
+                scrollTrigger: {
+                    trigger: grid,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 60,
+                opacity: 0,
+                scale: 0.98,
+                duration: 1.2,
+                stagger: 0.15,
+                ease: "power3.out"
+            });
+        }
+    });
+
+    // Subtly shrink and fade in huge showcase sections
+    const showcases = gsap.utils.toArray('.bg-surface-container-lowest.rounded-3xl.overflow-hidden, .bg-zinc-900.rounded-\\[2rem\\]');
+    showcases.forEach(card => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+                toggleActions: "play none none reverse"
+            },
+            y: 80,
+            opacity: 0,
+            duration: 1.5,
+            ease: "expo.out"
+        });
+    });
+});
+</script>
+<script type="module">
+  import createGlobe from "https://cdn.skypack.dev/cobe";
+
+  const canvas = document.getElementById("cobe-globe");
+  if (canvas) {
+    let phi = 0;
+    const isDark = document.documentElement.classList.contains('dark');
+    const globe = createGlobe(canvas, {
+      devicePixelRatio: 2,
+      width: 1600,
+      height: 1600,
+      phi: 0,
+      theta: 0.1,
+      dark: isDark ? 1 : 0,
+      diffuse: 1.2,
+      mapSamples: 16000,
+      mapBrightness: 6,
+      baseColor: isDark ? [0.3, 0.3, 0.3] : [1, 1, 1],
+      markerColor: [0.98, 0.41, 0],
+      glowColor: isDark ? [0.1, 0.1, 0.1] : [1, 1, 1],
+      markers: [
+        { location: [20.5937, 78.9629], size: 0.08 },
+        { location: [37.7595, -122.4367], size: 0.03 }
+      ],
+      onRender: (state) => {
+        state.phi = phi;
+        phi += 0.005;
+      }
+    });
+  }
 </script>
 </body></html>
