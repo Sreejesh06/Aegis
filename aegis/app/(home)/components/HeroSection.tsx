@@ -106,7 +106,7 @@ export default function HeroSection() {
           </svg>
         </div>
         {/* View Architecture Widget -> links to /docs */}
-        <Link href="/docs" className="hidden lg:flex absolute top-[45%] left-[2%] z-[60] group pointer-events-auto items-center justify-center -rotate-[8deg] hover:rotate-0 transition-transform duration-500 hover:scale-105 outline-none focus:outline-none">
+        <a href="/docs" className="hidden lg:flex absolute top-[45%] left-[2%] z-[60] group pointer-events-auto items-center justify-center -rotate-[8deg] hover:rotate-0 transition-transform duration-500 hover:scale-105 outline-none focus:outline-none">
           <div className="absolute -top-[90px] -right-[60px] text-black transform rotate-[10deg] pointer-events-none group-hover:rotate-[0deg] group-hover:-translate-x-2 group-hover:translate-y-2 transition-all duration-300 z-10">
             <svg width="120" height="120" viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" style={{filter:'drop-shadow(4px 4px 0px #ccff00)'}}>
               <path d="M90,10 Q60,30 20,80" strokeDasharray="8 8" />
@@ -126,7 +126,7 @@ export default function HeroSection() {
               <span className="font-black text-[#1a1a1a] text-2xl uppercase tracking-tighter leading-tight italic">Architecture</span>
             </div>
           </div>
-        </Link>
+        </a>
       </div>
 
       {/* Hero Content */}
