@@ -140,12 +140,12 @@ export default function HeroSection() {
           Designed for India&apos;s gig economy. AI-powered income protection that pays out automatically for weather and disruptions—with zero manual claims.
         </p>
         <div className="mt-12 flex flex-col md:flex-row items-center gap-6">
-          <button className="bg-[#1a1a1a] text-white border-[3px] border-black px-10 py-5 rounded-xl font-black text-lg flex items-center gap-4 hover:-translate-y-1 transition-transform shadow-[6px_6px_0_rgba(0,0,0,1)] active:translate-y-1 active:shadow-[0px_0px_0_rgba(0,0,0,1)]">
-            Check weekly premium
-            <span className="w-8 h-8 rounded-full bg-[#ccff00] border-2 border-black shadow-[2px_2px_0_rgba(0,0,0,1)] flex items-center justify-center text-black">
-              <span className="material-symbols-outlined text-sm font-black">arrow_forward</span>
+          <a href="https://expo.dev/accounts/sriram_vk/projects/aegis/builds/6a8e6eaf-2bc7-4d58-b55c-a2646c2043ff" target="_blank" rel="noopener noreferrer" className="bg-[#ccff00] text-black border-[3px] border-black px-12 py-5 rounded-xl font-black text-xl flex items-center gap-4 hover:-translate-y-2 transition-transform shadow-[8px_8px_0_rgba(0,0,0,1)] hover:shadow-[12px_12px_0_rgba(0,0,0,1)] active:translate-y-1 active:shadow-[0px_0px_0_rgba(0,0,0,1)]">
+            Download Mobile App
+            <span className="w-10 h-10 rounded-full bg-black border-2 border-black flex items-center justify-center text-[#ccff00]">
+              <span className="material-symbols-outlined text-lg font-black">download</span>
             </span>
-          </button>
+          </a>
         </div>
       </div>
 
