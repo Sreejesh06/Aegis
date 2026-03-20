@@ -1,0 +1,73 @@
+---
+title: Roadmap
+description: Dependency-aware phases to deliver Aegis from MVP to production-grade risk automation.
+---
+
+## Overview
+
+This roadmap delivers Aegis from deterministic MVP to production-grade risk automation, in dependency-aware phases.
+
+## Phase 1 — Foundations
+
+- worker onboarding and KYC flow
+- profile storage and H3 zone mapping
+- basic policy entity and tier activation
+- baseline weekly premium calculation service
+
+{/* Excalidraw: Phase 1 diagram placeholder */}
+Diagram for this phase is covered across the onboarding, architecture, and workflow sections.
+
+## Phase 2 — Trigger Engine MVP
+
+- integrate weather + AQI sources
+- build normalization pipeline
+- define threshold rules for initial covered events
+- publish disruption events over event bus
+
+{/* Excalidraw: Phase 2 diagram placeholder */}
+Diagram for this phase is covered across the disruption monitoring and tech/data sections.
+
+## Phase 3 — Claims and Payouts
+
+- eligibility checks against active policy + zone/time
+- auto-claim creation from disruption events
+- payment execution integration (Razorpay / UPI)
+- worker notification service (FCM/SMS/WhatsApp)
+
+{/* Excalidraw: Phase 3 diagram placeholder */}
+Diagram for this phase is covered across the claim automation and adversarial defense sections.
+
+## Phase 4 — Fraud Controls
+
+- GPS spoof and impossible-travel checks
+- duplicate identity and payout-link detection
+- manual review queue + claim status tooling
+
+{/* Excalidraw: Phase 4 diagram placeholder */}
+Diagram for this phase is covered across adversarial defense and the fraud gate decision logic.
+
+## Phase 5 — AI Risk Intelligence
+
+- worker risk scoring model rollout
+- dynamic premium model rollout
+- disruption forecasting for ahead-of-time pricing updates
+- fraud ML scoring layer for subtle anomaly detection
+
+{/* Excalidraw: Phase 5 diagram placeholder */}
+Diagram for this phase is covered across the AI models and risk scoring sections.
+
+## Phase 6 — Risk Pool Governance
+
+- loss ratio dashboards
+- portfolio exposure monitoring by city/zone/tier
+- premium margin and tier factor recalibration controls
+
+{/* Excalidraw: Phase 6 diagram placeholder */}
+Diagram for this phase is covered across performance/impact and the risk pool governance loop.
+
+## Recommended Delivery Strategy
+
+- start with deterministic triggers and transparent eligibility logic
+- add ML gradually behind observability and fallback logic
+- keep payouts fast while maintaining fraud safeguards
+

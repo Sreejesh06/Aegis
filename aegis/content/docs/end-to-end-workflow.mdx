@@ -1,0 +1,83 @@
+---
+title: End-to-End Workflow
+description: From onboarding to HALTED-zone payout—fully automated, zone/time aware, fraud-guarded.
+---
+
+## 1) Worker Onboarding (Zero-Type: Simulated Platform OAuth)
+
+To avoid manual KYC friction in the prototype, Aegis simulates platform OAuth onboarding:
+
+- app registration
+- simulated identity verification (Aadhaar/PAN + face/OTP)
+- UPI/bank linking
+- platform affiliation confirmation (Zepto/Blinkit/BigBasket/Instamart/JioMart)
+- tier selection (Basic / Standard / Premium)
+
+Outcome: a verified rider profile, coverage choice, and assigned operating H3 zone.
+
+{/* Excalidraw: Onboarding flow placeholder */}
+<img
+  src="/diagrams/image7.jpeg"
+  alt="Rider Onboarding Flow (Prototype)"
+  style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block' }}
+/>
+
+Onboarding is simulated via platform OAuth (mock Zepto/Blinkit/BigBasket/Instamart/JioMart) to avoid manual KYC in the prototype.
+
+## 2) Profiling & Premium Setup
+
+Weekly workflow:
+
+- ingest historical activity
+- compute `Ew` baseline (rolling 4-week avg)
+- enrich zone context for the insured time window
+- compute premium quote for the rider
+- worker accepts/enters the policy cycle
+
+## 3) Real-Time Disruption Monitoring
+
+Cadence (prototype):
+
+- every 2 minutes: evaluate zone state for active H3 cells
+- every 10 minutes: aggregate zone intelligence snapshots
+
+On HALTED trigger:
+
+- persist an audit record
+- emit `DisruptionEvent` for claim processing
+
+## 4) Automatic Payout (No Claims) + Fraud Guardrails
+
+When a `DisruptionEvent` arrives:
+
+1. eligibility check (policy active + rider/zone/time fit)
+2. fraud gate (silent: does not block honest riders)
+3. decision:
+   - clear -> auto-approve and pay
+   - suspicious -> hold/manual review
+   - ring-connected -> freeze and investigate
+
+{/* Excalidraw: Claim automation + fraud gating placeholder */}
+<img
+  src="/diagrams/image4.jpeg"
+  alt="Fraud Detection & claim automation — decision and payout workflow"
+  style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block' }}
+/>
+
+## 5) Risk Pool Feedback Loop
+
+After payouts:
+
+- update loss ratio and portfolio exposure
+- recalibrate model confidence bands
+- adjust future premium signals with governance controls
+
+{/* Excalidraw: Feedback loop placeholder */}
+<img
+  src="/diagrams/image3.jpeg"
+  alt="Risk Pool Monitoring — internal feedback loop"
+  style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block' }}
+/>
+
+Risk pool feedback is computed after payouts: loss ratio tracking and model confidence recalibration for the next premium cycle.
+

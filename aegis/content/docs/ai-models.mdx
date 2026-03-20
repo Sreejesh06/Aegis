@@ -1,0 +1,39 @@
+---
+title: AI Models
+description: XGBoost loss scoring, LightGBM premium pricing, forecasting, and ML-assisted fraud risk signals.
+---
+
+## Model Portfolio
+
+| Objective | Model | Output used by |
+|---|---|---|
+| Loss / disruption risk | XGBoost | computes `Lf` (composite loss fraction) |
+| Dynamic weekly pricing transform | LightGBM | calibrates premium signal |
+| Ahead-of-time disruption forecasting | time-series regression | supports forward-looking discounts/updates |
+| Fraud anomaly detection | IsolationForest + GBDT | ML probability for suspicious claims |
+
+{/* Excalidraw: Model portfolio placeholder */}
+Model types are already listed above: `XGBoost` (risk/Lf), `LightGBM` (pricing), forecasting (near-term risk), and fraud gating (IsolationForest + GBDT).
+
+## Risk Assessment Pipeline (Placeholder)
+
+{/* Excalidraw: Risk assessment pipeline diagram placeholder */}
+<img
+  src="/diagrams/image2.jpeg"
+  alt="AI Risk Engine — End-to-End Scoring Pipeline"
+  style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block' }}
+/>
+
+## Fraud ML Scoring (Placeholder)
+
+{/* Excalidraw: Fraud ML pipeline diagram placeholder */}
+Fraud ML gate (IsolationForest + GBDT) is executed during claim automation (see `Adversarial Defense` and `End-to-End Workflow`).
+
+## Operational Strategy
+
+Aegis starts deterministic and transparent:
+
+- trigger thresholds and eligibility are deterministic
+- ML is layered gradually behind observability and fallback logic
+- the fraud gate is built to minimize impact on honest riders
+

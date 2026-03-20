@@ -1,0 +1,44 @@
+---
+title: Tech Stack & Data
+description: Storage, external signals, and data-quality controls powering zone-time decisions and auditable payouts.
+---
+
+## Core Data Stores
+
+| Store | Role |
+|---|---|
+| PostgreSQL | transactional data: profiles, policies, contracts |
+| TimescaleDB | time-series triggers and audit histories |
+| MongoDB | worker activity logs and claim records |
+| Redis (feature store) | low-latency online features for `Lf`, `Ew`, zone context |
+| S3 data lake | historical datasets + reproducible ML training artifacts |
+
+{/* Excalidraw: Data store diagram placeholder */}
+<img
+  src="/diagrams/image5.jpeg"
+  alt="Real-Time Disruption Monitoring — signals to trigger evaluation"
+  style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block' }}
+/>
+
+## External Data Dependencies (Signals)
+
+- IMD: rain, flood/heat-related signals
+- OpenAQ / CPCB: AQI and pollutant severity patterns
+- NDMA: disaster declarations and curfew alerts
+- Maps / routing signals: route constraints and mobility disruption context
+- Platform API (simulated): zone halt + demand/drop indicators
+- Uber H3: hexagonal indexing for micro-zone eligibility
+
+## Data Flow Model (Minimal)
+
+Raw signals -> normalization -> zone/time event schema -> time-series persistence -> online features -> trigger engine + AI scoring.
+
+## Data Quality Controls
+
+Aegis keeps decisions auditable by enforcing:
+
+- timestamp normalization (avoid ordering drift)
+- zone ID canonicalization (deterministic eligibility)
+- missing value handling before scoring
+- immutable claim/audit records for payout explainability
+

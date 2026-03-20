@@ -1,0 +1,54 @@
+---
+title: Architecture
+description: Modular, event-centric services for zone trigger detection, eligibility gating, fraud safeguards, and payout automation.
+---
+
+## Event-Centric Core
+
+Aegis runs on a simple event loop:
+
+1. External signals are ingested (weather, AQI, alerts, platform feed)
+2. Signals are normalized into zone/time facts
+3. A trigger engine evaluates each active H3 cell
+4. When a zone is HALTED, a `DisruptionEvent` is emitted
+5. Claim engine verifies eligibility; fraud engine gates auto-approval
+6. Payment + notification complete the payout journey
+7. The risk pool receives feedback for model calibration
+
+{/* Excalidraw: Event loop / end-to-end architecture diagram placeholder */}
+<img
+  src="/diagrams/image8.jpeg"
+  alt="End-to-End Flow — event loop architecture"
+  style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block' }}
+/>
+
+## Logical Services (High Level)
+
+| Service | Role |
+|---|---|
+| API Gateway | auth, routing, rate limiting |
+| Identity Service | simulated platform OAuth; produces rider baseline signals |
+| Worker Profile Service | city/zone attributes and platform affiliation state |
+| Policy Service | tier activation; weekly premium computation and payout rules |
+| Ingestion Layer | external feed aggregation and normalization pipeline |
+| Parametric Trigger Engine | deterministic threshold evaluation per H3 cell |
+| AI Risk Engine | predicts `Lf` and supports disruption forecasting |
+| Claim Engine | eligibility checks and payout calculation |
+| Fraud Detection Service | hybrid rules + anomaly models; prevents payout gaming |
+| Payment & Notification | Razorpay/UPI payout + FCM/SMS/WhatsApp updates |
+| Risk Pool Service | tracks loss ratio; supports margin/tier recalibration |
+
+## Why This Shape Works
+
+It optimizes for:
+
+- speed (trigger-first, not claim-first)
+- explainability (audited deterministic checkpoints)
+- operational control (idempotent claim handling + gating)
+
+## Reliability Principles
+
+- deterministic trigger thresholds
+- idempotent claim processing
+- zone/time audit logs for explainability
+

@@ -1,0 +1,55 @@
+---
+title: "Problem & Persona"
+description: Why q-commerce delivery income breaks—and what riders need instead of traditional insurance.
+---
+
+## Core Problem
+
+Delivery income is fragile because it depends on three things at the same time:
+
+- Rider is online
+- Orders exist for the rider's zone
+- Roads and air conditions are safe enough to complete deliveries
+
+When any one of these fails (rain, AQI spike, bandh/curfew, platform zone halt), weekly earnings can drop abruptly—often within hours.
+
+## Why Traditional Insurance Fails Riders
+
+Most insurance is claim-and-document driven (damage/injury paperwork). That model doesn't match the gig reality:
+
+- losses are short-cycle (hours, not weeks)
+- evidence is operational and zone-specific
+- riders need compensation before the disruption worsens
+
+## Target Persona (q-commerce delivery partner)
+
+Zepto, Blinkit, BigBasket, Instamart, and JioMart delivery partners typically share:
+
+- Earnings: INR 5,000 to INR 8,000 per week (plus incentives; no fixed salary)
+- Work pattern: 8–12 hours/day, 6–7 days/week (demand-driven)
+- Operating area: dense urban micro-clusters (a few kilometers)
+- Platform dependency: order flow and zone assignment come from the app
+
+## What Triggers Income Loss
+
+Aegis focuses on disruptions that remove earning capacity by breaking mobility or order dispatch:
+
+| Disruption | What happens to income |
+|---|---|
+| Heavy rain / flooding | unsafe roads; cancellations and rider self-parking |
+| Extreme heat / heatwave advisories | health risk; reduced rideability window |
+| High AQI / pollution | air safety constraints; platform guidance to stay off roads |
+| Bandh / curfew / govt shutdown | zone closure; fewer/no dispatches |
+| Platform-declared zone halt | riders stay online, but orders stop |
+
+## Design Implications
+
+Aegis is built around three principles:
+
+- **Parametric payout**: automatic, trigger-based, no claims process
+- **Zone-aware decisions**: micro-zones using H3 (resolution 8)
+- **Fraud-resilient guardrails**: silent checks so honest riders are not penalized
+
+{/* Excalidraw: Problem -> solution alignment diagram placeholder */}
+The problem-to-solution alignment is demonstrated by the end-to-end workflow diagrams in the rest of this documentation.
+

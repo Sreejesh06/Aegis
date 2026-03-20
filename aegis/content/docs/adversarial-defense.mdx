@@ -1,0 +1,54 @@
+---
+title: Adversarial Defense
+description: Anti-spoofing and fraud safeguards for automated payouts—designed so honest workers are not penalized.
+---
+
+## Threat Model
+
+Aegis assumes an attacker can coordinate *many* accounts to exploit automated payouts by faking GPS and triggering events in the same H3 cell.
+
+## Detection Signals (Multi-Layer)
+
+- GPS drift + cross-check vs expected H3/tower coherence
+- shared device/identity fingerprints at scale (ring structure)
+- H3 zone presence must be earned (verified history, not only current claim)
+- physics checks (impossible travel / velocity constraints)
+- hybrid ML score on top of hard filters
+
+{/* Excalidraw: Attack graph vs detection signals placeholder */}
+<img
+  src="/diagrams/image1.jpeg"
+  alt="Fraud detection service — scoring pipeline"
+  style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block' }}
+/>
+Attack mitigation is handled by a layered approach (H3 presence, device/identity patterns, physics checks, then hybrid ML).
+
+## Hybrid Fraud Scoring
+
+Fraud probability is combined into a single operational score:
+
+`Score = 0.5 * anomaly + 0.3 * supervised_prob + 0.2 * rule_severity`
+
+## Response Protocol
+
+| Confidence | Evidence | Action |
+|---|---|---|
+| confirmed clean | history + device integrity + physics | auto-approve |
+| suspicious individual | partial signals, no ring link | hold/manual review |
+| ring connected | graph links to flagged cluster | freeze + investigate |
+| confirmed fraud | clone + velocity + ring | block/suspend/quarantine |
+
+{/* Excalidraw: Fraud decision tree placeholder */}
+The decision outcomes are mapped to operational actions: auto-approve, manual review, hold, or block/suspend/quarantine.
+
+## Coverage Matrix (Attack -> Detection -> Response)
+
+| Attack Vector | Detection | Response |
+|---|---|---|
+| Single GPS spoof | GPS drift + H3 consistency | flag + review |
+| Coordinated ring | device + registration clustering | batch hold + quarantine |
+| First-time zone claim | zone presence history requirement | block until history exists |
+| Impossible velocity | inter-ping velocity analysis | hard block |
+| Emulator-based fake | accelerometer/battery/network coherence | device integrity failure -> reject |
+| Payout laundering | UPI/bank beneficiary graph (2-hop) | destination quarantine |
+

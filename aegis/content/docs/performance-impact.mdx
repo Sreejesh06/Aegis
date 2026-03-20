@@ -1,0 +1,32 @@
+---
+title: Performance & Impact
+description: Measurable latency, operational cadence, accuracy targets, and rider impact KPIs for Aegis.
+---
+
+## Rider-first Impact
+
+Aegis is designed so riders receive cash compensation as soon as the system detects a zone becoming unsafe or orders effectively disappearing.
+
+## Core KPIs
+
+| Metric | Target |
+|---|---|
+| ML inference latency | < 80 ms per H3 zone |
+| Zone state refresh | every 2 minutes |
+| Zone intelligence aggregation | every 10 minutes |
+| Redis feature hit rate | ~94% after warm-up |
+| Dashboard/API latency (p95) | < 350 ms |
+| H3 lookup | O(1) GPS -> zone mapping |
+| Risk scoring accuracy (`Lf`) | ~91% prototype gate |
+| Premium pricing MAE | < INR 3.50 prototype gate |
+| Fraud defense layers | multi-signal + hybrid gating |
+
+## How Success Is Measured
+
+- loss ratio stays within planned margins (pool solvency)
+- payout latency stays low during disruption events
+- fraud false-positive rate does not block honest riders
+
+{/* Excalidraw: KPI dashboard placeholder */}
+KPI dashboard is represented by the KPI table above.
+

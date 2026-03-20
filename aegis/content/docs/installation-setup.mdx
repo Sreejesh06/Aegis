@@ -1,0 +1,66 @@
+---
+title: "Installation & Setup"
+description: "Local development setup for Aegis: core backend + ML/risk engines + payout integrations."
+---
+
+## Prerequisites
+
+- Node.js v18+
+- Python 3.10+
+- PostgreSQL 14+
+- MongoDB 6+
+- Redis 7+
+- Apache Kafka 3+
+
+## Clone
+
+```bash
+git clone https://github.com/your-username/Aegis.git
+cd Aegis
+```
+
+## Environment Variables (Template)
+
+```bash
+cd backend/.env.example backend/.env
+```
+
+```text
+DATABASE_URL="postgresql://user:password@localhost:5432/Aegis"
+MONGODB_URI="mongodb://localhost:27017/Aegis"
+REDIS_URL="redis://localhost:6379"
+KAFKA_BROKER="localhost:9092"
+JWT_SECRET="your-super-secret-key-min-32-chars"
+JWT_REFRESH_SECRET="your-refresh-secret-key"
+
+AI_RISK_ENGINE_URL="http://localhost:8000"
+TRIGGER_ENGINE_URL="http://localhost:8001"
+PRICING_ENGINE_URL="http://localhost:8003"
+
+MONTE_CARLO_MARGIN_BASE=0.10
+H3_RESOLUTION=8
+```
+
+## Start Services (Template)
+
+```bash
+# Core backend
+cd backend && npm install && npx prisma migrate dev --name init && npm run start:dev
+
+# AI Risk Engine
+cd services/ai_risk_engine && pip install -r requirements.txt && python start.py
+
+# Trigger Engine
+cd services/trigger_engine && pip install -r requirements.txt && python start.py
+
+# Pricing Engine
+cd services/pricing_engine && pip install -r requirements.txt && python start.py
+```
+
+## Verify
+
+```bash
+curl http://localhost:3001/health
+curl http://localhost:8000/docs
+```
+

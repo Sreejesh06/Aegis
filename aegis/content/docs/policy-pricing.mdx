@@ -1,0 +1,80 @@
+---
+title: Policy & Pricing
+description: Tiered event coverage with affordability-first weekly premium calculation and parametric payout rules.
+---
+
+## One Plan: Delivery Partner Income Shield
+
+Aegis enrollment is structured for gig workers:
+
+- Enrollment window: 2 months
+- Premium cadence: weekly
+- Premium collection: UPI AutoPay (e-mandate), independent of the delivery platform
+
+## Weekly Premium Identity (Affordability-first)
+
+Aegis models weekly premium using a compact actuarial identity:
+
+`Pr_final = (Ew * alpha) * Lf * Ct * (1 + M)`
+
+Where:
+
+- `Ew`: rolling 4-week average earnings baseline
+- `alpha`: affordable risk fraction (microinsurance benchmark), default `0.015`
+- `Lf`: composite loss fraction for the rider's H3 zone and current week
+- `Ct`: coverage tier factor (Basic/Standard/Premium)
+- `M`: sustainability margin for risk pool stability
+
+### Composite Loss Fraction
+
+`Lf = 1 - Π(i=1..n) [ 1 - Pi * Si ]`
+
+Aegis treats disruption probabilities and severities as a *composite trigger*, not independent events—so correlated risks (e.g., rain + waterlogging) are handled at the model level.
+
+## Tier Coverage
+
+| Tier | Covered Events | Rider segment |
+|---|---|---|
+| Basic | severe weather events (rain, flood, extreme heat) | essential protection |
+| Standard | Basic + AQI events | full-time metro workers |
+| Premium | Standard + government-declared disruptions | high-risk zones / high-earnings weeks |
+
+### Coverage Matrix (tier mapping)
+
+| Disruption | Category | Basic | Standard | Premium |
+|---|---|:---:|:---:|:---:|
+| Heavy Rain (>60mm) | Environmental | ✅ | ✅ | ✅ |
+| Flood / Zone inundation | Environmental | ✅ | ✅ | ✅ |
+| Extreme Heat / Heatwave | Environmental | ✅ | ✅ | ✅ |
+| Hazardous AQI (>300) | Environmental | ❌ | ✅ | ✅ |
+| Severe AQI (200–300) | Environmental | ❌ | ✅ | ✅ |
+| Bandh / Strike | Social | ❌ | ❌ | ✅ |
+| Curfew / Local protest | Social | ❌ | ❌ | ✅ |
+| Platform-declared zone halt | Social | ❌ | ❌ | ✅ |
+
+## Premium Guardrails (Floor + Ceiling)
+
+UPI AutoPay uses an enforcement cap:
+
+- ceiling: `INR 150/week`
+- floor: `INR 15/week`
+
+To avoid unfairly charging part-timers the flat floor, Aegis uses **dynamic coverage scaling**:
+
+If raw premium is below the floor, `Ct` increases so the rider still pays `INR 15/week` but receives higher effective payout coverage.
+
+{/* Excalidraw: Weekly premium flow + guardrails diagram placeholder */}
+<img
+  src="/diagrams/image6.jpeg"
+  alt="Worker Profiling & Risk Setup — weekly premium quote and tier factors"
+  style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block' }}
+/>
+
+## What Is Not Covered
+
+- vehicle repair
+- fuel costs
+- device damage
+- personal illness
+- platform-side cancellation without a qualifying trigger event
+
