@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aegis | Income Safety for the Gig Economy</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@800;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary-fixed-dim": "#f66700",
+                "surface-container-high": "#e1e2e4",
+                "secondary-fixed-dim": "#ffb37d",
+                "on-primary-container": "#401500",
+                "secondary": "#904800",
+                "on-primary-fixed-variant": "#4f1c00",
+                "surface-container-highest": "#dbddde",
+                "on-secondary-container": "#723700",
+                "surface": "#f6f6f7",
+                "on-primary": "#fff0ea",
+                "primary-container": "#ff7a2f",
+                "surface-dim": "#d3d5d6",
+                "outline": "#767778",
+                "on-tertiary-container": "#523700",
+                "background": "#f4f4f5",
+                "surface-tint": "#9c3f00",
+                "surface-container-low": "#f0f1f2",
+                "secondary-container": "#ffc69f",
+                "primary-fixed": "#ff7a2f",
+                "inverse-on-surface": "#9c9d9e",
+                "inverse-surface": "#0c0e0f",
+                "tertiary-dim": "#6b4900",
+                "tertiary-container": "#fbb423",
+                "error-container": "#f95630",
+                "on-error-container": "#520c00",
+                "primary-dim": "#893600",
+                "on-tertiary-fixed": "#372400",
+                "tertiary-fixed-dim": "#eba60f",
+                "on-surface": "#2d2f30",
+                "on-error": "#ffefec",
+                "tertiary-fixed": "#fbb423",
+                "on-tertiary-fixed-variant": "#5e4000",
+                "on-secondary-fixed": "#552800",
+                "secondary-dim": "#7e3e00",
+                "on-surface-variant": "#5a5c5d",
+                "error": "#b02500",
+                "surface-container": "#e7e8e9",
+                "error-dim": "#b92902",
+                "on-background": "#2d2f30",
+                "on-tertiary": "#fff1df",
+                "on-secondary-fixed-variant": "#803f00",
+                "tertiary": "#7a5400",
+                "secondary-fixed": "#ffc69f",
+                "on-secondary": "#fff0e8",
+                "surface-container-lowest": "#ffffff",
+                "inverse-primary": "#fe6b00",
+                "surface-variant": "#dbddde",
+                "primary": "#9c3f00",
+                "on-primary-fixed": "#000000",
+                "surface-bright": "#f6f6f7",
+                "outline-variant": "#acadae"
+              },
+              fontFamily: {
+                "headline": ["Manrope"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "5xl": "5rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .hero-title {
+            line-height: 0.9;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: float 5s ease-in-out infinite 1s;
+        }
+        .flow-line {
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            background-size: 200% 100%;
+            animation: flow 2s linear infinite;
+        }
+        @keyframes flow {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .circuit-pattern {
+            background-image: radial-gradient(#ff6b00 0.5px, transparent 0.5px), radial-gradient(#ff6b00 0.5px, #18181b 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            opacity: 0.1;
+        }
+        .embossed-text {
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            background-color: #e5e7eb;
+            text-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        @keyframes blurTextAnim {
+            0% { filter: blur(10px); opacity: 0; transform: translateY(-50px); }
+            50% { filter: blur(5px); opacity: 0.5; transform: translateY(5px); }
+            100% { filter: blur(0px); opacity: 1; transform: translateY(0); }
+        }
+        .blur-word {
+            display: inline-block;
+            filter: blur(10px);
+            opacity: 0;
+            transform: translateY(-50px);
+            will-change: transform, filter, opacity;
+        }
+        .blur-word.animate {
+            animation: blurTextAnim 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        #cta-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            border-radius: 2rem;
+            overflow: hidden;
+        }
+        .menu-wrap { width: 100%; height: 100%; overflow: hidden; background-color: #0c0e0f; }
+        .menu { display: flex; flex-direction: column; height: 100%; margin: 0; padding: 0; }
+        .menu__item { flex: 1; position: relative; overflow: hidden; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+        .menu__item:first-child { border-top: none; }
+        .menu__item-link { display: flex; align-items: center; justify-content: center; height: 100%; position: relative; cursor: pointer; text-transform: uppercase; text-decoration: none; white-space: nowrap; font-weight: 900; font-size: 5vh; color: rgba(255,255,255,0.8); transition: color 0.3s; }
+        .menu__item-link:hover { color: #fff; }
+        .marquee { position: absolute; top: 0; left: 0; overflow: hidden; width: 100%; height: 100%; pointer-events: none; transform: translate3d(0, 101%, 0); z-index: 10; }
+        .marquee__inner-wrap { height: 100%; width: 100%; overflow: hidden; }
+        .marquee__inner { display: flex; align-items: center; position: relative; height: 100%; width: fit-content; will-change: transform; }
+        .marquee__part { display: flex; align-items: center; flex-shrink: 0; font-family: 'Manrope', sans-serif; }
+        .marquee span { white-space: nowrap; text-transform: uppercase; font-weight: 900; font-size: 6vh; line-height: 1; padding: 0 2vw; }
+        .marquee__img { width: 12vw; height: 60%; margin: 0 1vw; border-radius: 2vw; background-size: contain; background-position: center; background-repeat: no-repeat; background-color: #fff; padding: 1vw; display: flex; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+        @media (max-width: 768px) {
+            .marquee__img { width: 25vw; padding: 2vw; border-radius: 4vw; }
+            .menu__item-link { font-size: 4vh; }
+            .marquee span { font-size: 5vh; }
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased overflow-x-hidden">
+<div class="fixed inset-0 z-[-1] pointer-events-none">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+</div>
+<!-- TopNavBar: Neo-Brutalist Compact Panel -->
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] rounded-2xl bg-white border-[3px] border-black shadow-[6px_6px_0_rgba(0,0,0,1)] flex items-center justify-between px-5 md:px-8 py-3 w-[95%] max-w-5xl transition-all hover:-translate-y-0.5 hover:shadow-[8px_8px_0_rgba(0,0,0,1)] backdrop-blur-md">
+  
+  <!-- Left side: Title/Logo -->
+  <div class="flex items-center gap-3">
+    <div class="w-7 h-7 bg-[#fe6b00]" style="-webkit-mask-image: url('logo.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; mask-image: url('logo.png'); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"></div>
+    <span class="text-xl font-black tracking-tighter text-black uppercase mt-1">Aegis</span>
+  </div>
+
+  <!-- Center: Minimalist Bold Navigation Links -->
+  <div class="hidden md:flex items-center gap-8 px-6">
+    <a href="#coverage" class="font-black text-black uppercase tracking-widest text-[11px] hover:text-[#fe6b00] hover:-translate-y-0.5 transition-transform text-decoration-none">Cover</a>
+    <a href="#how-it-works" class="font-black text-black uppercase tracking-widest text-[11px] hover:text-[#fe6b00] hover:-translate-y-0.5 transition-transform text-decoration-none">Flow</a>
+    <a href="#core-processor" class="font-black text-black uppercase tracking-widest text-[11px] hover:text-[#fe6b00] hover:-translate-y-0.5 transition-transform text-decoration-none">Engine</a>
+    <a href="#platforms" class="font-black text-black uppercase tracking-widest text-[11px] hover:text-[#fe6b00] hover:-translate-y-0.5 transition-transform text-decoration-none">Partners</a>
+  </div>
+
+  <!-- Right side: Status LED & Action -->
+  <div class="flex items-center gap-4 pl-4 border-l-[3px] border-black">
+    <!-- Glowing Red LED from image, brutalist style -->
+    <div class="flex items-center gap-2">
+      <div class="w-3 h-3 rounded-full bg-[#ff3b30] border-2 border-black animate-pulse shadow-[2px_2px_0_#000]"></div>
+      <span class="text-[10px] font-black text-black uppercase tracking-widest mt-0.5 hidden sm:block pr-2">Live</span>
+    </div>
+  </div>
+
+</nav>
+
+<main class="relative">
+<section class="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-12 overflow-hidden">
+<!-- Floating Elements Container (Neo-Brutalist Pop-Art Style) -->
+<div class="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
+  
+  <!-- CSS Grid Graphic Top Left -->
+  <div class="absolute top-[8%] left-[2%] md:left-[8%] w-40 h-40 md:w-56 md:h-56 border-[3px] border-black bg-[#fcfaf5]" style="background-image: linear-gradient(black 2px, transparent 2px), linear-gradient(90deg, black 2px, transparent 2px); background-size: 32px 32px; background-position: -2px -2px;"></div>
+  
+  <!-- Yellow/Green Circle Top Left hovering over Grid -->
+  <div class="absolute top-[5%] left-[1%] md:left-[4%] w-24 h-24 md:w-36 md:h-36 rounded-full bg-[#ccff00] border-[4px] border-black shadow-[8px_8px_0_rgba(0,0,0,1)] z-10 transition-all animate-bounce" style="animation-duration: 8s;"></div>
+
+  <!-- Small Purple Circle over Grid -->
+  <div class="absolute top-[18%] left-[12%] md:left-[15%] w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#a855f7] border-[3px] border-black shadow-[6px_6px_0_rgba(0,0,0,1)] z-10"></div>
+
+  <!-- Top Right Checkered Frame -->
+  <div class="absolute top-[5%] right-[2%] md:right-[5%] z-0 border-[6px] border-[#a855f7] p-2 md:p-4 shadow-[12px_12px_0_rgba(0,0,0,1)] bg-[#fe6b00] rotate-6 hover:-rotate-3 transition-transform duration-700">
+    <div class="w-32 h-40 md:w-48 md:h-64 border-4 border-black bg-white" style="background-image: repeating-conic-gradient(black 0 25%, white 0 50%); background-size: 24px 24px;"></div>
+  </div>
+
+  <!-- Cyan Half Circle Graphic Graphic above Checkered Frame -->
+  <div class="absolute top-[-2%] right-[20%] w-24 h-24 md:w-32 md:h-32 rounded-bl-full border-[4px] border-black bg-[#65e8c1] rotate-[15deg] z-0"></div>
+
+  <!-- Four Point Stars Top Center -->
+  <svg class="absolute top-[12%] left-[45%] w-12 h-12 md:w-16 md:h-16 text-black" viewBox="0 0 24 24" fill="currentColor">
+     <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 12 24C12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z" />
+  </svg>
+  <svg class="absolute top-[8%] left-[52%] w-6 h-6 md:w-8 md:h-8 text-black" viewBox="0 0 24 24" fill="currentColor">
+     <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z" />
+  </svg>
+
+  <!-- Left Pop-up Figma Window (Mimicking the image's editor window) -->
+  <div class="absolute bottom-[5%] left-[2%] md:left-[8%] w-56 md:w-80 border-[4px] border-black shadow-[12px_12px_0_rgba(0,0,0,1)] bg-[#fdfaf5] z-30">
+     <!-- Window Chrome bar -->
+     <div class="h-8 border-b-[4px] border-black bg-[#1a1a1a] flex items-center px-4 gap-2.5">
+       <div class="w-3 h-3 rounded-full bg-white"></div>
+       <div class="w-3 h-3 rounded-full bg-white"></div>
+       <div class="w-3 h-3 rounded-full bg-white"></div>
+     </div>
+     <div class="p-6 relative flex items-end justify-center min-h-[140px] md:min-h-[180px]">
+       <!-- Graphic inside window: Vector Arc with drag handles -->
+       <div class="w-[120px] md:w-[160px] h-[60px] md:h-[80px] bg-[#65e8c1] border-[3px] border-black rounded-t-full relative">
+         <div class="absolute -top-[30px] md:-top-[40px] left-1/2 -translate-x-1/2 w-[120px] md:w-[160px] border-t-2 border-black border-dashed h-[30px] flex justify-between">
+           <!-- 3 Vector Anchor Squares -->
+           <div class="w-2.5 h-2.5 md:w-3 md:h-3 border-2 border-black bg-white -mt-[6px] -ml-[6px]"></div>
+           <div class="w-2.5 h-2.5 md:w-3 md:h-3 border-2 border-black bg-white rounded-full -mt-[6px]"></div>
+           <div class="w-2.5 h-2.5 md:w-3 md:h-3 border-2 border-black bg-white -mt-[6px] -mr-[6px]"></div>
+         </div>
+       </div>
+     </div>
+  </div>
+
+  <!-- Giant Orange Donut bottom left -->
+  <div class="absolute -bottom-[5%] left-[10%] md:left-[22%] w-40 h-40 md:w-56 md:h-56 border-[6px] border-black rounded-full bg-[#fdfaf5] z-10 flex items-center justify-center">
+     <div class="absolute w-[60%] h-[60%] border-[6px] border-black rounded-full bg-[#fe6b00]"></div>
+  </div>
+
+  <!-- Geometric Stack behind the Figma Window -->
+  <div class="absolute bottom-[2%] left-[4%] w-12 h-24 border-[4px] border-black bg-[#ccff00] z-20"></div>
+  <div class="absolute bottom-[4%] left-[6%] w-12 h-24 border-[4px] border-black bg-[#a855f7] z-20"></div>
+
+
+  <!-- Abstract Floating Purple Card wrapped in Neon Green Band (Like Core Image Graphic!) -->
+  <div class="absolute top-[30%] right-[-5%] md:right-[-2%] z-0 hidden lg:block hover:translate-x-4 transition-transform duration-700">
+     <!-- Massive wrapper scaled up -->
+     <div class="relative w-[340px] h-[220px]">
+        
+        <!-- Back side of wrapping band -->
+        <div class="absolute top-[40%] -right-0 w-[140px] h-[180px] border-[6px] border-black bg-[#1a1a1a] rounded-[100px] -translate-y-1/2 z-0 transform skew-y-[20deg] skew-x-[-10deg]"></div>
+        
+        <!-- Purple Credit Card Graphic -->
+        <div class="absolute top-[10%] left-[-40px] w-full h-[180px] bg-[#a855f7] border-[5px] border-black rounded-3xl shadow-[12px_12px_0_rgba(0,0,0,1)] p-6 pl-8 flex flex-col justify-between z-10 transform -rotate-[22deg] skew-x-[15deg]">
+           <div class="flex items-center justify-between">
+             <div class="flex items-center gap-2">
+               <span class="material-symbols-outlined text-black font-black text-2xl">verified_user</span>
+               <span class="font-black text-3xl italic tracking-tighter text-black">Aegis.</span>
+             </div>
+             <!-- Lines top right -->
+             <div class="flex flex-col gap-1.5 items-end">
+                <div class="w-12 h-[3px] bg-black"></div>
+                <div class="w-8 h-[3px] bg-black"></div>
+                <div class="w-16 h-[3px] bg-black"></div>
+             </div>
+           </div>
+           
+           <div class="flex justify-between items-end pr-8">
+             <div class="w-16 h-10 border-[4px] border-black rounded-lg bg-[#ccff00] grid grid-cols-2 grid-rows-2 gap-1 p-1">
+               <div class="border-2 border-black rounded-sm"></div>
+               <div class="border-2 border-black rounded-sm"></div>
+               <div class="border-2 border-black rounded-sm"></div>
+               <div class="border-2 border-black rounded-sm"></div>
+             </div>
+             <div class="flex flex-col gap-2.5 w-[40%] mb-1">
+               <div class="w-full h-2.5 bg-black rounded-full"></div>
+               <div class="flex gap-2">
+                 <div class="w-2/3 h-2.5 bg-black rounded-full"></div>
+                 <div class="w-1/3 h-2.5 bg-black rounded-full"></div>
+               </div>
+               <div class="w-1/2 h-2.5 bg-black rounded-full"></div>
+             </div>
+           </div>
+        </div>
+
+        <!-- Front Neon Band overlapping Card -->
+        <div class="absolute top-[40%] -right-10 w-[120px] h-[190px] border-[6px] border-black bg-[#ccff00] rounded-r-[120px] rounded-l-[0px] -translate-y-1/2 z-20 pointer-events-none transform skew-y-[20deg] skew-x-[-10deg]"></div>
+
+        <!-- Floating Vector Mouse Pointer Cursor relative to Card space -->
+        <svg class="absolute -bottom-[20px] right-20 w-10 h-10 text-[#65e8c1] drop-shadow-[5px_5px_0_black] z-30" viewBox="0 0 24 24" fill="currentColor">
+           <path d="M4 0l16 11-7 1 4 8-3 2-4-8-6 5z" stroke="black" stroke-width="2"/>
+        </svg>
+        <!-- Connector Vector handle pointing to card stringent aesthetic -->
+        <div class="absolute bottom-[20px] left-[260px] w-px h-[100px] border-l-2 border-black border-dashed flex items-end">
+           <div class="w-2 h-2 bg-white border-2 border-black -ml-[5px] mb-[-5px]"></div>
+        </div>
+        <div class="absolute bottom-[120px] left-[260px] flex items-end">
+           <div class="w-2 h-2 bg-white border-2 border-black -ml-[5px] mb-[-5px]"></div>
+        </div>
+     </div>
+  </div>
+
+  <!-- Bottom right Grid -->
+  <div class="absolute bottom-[2%] md:bottom-[5%] right-[2%] md:right-[15%] z-0">
+    <div class="w-40 h-40 md:w-56 md:h-56 border-4 border-black bg-[#fcfaf5]" style="background-image: linear-gradient(black 2px, transparent 2px), linear-gradient(90deg, black 2px, transparent 2px); background-size: 32px 32px; background-position: -2px -2px;"></div>
+    <!-- Floating Circle Overlay -->
+    <div class="absolute top-[-10%] left-[-15%] w-12 h-12 md:w-16 md:h-16 border-[4px] border-black bg-[#a855f7] rounded-full shadow-[4px_4px_0_black]"></div>
+    <div class="absolute bottom-[-10%] right-[10%] w-24 h-24 md:w-32 md:h-32 border-[4px] border-black bg-[#fe6b00] rounded-full shadow-[8px_8px_0_black]"></div>
+  </div>
+  
+  <!-- Yellow Spiky Starburst Background Right Side -->
+  <div class="absolute bottom-[10%] right-[-5%] md:right-[2%] w-32 h-32 md:w-48 md:h-48 bg-[#ccff00] border-[4px] border-black shadow-[8px_8px_0_black] z-10 flex items-center justify-center animate-spin-slow" style="clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);">
+     <!-- Central black star inside -->
+     <svg class="w-6 h-6 md:w-10 md:h-10 text-black" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 12 24C12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z" />
+     </svg>
+  </div>
+
+   <!-- Left Side Funky 'View Architecture' Interactive Widget -->
+  <a href="#core-processor" class="hidden lg:flex absolute top-[45%] left-[2%] z-[60] group pointer-events-auto items-center justify-center -rotate-[8deg] hover:rotate-0 transition-transform duration-500 hover:scale-105 outline-none focus:outline-none focus:ring-none">
+    
+     <!-- Custom Hand-Drawn SVG Arrow Pointing directly at it, from top right -->
+     <div class="absolute -top-[90px] -right-[60px] text-black transform rotate-[10deg] pointer-events-none group-hover:rotate-[0deg] group-hover:-translate-x-2 group-hover:translate-y-2 transition-all duration-300 z-10">
+        <svg width="120" height="120" viewBox="0 0 100 100" fill="none" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(4px 4px 0px #ccff00);">
+           <path d="M90,10 Q60,30 20,80" stroke-dasharray="8 8" />
+           <path d="M20,80 L35,85" />
+           <path d="M20,80 L25,65" />
+           <text x="60" y="20" font-family="monospace" font-weight="900" font-size="16" fill="black" stroke="none" transform="rotate(-15 60 20)">DOCS!</text>
+        </svg>
+     </div>
+
+     <!-- Brutalist Button Box -->
+     <div class="relative bg-white border-[4px] border-black px-6 py-4 shadow-[8px_8px_0_#a855f7] group-hover:shadow-[12px_12px_0_#fe6b00] rounded-2xl flex items-center gap-4 transition-all z-20">
+        <div class="w-16 h-16 rounded-full border-[3px] border-black bg-[#ccff00] flex items-center justify-center overflow-hidden shrink-0">
+           <svg class="w-10 h-10 text-black animate-[spin_8s_linear_infinite]" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 12 24C12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z" />
+           </svg>
+        </div>
+        <div class="flex flex-col text-left">
+           <span class="font-black text-black text-sm uppercase tracking-widest leading-none mb-1">View</span>
+           <span class="font-black text-[#1a1a1a] text-2xl uppercase tracking-tighter leading-tight italic">Architecture</span>
+        </div>
+     </div>
+  </a>
+
+</div>
+
+<!-- Hero Content -->
+<div class="relative z-50 flex flex-col items-center text-center max-w-5xl mix-blend-multiply">
+<h1 id="hero-heading" class="font-headline font-black text-[clamp(4rem,10vw,8.5rem)] tracking-tighter hero-title flex flex-col gap-0 leading-[0.9] mt-8 text-[#1a1a1a]">
+<span><span class="blur-word">Income</span>&nbsp;<span class="blur-word">safety</span></span>
+<span class="opacity-95"><span class="blur-word">that</span>&nbsp;<span class="blur-word">feels</span></span>
+<span class="text-[#fe6b00] italic drop-shadow-sm"><span class="blur-word">effortless</span></span>
+</h1>
+<p class="mt-8 text-[#4a4a4a] font-bold text-lg md:text-xl max-w-xl leading-relaxed">
+                    Designed for India's gig economy. AI-powered income protection that pays out automatically for weather and disruptions—with zero manual claims.
+                </p>
+<div class="mt-12 flex flex-col md:flex-row items-center gap-6">
+<button class="bg-[#1a1a1a] text-white border-[3px] border-black px-10 py-5 rounded-xl font-black text-lg flex items-center gap-4 hover:-translate-y-1 transition-transform shadow-[6px_6px_0_rgba(0,0,0,1)] active:translate-y-1 active:shadow-[0px_0px_0_rgba(0,0,0,1)]">
+                        Check weekly premium
+                        <span class="w-8 h-8 rounded-full bg-[#ccff00] border-2 border-black shadow-[2px_2px_0_rgba(0,0,0,1)] flex items-center justify-center text-black">
+<span class="material-symbols-outlined text-sm font-black" data-icon="arrow_forward">arrow_forward</span>
+</span>
+</button>
+</div>
+</div>
+
+<!-- Partner Logos -->
+<div class="w-full max-w-5xl mt-auto pt-24 pb-8 z-50 relative pointer-events-auto">
+<div class="flex flex-wrap justify-center items-center gap-4 md:gap-6">
+  <div class="bg-white border-2 border-black px-5 py-2 hover:-translate-y-1 transition-transform shadow-[4px_4px_0_#000] rounded-sm transform -rotate-2">
+     <span class="font-black text-xl tracking-tighter text-black">IMD</span>
+  </div>
+  <div class="bg-[#ccff00] border-2 border-black px-5 py-2 hover:-translate-y-1 transition-transform shadow-[4px_4px_0_#000] rounded-full transform rotate-1">
+     <span class="font-black text-xl tracking-tighter text-black">OpenAQ</span>
+  </div>
+  <div class="bg-white border-2 border-black px-5 py-2 hover:-translate-y-1 transition-transform shadow-[4px_4px_0_#000] rounded-sm transform -rotate-1">
+     <span class="font-black text-xl tracking-tighter text-black">UPI</span>
+  </div>
+  <div class="bg-white border-2 border-black px-5 py-2 hover:-translate-y-1 transition-transform shadow-[4px_4px_0_#000] rounded-full transform rotate-2">
+     <span class="font-black text-xl tracking-tighter text-black">Razorpay</span>
+  </div>
+  <div class="bg-white border-[3px] border-black px-5 py-2 hover:-translate-y-1 transition-transform shadow-[4px_4px_0_#fe6b00] rounded-sm transform -rotate-[3deg] text-black">
+     <span class="font-black text-xl tracking-tighter uppercase text-[#fe6b00]">Swiggy</span>
+  </div>
+  <div class="bg-white border-[3px] border-black px-5 py-2 hover:-translate-y-1 transition-transform shadow-[4px_4px_0_#e23744] rounded-sm transform rotate-[3deg] text-black">
+     <span class="font-black text-xl tracking-tighter uppercase text-[#e23744]">Zomato</span>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- Q-COMMERCE FLOWING MENU SECTION -->
+<section class="py-24 px-6 bg-[#0c0e0f] relative z-20" id="platforms">
+  <div class="max-w-7xl mx-auto flex flex-col items-center">
+    <div class="text-xs font-black uppercase tracking-[0.2em] text-white opacity-40 mb-6">Partner Network</div>
+    <h2 class="text-5xl md:text-7xl font-headline font-black text-white text-center mb-16 tracking-tighter">
+      Seamless coverage across<br/><span class="text-primary-fixed-dim">India's top q-commerce</span>
+    </h2>
+    
+    <div class="menu-wrap rounded-[2rem] border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] w-full" style="height: 60vh;">
+      <nav class="menu">
+        <!-- Blinkit -->
+        <div class="menu__item uppercase">
+          <a class="menu__item-link" href="#">Blinkit</a>
+          <div class="marquee" style="background-color: #F8CB46;">
+            <div class="marquee__inner-wrap">
+              <div class="marquee__inner" aria-hidden="true">
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('./blinkit-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('./blinkit-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('./blinkit-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('./blinkit-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('./blinkit-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('./blinkit-logo.png');"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Zepto -->
+        <div class="menu__item uppercase">
+          <a class="menu__item-link" href="#">Zepto</a>
+          <div class="marquee" style="background-color: #480e8e;">
+            <div class="marquee__inner-wrap">
+              <div class="marquee__inner" aria-hidden="true">
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('./zepto-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('./zepto-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('./zepto-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('./zepto-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('./zepto-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('./zepto-logo.png');"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Swiggy Instamart -->
+        <div class="menu__item uppercase">
+          <a class="menu__item-link" href="#">Instamart</a>
+          <div class="marquee" style="background-color: #fc8019;">
+            <div class="marquee__inner-wrap">
+              <div class="marquee__inner" aria-hidden="true">
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('./instamart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('./instamart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('./instamart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('./instamart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('./instamart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('./instamart-logo.png');"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BigBasket -->
+        <div class="menu__item uppercase">
+          <a class="menu__item-link" href="#">BigBasket</a>
+          <div class="marquee" style="background-color: #84c225;">
+            <div class="marquee__inner-wrap">
+              <div class="marquee__inner" aria-hidden="true">
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('./bigbasket-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('./bigbasket-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('./bigbasket-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('./bigbasket-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('./bigbasket-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('./bigbasket-logo.png');"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- JioMart -->
+        <div class="menu__item uppercase">
+          <a class="menu__item-link" href="#">JioMart</a>
+          <div class="marquee" style="background-color: #e51d27;">
+            <div class="marquee__inner-wrap">
+              <div class="marquee__inner" aria-hidden="true">
+                <div class="marquee__part" style="color: #fff;"><span>JioMart</span><div class="marquee__img" style="background-image: url('./jiomart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>JioMart</span><div class="marquee__img" style="background-image: url('./jiomart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>JioMart</span><div class="marquee__img" style="background-image: url('./jiomart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>JioMart</span><div class="marquee__img" style="background-image: url('./jiomart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>JioMart</span><div class="marquee__img" style="background-image: url('./jiomart-logo.png');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>JioMart</span><div class="marquee__img" style="background-image: url('./jiomart-logo.png');"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- Section 1: What we cover -->
+<section class="py-24 md:py-32 px-6 overflow-hidden bg-[#ccff00] border-t-[4px] border-b-[4px] border-black" id="coverage">
+  <div class="max-w-[1400px] mx-auto">
+    
+    <!-- Split Header: massive title left, description right -->
+    <div class="flex flex-col lg:flex-row lg:items-end gap-8 lg:gap-20 mb-16 md:mb-24">
+      <div class="lg:w-[55%]">
+        <h2 class="text-[clamp(3.5rem,8vw,7rem)] font-headline font-black tracking-tighter leading-[0.9] text-black">What we<br/>cover.</h2>
+      </div>
+      <div class="lg:w-[45%] pb-2">
+        <p class="text-lg md:text-xl font-bold text-black/70 leading-relaxed max-w-lg">
+          <span class="text-black font-black">Flexible weekly protection:</span><br/>
+          Personalized. Parametric. Instant. Built for India's gig workers.
+        </p>
+      </div>
+    </div>
+
+    <!-- Three Editorial Cards Row -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 items-stretch">
+      
+      <!-- Card 1: Severe Weather -->
+      <div class="border-[3px] border-black bg-white rounded-3xl flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-500 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:shadow-[12px_12px_0_rgba(0,0,0,1)]">
+        
+        <!-- Card Header Bar -->
+        <div class="flex items-center justify-between px-6 py-5 border-b-[3px] border-black">
+          <span class="text-[15px] font-black tracking-tight text-black">/01</span>
+          <span class="material-symbols-outlined text-3xl text-black" style="font-variation-settings: 'FILL' 1;">rainy</span>
+        </div>
+        
+        <!-- Card Title + Description -->
+        <div class="px-6 pt-6 pb-4">
+          <h3 class="text-[2rem] md:text-[2.2rem] font-black tracking-tight leading-[1.1] text-black mb-3">Severe Weather</h3>
+          <p class="text-[13px] text-black/60 font-medium leading-relaxed">
+            One-of-a-kind protection built on YOUR delivery zone's weather data.
+          </p>
+        </div>
+
+        <!-- Embedded UI Mockup: Rainfall Gauge -->
+        <div class="mx-6 mb-6 border-[2px] border-black/15 rounded-2xl bg-[#f7f7f5] p-5 flex flex-col gap-4">
+          <!-- Gauge Header -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px] text-black/60">water_drop</span>
+              <span class="text-[11px] font-black uppercase tracking-widest text-black/50">Rainfall</span>
+            </div>
+            <span class="text-[10px] font-bold text-black/40 bg-black/5 px-2 py-1 rounded">JAN 2026</span>
+          </div>
+          <!-- Big Number -->
+          <div class="flex items-baseline gap-1.5">
+            <span class="text-[3.5rem] font-black tracking-tighter text-black leading-none">60</span>
+            <span class="text-[16px] font-bold text-black/40">mm</span>
+          </div>
+          <!-- Progress Bar / Threshold -->
+          <div class="relative w-full h-3 bg-black/10 rounded-full overflow-hidden">
+            <div class="absolute left-0 top-0 h-full w-[72%] bg-gradient-to-r from-[#0088ff] to-[#00c6ff] rounded-full"></div>
+            <div class="absolute left-[60%] top-[-4px] w-0.5 h-[20px] bg-[#ff3b30]"></div>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-bold text-black/40">0mm</span>
+            <span class="text-[10px] font-bold text-[#ff3b30]">← Threshold</span>
+            <span class="text-[10px] font-bold text-black/40">100mm</span>
+          </div>
+          <!-- Status -->
+          <div class="bg-[#ccff00] border-[2px] border-black rounded-xl px-4 py-2.5 flex items-center gap-3 mt-1">
+            <div class="w-2.5 h-2.5 rounded-full bg-black animate-pulse"></div>
+            <span class="text-[11px] font-black text-black uppercase tracking-wider">IMD Data: Monitoring Live</span>
+          </div>
+        </div>
+
+        <!-- Bottom Text -->
+        <div class="px-6 pb-4 mt-auto">
+          <p class="text-[12px] text-black/50 font-medium leading-relaxed">
+            Automatic payouts when rainfall exceeds critical limits, verified by India Meteorological Department data feeds.
+          </p>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="px-6 pb-6">
+          <button class="w-full py-3.5 bg-[#ccff00] border-[3px] border-black rounded-xl font-black text-[12px] text-black uppercase tracking-widest hover:-translate-y-0.5 shadow-[4px_4px_0_#000] hover:shadow-[6px_6px_0_#000] active:translate-y-0.5 active:shadow-[0_0_0_#000] transition-all">Get Started</button>
+        </div>
+      </div>
+
+      <!-- Card 2: Zero Manual Claims -->
+      <div class="border-[3px] border-black bg-white rounded-3xl flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-500 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:shadow-[12px_12px_0_rgba(0,0,0,1)]">
+        
+        <!-- Card Header Bar -->
+        <div class="flex items-center justify-between px-6 py-5 border-b-[3px] border-black bg-black">
+          <span class="text-[15px] font-black tracking-tight text-white">/02</span>
+          <span class="material-symbols-outlined text-3xl text-[#ccff00]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+        </div>
+        
+        <!-- Card Title + Description -->
+        <div class="px-6 pt-6 pb-4">
+          <h3 class="text-[2rem] md:text-[2.2rem] font-black tracking-tight leading-[1.1] text-black mb-3">Zero Claims</h3>
+          <p class="text-[13px] text-black/60 font-medium leading-relaxed">
+            Your first fully automated experience. No paperwork. No waiting.
+          </p>
+        </div>
+
+        <!-- Embedded UI Mockup: Checklist Dashboard -->
+        <div class="mx-6 mb-6 border-[2px] border-black/15 rounded-2xl bg-[#f7f7f5] overflow-hidden">
+          <!-- Checklist Items -->
+          <div class="divide-y divide-black/10">
+            <div class="flex items-center justify-between px-5 py-3.5">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-[16px] text-black/50">cloud</span>
+                <span class="text-[13px] font-bold text-black">Weather Data</span>
+              </div>
+              <div class="w-7 h-7 rounded-lg bg-[#ccff00] border-[2px] border-black flex items-center justify-center">
+                <span class="material-symbols-outlined text-[16px] text-black font-black">check</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-5 py-3.5">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-[16px] text-black/50">my_location</span>
+                <span class="text-[13px] font-bold text-black">GPS Zone Match</span>
+              </div>
+              <div class="w-7 h-7 rounded-lg bg-[#ccff00] border-[2px] border-black flex items-center justify-center">
+                <span class="material-symbols-outlined text-[16px] text-black font-black">check</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-5 py-3.5">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-[16px] text-black/50">policy</span>
+                <span class="text-[13px] font-bold text-black">Policy Active</span>
+              </div>
+              <div class="w-7 h-7 rounded-lg bg-[#ccff00] border-[2px] border-black flex items-center justify-center">
+                <span class="material-symbols-outlined text-[16px] text-black font-black">check</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-5 py-3.5">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-[16px] text-black/50">account_balance_wallet</span>
+                <span class="text-[13px] font-bold text-black">Instant Payout</span>
+              </div>
+              <div class="w-7 h-7 rounded-lg bg-[#ccff00] border-[2px] border-black flex items-center justify-center">
+                <span class="material-symbols-outlined text-[16px] text-black font-black">check</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-5 py-3.5">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-[16px] text-black/50">security</span>
+                <span class="text-[13px] font-bold text-black">Fraud Check</span>
+              </div>
+              <div class="w-7 h-7 rounded-lg bg-[#ccff00] border-[2px] border-black flex items-center justify-center">
+                <span class="material-symbols-outlined text-[16px] text-black font-black">check</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Text -->
+        <div class="px-6 pb-4 mt-auto">
+          <p class="text-[12px] text-black/50 font-medium leading-relaxed">
+            Our AI engine verifies weather, GPS zone, and policy data in milliseconds. Money lands in your account before you even ask.
+          </p>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="px-6 pb-6">
+          <button class="w-full py-3.5 bg-black border-[3px] border-black rounded-xl font-black text-[12px] text-[#ccff00] uppercase tracking-widest hover:-translate-y-0.5 shadow-[4px_4px_0_#ccff00] hover:shadow-[6px_6px_0_#ccff00] active:translate-y-0.5 active:shadow-[0_0_0_#ccff00] transition-all">Get Started</button>
+        </div>
+      </div>
+
+      <!-- Card 3: City-Wide Disruptions -->
+      <div class="border-[3px] border-black bg-white rounded-3xl flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-500 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:shadow-[12px_12px_0_rgba(0,0,0,1)]">
+        
+        <!-- Card Header Bar -->
+        <div class="flex items-center justify-between px-6 py-5 border-b-[3px] border-black">
+          <span class="text-[15px] font-black tracking-tight text-black">/03</span>
+          <span class="material-symbols-outlined text-3xl text-black" style="font-variation-settings: 'FILL' 1;">location_city</span>
+        </div>
+        
+        <!-- Card Title + Description -->
+        <div class="px-6 pt-6 pb-4">
+          <h3 class="text-[2rem] md:text-[2.2rem] font-black tracking-tight leading-[1.1] text-black mb-3">City Disruptions</h3>
+          <p class="text-[13px] text-black/60 font-medium leading-relaxed">
+            Move forward even when the city can't. Coverage for zone-wide shutdowns.
+          </p>
+        </div>
+
+        <!-- Embedded UI Mockup: Energy/Healthspan-style chart -->
+        <div class="mx-6 mb-6 border-[2px] border-black/15 rounded-2xl bg-[#f7f7f5] p-5 flex flex-col gap-3">
+          <!-- Chart Header -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px] text-black/60">monitoring</span>
+              <span class="text-[11px] font-black uppercase tracking-widest text-black/50">Zone Status</span>
+            </div>
+            <span class="text-[10px] font-bold text-black/40 bg-black/5 px-2 py-1 rounded">Live ▼</span>
+          </div>
+          <!-- Mini sparkline chart area -->
+          <div class="relative w-full h-[80px] mt-2">
+            <svg class="w-full h-full" viewBox="0 0 300 80" fill="none" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#ccff00" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#ccff00" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,60 Q30,55 60,50 T120,35 T180,20 T240,30 T300,15" stroke="black" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M0,60 Q30,55 60,50 T120,35 T180,20 T240,30 T300,15 L300,80 L0,80Z" fill="url(#chartFill)"/>
+              <!-- Data point -->
+              <circle cx="240" cy="30" r="5" fill="black" stroke="#ccff00" stroke-width="3"/>
+            </svg>
+            <!-- Annotation -->
+            <div class="absolute top-0 right-[15%] bg-black text-[#ccff00] text-[10px] font-black px-2 py-1 rounded-lg shadow-lg">
+              ↑ +23%
+            </div>
+          </div>
+          <!-- Zone Stat Boxes -->
+          <div class="grid grid-cols-2 gap-3 mt-2">
+            <div class="bg-white border-[2px] border-black/10 rounded-xl p-3 text-center">
+              <div class="text-xl font-black text-black leading-none">4</div>
+              <div class="text-[9px] font-bold text-black/40 uppercase tracking-wider mt-1">Zones Active</div>
+            </div>
+            <div class="bg-white border-[2px] border-black/10 rounded-xl p-3 text-center">
+              <div class="text-xl font-black text-[#ff3b30] leading-none">1</div>
+              <div class="text-[9px] font-bold text-black/40 uppercase tracking-wider mt-1">Disrupted</div>
+            </div>
+          </div>
+          <!-- Status -->
+          <div class="bg-black rounded-xl px-4 py-2.5 flex items-center gap-3 mt-1">
+            <div class="w-2.5 h-2.5 rounded-full bg-[#ff3b30] animate-pulse"></div>
+            <span class="text-[11px] font-black text-white uppercase tracking-wider">Alert: Zone lockdown detected</span>
+          </div>
+        </div>
+
+        <!-- Bottom Text -->
+        <div class="px-6 pb-4 mt-auto">
+          <p class="text-[12px] text-black/50 font-medium leading-relaxed">
+            Hyper-local triggers mapped to specific pin-codes and logistics hubs. Direct-to-bank transfers the moment the threshold is crossed.
+          </p>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="px-6 pb-6">
+          <button class="w-full py-3.5 bg-[#ccff00] border-[3px] border-black rounded-xl font-black text-[12px] text-black uppercase tracking-widest hover:-translate-y-0.5 shadow-[4px_4px_0_#000] hover:shadow-[6px_6px_0_#000] active:translate-y-0.5 active:shadow-[0_0_0_#000] transition-all">Get Started</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: How it works -->
+<section class="py-24 md:py-32 px-6 bg-[#f4f4f4] overflow-hidden relative" id="how-it-works">
+  
+  <!-- Subtle grid background -->
+  <div class="absolute inset-0 opacity-[0.06]" style="background-image: linear-gradient(black 1px, transparent 1px), linear-gradient(90deg, black 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+  <div class="max-w-[1000px] mx-auto relative z-10">
+    
+    <!-- Header -->
+    <div class="text-center mb-20 md:mb-28">
+      <h2 class="text-[clamp(3.5rem,8vw,7rem)] font-headline font-black tracking-tighter leading-[0.9] text-black mb-6">How it works.</h2>
+      <p class="text-lg md:text-xl font-bold text-black/40 leading-relaxed max-w-2xl mx-auto">
+        From weather event to money in your bank.<br/>
+        <span class="text-[#fe6b00] font-black">Zero human intervention.</span>
+      </p>
+    </div>
+
+    <!-- THE FLOW -->
+    <div class="flex flex-col items-center gap-0">
+
+      <!-- Input Sources Row -->
+      <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-0">
+        <div class="flex items-center gap-2.5 bg-black/5 border-[2px] border-black/15 rounded-full px-5 py-3 hover:border-[#fe6b00]/50 transition-colors">
+          <span class="material-symbols-outlined text-[18px] text-black" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+          <span class="text-[12px] font-black text-black/70 uppercase tracking-wider">IMD Weather</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-black/5 border-[2px] border-black/15 rounded-full px-5 py-3 hover:border-[#fe6b00]/50 transition-colors">
+          <span class="material-symbols-outlined text-[18px] text-black" style="font-variation-settings: 'FILL' 1;">my_location</span>
+          <span class="text-[12px] font-black text-black/70 uppercase tracking-wider">GPS Zone</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-black/5 border-[2px] border-black/15 rounded-full px-5 py-3 hover:border-[#fe6b00]/50 transition-colors">
+          <span class="material-symbols-outlined text-[18px] text-black" style="font-variation-settings: 'FILL' 1;">description</span>
+          <span class="text-[12px] font-black text-black/70 uppercase tracking-wider">Policy Data</span>
+        </div>
+      </div>
+
+      <!-- Connector: Inputs to Node 1 -->
+      <div class="flex flex-col items-center py-1">
+        <svg width="4" height="60" class="overflow-visible">
+          <line x1="2" y1="0" x2="2" y2="56" stroke="#ccff00" stroke-width="3" stroke-dasharray="8 6">
+            <animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.5s" repeatCount="indefinite"/>
+          </line>
+          <polygon points="-1,54 5,54 2,62" fill="#ccff00"/>
+        </svg>
+      </div>
+
+      <!-- NODE 1: Parametric Trigger -->
+      <div class="w-full border-[3px] border-black/15 bg-white shadow-[8px_8px_0_rgba(0,0,0,1)] rounded-3xl overflow-hidden group hover:border-[#ccff00] transition-all duration-500 hover:shadow-[0_0_60px_rgba(204,255,0,0.08)]">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-[40%] flex items-center justify-center p-8 md:p-12 border-b-[3px] md:border-b-0 md:border-r-[3px] border-black/10 bg-[#f9f9f5] relative min-h-[200px]">
+            <div class="relative w-28 h-28">
+              <div class="absolute inset-0 rounded-full border-2 border-[#ccff00]/20 animate-ping" style="animation-duration: 3s;"></div>
+              <div class="absolute inset-3 rounded-full border-2 border-[#ccff00]/30 animate-ping" style="animation-duration: 3s; animation-delay: 0.5s;"></div>
+              <div class="absolute inset-6 rounded-full border-2 border-[#ccff00]/50 animate-ping" style="animation-duration: 3s; animation-delay: 1s;"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-12 h-12 rounded-full bg-[#ccff00] border-[3px] border-black flex items-center justify-center shadow-[0_0_30px_rgba(204,255,0,0.5)]">
+                  <span class="material-symbols-outlined text-black text-xl" style="font-variation-settings: 'FILL' 1;">sensors</span>
+                </div>
+              </div>
+            </div>
+            <div class="absolute top-4 right-4 bg-[#ccff00] border-[2px] border-black px-3 py-1 rounded-full shadow-[3px_3px_0_#000]">
+              <span class="text-[10px] font-black text-black tracking-tight">60mm &#8593;</span>
+            </div>
+          </div>
+          <div class="md:w-[60%] p-6 md:p-10 flex flex-col justify-center">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-lg bg-[#ccff00] border-[2px] border-black flex items-center justify-center">
+                <span class="text-black font-black text-sm">01</span>
+              </div>
+              <span class="text-[11px] font-black text-black/30 uppercase tracking-[0.2em]">Detect</span>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-black text-black tracking-tight mb-3">Parametric Trigger</h3>
+            <p class="text-[14px] text-black/50 font-medium leading-relaxed mb-5">
+              Real-time weather data from IMD crosses your zone's threshold. The event is detected instantly&#8212;no claim form, no phone call.
+            </p>
+            <div class="flex items-center gap-2.5 bg-black/5 border border-black/10 rounded-xl px-4 py-2.5 w-fit">
+              <div class="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse shadow-[0_0_8px_rgba(204,255,0,0.6)]"></div>
+              <span class="text-[10px] font-black text-black/50 uppercase tracking-wider">Always monitoring</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connector 1 to 2 with label -->
+      <div class="flex flex-col items-center py-1 relative">
+        <svg width="4" height="70" class="overflow-visible">
+          <line x1="2" y1="0" x2="2" y2="66" stroke="#fe6b00" stroke-width="3" stroke-dasharray="8 6">
+            <animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.5s" repeatCount="indefinite"/>
+          </line>
+          <polygon points="-1,64 5,64 2,72" fill="#fe6b00"/>
+        </svg>
+        <div class="absolute top-1/2 -translate-y-1/2 left-[calc(50%+20px)] bg-[#fe6b00] border-[2px] border-black px-3 py-1 rounded-full shadow-[3px_3px_0_#000] whitespace-nowrap">
+          <span class="text-[9px] font-black text-black uppercase tracking-wider">threshold crossed &#8594;</span>
+        </div>
+      </div>
+
+      <!-- NODE 2: AI Risk Engine -->
+      <div class="w-full border-[3px] border-black/15 bg-white shadow-[8px_8px_0_rgba(0,0,0,1)] rounded-3xl overflow-hidden group hover:border-[#fe6b00] transition-all duration-500 hover:shadow-[0_0_60px_rgba(254,107,0,0.08)]">
+        <div class="flex flex-col md:flex-row-reverse">
+          <div class="md:w-[40%] flex items-center justify-center p-8 md:p-12 border-b-[3px] md:border-b-0 md:border-l-[3px] border-black/10 bg-[#f9f9f5] relative min-h-[200px]">
+            <div class="relative w-28 h-28 flex items-center justify-center">
+              <div class="absolute inset-0 rounded-full border-[3px] border-dashed border-[#fe6b00]/30 animate-[spin_10s_linear_infinite]"></div>
+              <div class="absolute inset-4 rounded-full border-[3px] border-dashed border-black/10 animate-[spin_7s_linear_infinite_reverse]"></div>
+              <div class="w-14 h-14 rounded-2xl bg-[#fe6b00] border-[3px] border-black flex items-center justify-center shadow-[0_0_25px_rgba(254,107,0,0.4)] animate-[spin_20s_linear_infinite]">
+                <span class="material-symbols-outlined text-black text-2xl" style="font-variation-settings: 'FILL' 1;">settings</span>
+              </div>
+            </div>
+            <div class="absolute top-5 left-5 w-7 h-7 rounded bg-black/5 border border-black/10 flex items-center justify-center animate-bounce" style="animation-duration: 3s;">
+              <span class="material-symbols-outlined text-[12px] text-black/40">security</span>
+            </div>
+            <div class="absolute bottom-5 right-5 w-7 h-7 rounded bg-black/5 border border-black/10 flex items-center justify-center animate-bounce" style="animation-duration: 3s; animation-delay: 1s;">
+              <span class="material-symbols-outlined text-[12px] text-black/40">policy</span>
+            </div>
+          </div>
+          <div class="md:w-[60%] p-6 md:p-10 flex flex-col justify-center">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-lg bg-[#fe6b00] border-[2px] border-black flex items-center justify-center">
+                <span class="text-black font-black text-sm">02</span>
+              </div>
+              <span class="text-[11px] font-black text-black/30 uppercase tracking-[0.2em]">Verify</span>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-black text-black tracking-tight mb-3">AI Risk Engine</h3>
+            <p class="text-[14px] text-black/50 font-medium leading-relaxed mb-5">
+              Cross-validates GPS zone, policy status, and fraud signals in milliseconds. Three checks. Zero manual steps.
+            </p>
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center gap-2.5">
+                <div class="w-5 h-5 rounded bg-[#fe6b00] flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[12px] text-black font-black">check</span></div>
+                <span class="text-[11px] font-bold text-black/50">Threshold verified</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <div class="w-5 h-5 rounded bg-[#fe6b00] flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[12px] text-black font-black">check</span></div>
+                <span class="text-[11px] font-bold text-black/50">Zone + Policy matched</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <div class="w-5 h-5 rounded bg-[#fe6b00] flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[12px] text-black font-black">check</span></div>
+                <span class="text-[11px] font-bold text-black/50">Fraud score: Clean</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connector 2 to 3 with label -->
+      <div class="flex flex-col items-center py-1 relative">
+        <svg width="4" height="70" class="overflow-visible">
+          <line x1="2" y1="0" x2="2" y2="66" stroke="#a855f7" stroke-width="3" stroke-dasharray="8 6">
+            <animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.5s" repeatCount="indefinite"/>
+          </line>
+          <polygon points="-1,64 5,64 2,72" fill="#a855f7"/>
+        </svg>
+        <div class="absolute top-1/2 -translate-y-1/2 right-[calc(50%+20px)] bg-[#a855f7] border-[2px] border-black px-3 py-1 rounded-full shadow-[3px_3px_0_#000] whitespace-nowrap">
+          <span class="text-[9px] font-black text-black uppercase tracking-wider">&#8592; all checks passed</span>
+        </div>
+      </div>
+
+      <!-- NODE 3: Instant Payout -->
+      <div class="w-full border-[3px] border-black/15 bg-white shadow-[8px_8px_0_rgba(0,0,0,1)] rounded-3xl overflow-hidden group hover:border-[#a855f7] transition-all duration-500 hover:shadow-[0_0_60px_rgba(168,85,247,0.08)]">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-[40%] flex items-center justify-center p-8 md:p-12 border-b-[3px] md:border-b-0 md:border-r-[3px] border-black/10 bg-[#f9f9f5] relative min-h-[200px]">
+            <div class="relative w-28 h-28 flex items-center justify-center">
+              <div class="absolute inset-0 rounded-full border-2 border-[#a855f7]/20 animate-ping" style="animation-duration: 2s;"></div>
+              <div class="absolute inset-4 rounded-full border-2 border-[#a855f7]/30 animate-ping" style="animation-duration: 2s; animation-delay: 0.4s;"></div>
+              <div class="w-16 h-16 rounded-full bg-[#a855f7] border-[3px] border-black flex items-center justify-center shadow-[0_0_30px_rgba(168,85,247,0.5)] animate-bounce" style="animation-duration: 2s;">
+                <span class="material-symbols-outlined text-black text-3xl font-black">check</span>
+              </div>
+            </div>
+            <div class="absolute top-4 left-1/2 -translate-x-1/2 bg-[#a855f7] border-[2px] border-black px-4 py-1.5 rounded-full shadow-[3px_3px_0_#000]">
+              <span class="text-[11px] font-black text-black tracking-tight">&#8377;500 Credited</span>
+            </div>
+          </div>
+          <div class="md:w-[60%] p-6 md:p-10 flex flex-col justify-center">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-lg bg-[#a855f7] border-[2px] border-black flex items-center justify-center">
+                <span class="text-black font-black text-sm">03</span>
+              </div>
+              <span class="text-[11px] font-black text-black/30 uppercase tracking-[0.2em]">Pay</span>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-black text-black tracking-tight mb-3">Instant Payout</h3>
+            <p class="text-[14px] text-black/50 font-medium leading-relaxed mb-5">
+              Approved. Sent. Done. Direct-to-bank transfer via Razorpay the moment all checks pass. No delays, no paperwork.
+            </p>
+            <div class="flex items-center gap-3 bg-[#a855f7]/10 border border-[#a855f7]/30 rounded-xl px-4 py-2.5 w-fit">
+              <div class="w-2 h-2 rounded-full bg-[#a855f7] animate-pulse shadow-[0_0_8px_rgba(168,85,247,0.6)]"></div>
+              <span class="text-[10px] font-black text-[#a855f7] uppercase tracking-wider">Payout complete</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Final Output Connector -->
+      <div class="flex flex-col items-center py-1">
+        <svg width="4" height="50" class="overflow-visible">
+          <line x1="2" y1="0" x2="2" y2="46" stroke="black" stroke-width="3" stroke-dasharray="8 6" stroke-opacity="0.2">
+            <animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.5s" repeatCount="indefinite"/>
+          </line>
+          <polygon points="-1,44 5,44 2,52" fill="black" fill-opacity="0.3"/>
+        </svg>
+      </div>
+
+      <!-- Final Output: Settlement Confirmed -->
+      <div class="bg-[#ccff00] border-[3px] border-black rounded-2xl px-8 py-5 shadow-[8px_8px_0_#000] flex items-center gap-4 hover:-translate-y-1 hover:shadow-[10px_10px_0_#000] transition-all">
+        <div class="w-10 h-10 rounded-full bg-black flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-[#ccff00] text-xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+        </div>
+        <div>
+          <span class="text-[13px] font-black text-black uppercase tracking-wider">Settlement Complete</span>
+          <span class="text-[11px] font-bold text-black/50 block mt-0.5">Via Razorpay &#8594; Direct to bank</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Stats Row -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16 md:mt-20">
+      <div class="border-[3px] border-black/10 rounded-2xl px-6 py-5 flex items-center gap-4 group hover:border-[#ccff00]/50 transition-colors bg-white">
+        <div class="w-10 h-10 rounded-lg bg-[#ccff00] border-[2px] border-black flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-black text-lg" style="font-variation-settings: 'FILL' 1;">timer</span>
+        </div>
+        <div>
+          <div class="text-xl font-black text-black tracking-tight">0.0s</div>
+          <div class="text-[10px] font-bold text-black/30 uppercase tracking-widest mt-0.5">Processing</div>
+        </div>
+      </div>
+      <div class="border-[3px] border-black/10 rounded-2xl px-6 py-5 flex items-center gap-4 group hover:border-[#fe6b00]/50 transition-colors bg-white">
+        <div class="w-10 h-10 rounded-lg bg-[#fe6b00] border-[2px] border-black flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-black text-lg" style="font-variation-settings: 'FILL' 1;">map</span>
+        </div>
+        <div>
+          <div class="text-xl font-black text-black tracking-tight">Pin-code</div>
+          <div class="text-[10px] font-bold text-black/30 uppercase tracking-widest mt-0.5">Zone precision</div>
+        </div>
+      </div>
+      <div class="border-[3px] border-black/10 rounded-2xl px-6 py-5 flex items-center gap-4 group hover:border-[#a855f7]/50 transition-colors bg-white">
+        <div class="w-10 h-10 rounded-lg bg-[#a855f7] border-[2px] border-black flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-black text-lg" style="font-variation-settings: 'FILL' 1;">bolt</span>
+        </div>
+        <div>
+          <div class="text-xl font-black text-black tracking-tight">Instant</div>
+          <div class="text-[10px] font-bold text-black/30 uppercase tracking-widest mt-0.5">Bank settlement</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Section 4: What powers every policy -->
+<section class="py-24 md:py-32 px-6 relative overflow-hidden bg-white" id="core-processor">
+  
+  <!-- Giant Background Text -->
+  <div class="absolute bottom-0 left-0 w-full flex justify-center pointer-events-none select-none overflow-hidden z-0">
+    <h3 class="text-[clamp(6rem,18vw,16rem)] font-black text-black/[0.03] tracking-tighter leading-none whitespace-nowrap translate-y-6 uppercase">
+      ENGINE
+    </h3>
+  </div>
+
+  <div class="max-w-[1100px] mx-auto relative z-10">
+    
+    <!-- Header -->
+    <div class="text-center mb-16 md:mb-20">
+      <div class="inline-flex items-center gap-2 bg-black border-[2px] border-black px-4 py-1.5 rounded-full mb-6 shadow-[4px_4px_0_#fe6b00]">
+        <div class="w-2 h-2 rounded-full bg-[#fe6b00] animate-pulse"></div>
+        <span class="text-[10px] font-black text-white uppercase tracking-widest">Core Architecture</span>
+      </div>
+      <h2 class="text-[clamp(2.5rem,6vw,4.5rem)] font-headline font-black tracking-tighter leading-[0.95] text-black mb-5">
+        What powers<br/>every policy.
+      </h2>
+      <p class="text-base md:text-lg font-medium text-black/40 max-w-xl mx-auto leading-relaxed">
+        Five interconnected modules working in milliseconds to detect, verify, and settle&#8212;automatically.
+      </p>
+    </div>
+
+    <!-- Bento Grid -->
+    <div style="display: grid;" class="grid-cols-1 md:grid-cols-12 gap-5">
+
+      <!-- HERO Card: Parametric Triggers (Spans 7 cols) -->
+      <div class="md:col-span-7 bg-[#1a1a1a] border-[3px] border-black rounded-3xl p-8 md:p-10 flex flex-col justify-between min-h-[320px] relative overflow-hidden group hover:-translate-y-1 transition-all duration-500 shadow-[6px_6px_0_#fe6b00]">
+        <!-- Decorative grid -->
+        <div class="absolute inset-0 opacity-[0.05]" style="background-image: linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px); background-size: 30px 30px;"></div>
+        <div class="relative z-10">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-[#fe6b00] border-[2px] border-black flex items-center justify-center shadow-[3px_3px_0_#000]">
+              <span class="material-symbols-outlined text-black text-2xl" style="font-variation-settings: 'FILL' 1;">offline_bolt</span>
+            </div>
+            <div class="bg-[#fe6b00]/20 border border-[#fe6b00]/40 px-3 py-1 rounded-full">
+              <span class="text-[10px] font-black text-[#fe6b00] uppercase tracking-wider">Primary Engine</span>
+            </div>
+          </div>
+          <h3 class="text-3xl md:text-4xl font-black text-white tracking-tight mb-3">Parametric Triggers</h3>
+          <p class="text-[14px] text-white/40 font-medium leading-relaxed max-w-md">
+            Rules-based automated execution. When environmental thresholds are crossed, the system fires instantly&#8212;no human in the loop.
+          </p>
+        </div>
+        <!-- Bottom embedded data viz -->
+        <div class="relative z-10 flex items-center gap-3 mt-6">
+          <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5">
+            <div class="w-2 h-2 rounded-full bg-[#fe6b00] animate-pulse"></div>
+            <span class="text-[10px] font-black text-white/50 uppercase tracking-wider">Live</span>
+          </div>
+          <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5">
+            <span class="text-[10px] font-black text-white/50 uppercase tracking-wider">12 Zones Active</span>
+          </div>
+          <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5">
+            <span class="text-[10px] font-black text-white/50 uppercase tracking-wider">&#60;200ms</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Worker Profiling (Spans 5 cols) -->
+      <div class="md:col-span-5 bg-[#f9f9f5] border-[3px] border-black rounded-3xl p-7 md:p-8 flex flex-col min-h-[320px] group hover:-translate-y-1 transition-all duration-500 shadow-[6px_6px_0_#000]">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-11 h-11 rounded-xl bg-black border-[2px] border-black flex items-center justify-center">
+            <span class="material-symbols-outlined text-white text-xl">person_search</span>
+          </div>
+          <span class="text-[10px] font-black text-black/30 uppercase tracking-widest">Identity Layer</span>
+        </div>
+        <h3 class="text-2xl font-black text-black tracking-tight mb-3">Worker Profiling</h3>
+        <p class="text-[13px] text-black/40 font-medium leading-relaxed mb-auto">
+          Verified historical identity and work patterns. Each gig worker gets a unique risk profile built over time.
+        </p>
+        <!-- Mini profile preview -->
+        <div class="mt-5 bg-white border-[2px] border-black/10 rounded-2xl p-4 flex items-center gap-4">
+          <div class="w-10 h-10 rounded-full bg-black/10 flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-lg text-black/40">person</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="h-2.5 bg-black/10 rounded-full w-24 mb-2"></div>
+            <div class="h-2 bg-black/5 rounded-full w-16"></div>
+          </div>
+          <div class="bg-green-100 border border-green-300 text-green-700 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shrink-0">Verified</div>
+        </div>
+      </div>
+
+      <!-- Card: AI Risk Engine (Spans 5 cols) -->
+      <div class="md:col-span-5 bg-[#f9f9f5] border-[3px] border-black rounded-3xl p-7 md:p-8 flex flex-col min-h-[280px] group hover:-translate-y-1 transition-all duration-500 shadow-[6px_6px_0_#000]">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-11 h-11 rounded-xl bg-[#a855f7] border-[2px] border-black flex items-center justify-center">
+            <span class="material-symbols-outlined text-white text-xl">psychology</span>
+          </div>
+          <span class="text-[10px] font-black text-black/30 uppercase tracking-widest">Intelligence</span>
+        </div>
+        <h3 class="text-2xl font-black text-black tracking-tight mb-3">AI Risk Engine</h3>
+        <p class="text-[13px] text-black/40 font-medium leading-relaxed mb-auto">
+          Dynamic underwriting powered by machine learning. Continuously adapts risk scoring based on weather patterns and claim history.
+        </p>
+        <!-- Mini neural network viz -->
+        <div class="mt-5 flex items-center justify-between gap-3">
+          <div class="flex flex-col gap-1.5">
+            <div class="w-3 h-3 rounded-full bg-[#a855f7] animate-pulse"></div>
+            <div class="w-3 h-3 rounded-full bg-[#a855f7]/60 animate-pulse" style="animation-delay: 0.3s;"></div>
+            <div class="w-3 h-3 rounded-full bg-[#a855f7]/30 animate-pulse" style="animation-delay: 0.6s;"></div>
+          </div>
+          <div class="flex-1 flex flex-col gap-1">
+            <div class="h-[2px] bg-[#a855f7]/20 rounded-full"></div>
+            <div class="h-[2px] bg-[#a855f7]/30 rounded-full w-[80%]"></div>
+            <div class="h-[2px] bg-[#a855f7]/20 rounded-full w-[60%]"></div>
+            <div class="h-[2px] bg-[#a855f7]/10 rounded-full w-[90%]"></div>
+          </div>
+          <div class="bg-[#a855f7] border-[2px] border-black px-3 py-1.5 rounded-lg shadow-[3px_3px_0_#000]">
+            <span class="text-[10px] font-black text-black uppercase tracking-wider">Score: 94</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Fraud Detection (Spans 4 cols) -->
+      <div class="md:col-span-4 bg-black border-[3px] border-black rounded-3xl p-7 md:p-8 flex flex-col min-h-[280px] group hover:-translate-y-1 transition-all duration-500 shadow-[6px_6px_0_#ccff00]">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-11 h-11 rounded-xl bg-[#ccff00] border-[2px] border-black flex items-center justify-center">
+            <span class="material-symbols-outlined text-black text-xl" style="font-variation-settings: 'FILL' 1;">security</span>
+          </div>
+          <span class="text-[10px] font-black text-white/30 uppercase tracking-widest">Security</span>
+        </div>
+        <h3 class="text-2xl font-black text-white tracking-tight mb-3">Fraud Detection</h3>
+        <p class="text-[13px] text-white/40 font-medium leading-relaxed mb-auto">
+          Real-time risk monitoring catches anomalies before payouts. Every claim cross-referenced against multiple data points.
+        </p>
+        <!-- Security status -->
+        <div class="mt-5 flex flex-col gap-2">
+          <div class="flex items-center justify-between bg-white/5 border border-white/10 rounded-lg px-3 py-2">
+            <span class="text-[10px] font-bold text-white/40">GPS Match</span>
+            <div class="w-4 h-4 rounded bg-[#ccff00] flex items-center justify-center"><span class="material-symbols-outlined text-[10px] text-black font-black">check</span></div>
+          </div>
+          <div class="flex items-center justify-between bg-white/5 border border-white/10 rounded-lg px-3 py-2">
+            <span class="text-[10px] font-bold text-white/40">Velocity Check</span>
+            <div class="w-4 h-4 rounded bg-[#ccff00] flex items-center justify-center"><span class="material-symbols-outlined text-[10px] text-black font-black">check</span></div>
+          </div>
+          <div class="flex items-center justify-between bg-white/5 border border-white/10 rounded-lg px-3 py-2">
+            <span class="text-[10px] font-bold text-white/40">Pattern Analysis</span>
+            <div class="w-4 h-4 rounded bg-[#ccff00] flex items-center justify-center"><span class="material-symbols-outlined text-[10px] text-black font-black">check</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Instant Payouts (Spans 3 cols) -->
+      <div class="md:col-span-3 bg-[#fe6b00] border-[3px] border-black rounded-3xl p-7 md:p-8 flex flex-col min-h-[280px] group hover:-translate-y-1 transition-all duration-500 shadow-[6px_6px_0_#000]">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-11 h-11 rounded-xl bg-black border-[2px] border-black flex items-center justify-center">
+            <span class="material-symbols-outlined text-[#fe6b00] text-xl" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+          </div>
+        </div>
+        <h3 class="text-2xl font-black text-black tracking-tight mb-3">Instant Payouts</h3>
+        <p class="text-[13px] text-black/60 font-medium leading-relaxed mb-auto">
+          Direct UPI settlement. Straight to bank.
+        </p>
+        <!-- Amount animation -->
+        <div class="mt-5 bg-black border-[2px] border-black rounded-2xl p-4 flex flex-col items-center text-center shadow-[4px_4px_0_rgba(0,0,0,0.3)]">
+          <span class="text-3xl font-black text-[#fe6b00] tracking-tight">&#8377;500</span>
+          <span class="text-[9px] font-black text-white/40 uppercase tracking-widest mt-1">Auto-credited</span>
+          <div class="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse mt-2 shadow-[0_0_8px_rgba(204,255,0,0.6)]"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Section 5: Dark CTA Card -->
+<section class="py-32 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="bg-zinc-900 rounded-[2rem] p-12 md:p-24 relative overflow-hidden shadow-[0_0_80px_rgba(255,107,0,0.15)] flex flex-col items-center text-center">
+      <canvas id="cta-canvas"></canvas>
+      <div class="absolute inset-0 circuit-pattern pointer-events-none opacity-20"></div>
+
+      <div class="absolute -top-12 flex gap-4 z-20 pointer-events-none">
+        <div class="w-32 h-20 bg-gradient-to-br from-emerald-400/30 to-emerald-600/30 backdrop-blur-xl border border-white/10 rounded-2xl animate-float"></div>
+        <div class="w-40 h-24 bg-gradient-to-br from-blue-400/30 to-blue-600/30 backdrop-blur-xl border border-white/10 rounded-2xl animate-float" style="animation-delay:1.5s;margin-top:20px;"></div>
+        <div class="w-32 h-20 bg-gradient-to-br from-orange-400/30 to-primary-container/30 backdrop-blur-xl border border-white/10 rounded-2xl animate-float" style="animation-delay:0.7s;"></div>
+      </div>
+
+      <h2 class="font-headline font-black text-5xl md:text-8xl tracking-tighter text-white mb-6 relative z-10">
+        Protect income with<br/>
+        <span class="text-[#FF6B00]">automated insurance</span>
+      </h2>
+
+      <p class="text-gray-400 max-w-md mx-auto mb-12 text-lg relative z-10">
+        Join the risk pool. Dynamic weekly premiums based on your zone, with instant trigger-based payouts.
+      </p>
+
+      <button class="group relative bg-[#2a2a2c] text-white px-12 py-5 rounded-full font-black text-xl border border-white/5 hover:bg-zinc-800 transition-all overflow-hidden z-10">
+        <span class="relative z-10">Check your premium</span>
+        <div class="absolute top-0 right-0 h-full w-8 bg-[#FF6B00] transform translate-x-4 rotate-[15deg] group-hover:translate-x-2 transition-transform duration-300"></div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Section 6: Animated Footer -->
+<section class="relative w-full mt-20 overflow-hidden bg-background">
+  <footer class="border-t border-outline-variant/10 relative pt-10">
+    <div class="max-w-7xl flex flex-col justify-between mx-auto min-h-[30rem] sm:min-h-[35rem] md:min-h-[40rem] relative p-4 py-10">
+      
+      <!-- Top Content -->
+      <div class="flex flex-col mb-12 sm:mb-20 md:mb-0 w-full z-20">
+        <div class="w-full flex flex-col items-center">
+          <div class="space-y-4 flex flex-col items-center flex-1">
+            <div class="flex items-center gap-2">
+              <span class="text-on-surface text-4xl font-black uppercase tracking-tighter">Aegis</span>
+            </div>
+            <p class="text-on-surface-variant font-medium text-center w-full max-w-sm sm:w-96 px-4 sm:px-0">
+              Building the financial safety net for the next billion gig workers through parametric intelligence.
+            </p>
+          </div>
+
+          <!-- Social Links -->
+          <div class="flex mb-8 mt-6 gap-6">
+            <a href="#" class="text-on-surface-variant hover:text-primary transition-colors hover:scale-110 duration-300">
+              <span class="material-symbols-outlined text-3xl" data-icon="share">share</span>
+            </a>
+            <a href="#" class="text-on-surface-variant hover:text-primary transition-colors hover:scale-110 duration-300">
+              <span class="material-symbols-outlined text-3xl" data-icon="dataset">dataset</span>
+            </a>
+            <a href="#" class="text-on-surface-variant hover:text-primary transition-colors hover:scale-110 duration-300">
+              <span class="material-symbols-outlined text-3xl" data-icon="email">email</span>
+            </a>
+          </div>
+
+          <!-- Nav Links -->
+          <div class="flex flex-wrap justify-center gap-6 text-sm font-bold text-on-surface-variant max-w-full px-4">
+            <a class="hover:text-primary duration-300 uppercase tracking-widest" href="#">Coverage Tiers</a>
+            <a class="hover:text-primary duration-300 uppercase tracking-widest" href="#">AI Risk Engine</a>
+            <a class="hover:text-primary duration-300 uppercase tracking-widest" href="#">Documentation</a>
+            <a class="hover:text-primary duration-300 uppercase tracking-widest" href="#">Partner Portal</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Credits -->
+      <div class="mt-20 md:mt-24 flex flex-col gap-2 md:gap-1 items-center justify-center md:flex-row md:items-center md:justify-between px-4 md:px-0 z-20">
+        <p class="text-sm font-semibold text-on-surface-variant text-center md:text-left">
+          © 2026 Aegis. All rights reserved.
+        </p>
+        <nav class="flex gap-4">
+          <a href="#" class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors duration-300">Privacy Policy</a>
+          <a href="#" class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors duration-300">Terms of Service</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Large background text -->
+    <div class="absolute left-1/2 -translate-x-1/2 bottom-[140px] md:bottom-[120px] font-headline font-black tracking-tighter pointer-events-none select-none text-center px-4 w-full" style="font-size: clamp(6rem, 20vw, 18rem); max-width: 95vw;">
+      <span class="bg-gradient-to-b from-on-surface/10 via-on-surface/5 to-transparent bg-clip-text text-transparent leading-none block">AEGIS</span>
+    </div>
+
+    <!-- Bottom logo highlighted -->
+    <div class="absolute hover:border-primary duration-500 drop-shadow-[0_0px_30px_rgba(255,107,0,0.5)] dark:drop-shadow-[0_0px_30px_rgba(255,107,0,0.5)] bottom-24 md:bottom-20 backdrop-blur-md rounded-[2rem] bg-surface-container-lowest/60 left-1/2 border-2 border-outline-variant/30 flex items-center justify-center p-3 -translate-x-1/2 z-20 group cursor-pointer transition-colors">
+      <div class="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-gradient-to-br from-[#9c3f00] to-[#fe6b00] rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-105 transition-transform duration-500">
+        <!-- Logo masked -->
+        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white" style="-webkit-mask-image: url('logo.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; mask-image: url('logo.png'); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"></div>
+      </div>
+    </div>
+
+    <!-- Bottom line -->
+    <div class="absolute bottom-32 sm:bottom-34 backdrop-blur-sm h-[2px] bg-gradient-to-r from-transparent via-outline-variant/30 to-transparent w-full left-1/2 -translate-x-1/2 z-10"></div>
+
+    <!-- Bottom shadow wrapper -->
+    <div class="bg-gradient-to-t from-background via-background/80 blur-[1em] to-transparent absolute bottom-0 w-full h-32 z-10 pointer-events-none"></div>
+
+  </footer>
+</section>
+</main>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const heading = document.getElementById("hero-heading");
+    if (!heading) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const words = entry.target.querySelectorAll('.blur-word');
+                words.forEach((word, index) => {
+                    word.style.animationDelay = `${index * 0.2}s`;
+                    word.classList.add('animate');
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    observer.observe(heading);
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function() {
+  const canvas = document.getElementById('globe-canvas');
+  if (!canvas) return;
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  function resize() {
+    const s = canvas.parentElement.offsetWidth;
+    renderer.setSize(s, s);
+    camera.aspect = 1;
+    camera.updateProjectionMatrix();
+  }
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+  camera.position.z = 3.5;
+
+  scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+  const dl = new THREE.DirectionalLight(0xff6b00, 1.5);
+  dl.position.set(3, 2, 3);
+  scene.add(dl);
+  const dl2 = new THREE.DirectionalLight(0x4488ff, 0.5);
+  dl2.position.set(-3, -2, -1);
+  scene.add(dl2);
+
+  const innerGeo = new THREE.SphereGeometry(1, 32, 32);
+  const innerMat = new THREE.MeshStandardMaterial({ color: 0x1a1a2e, metalness: 0.5, roughness: 0.5 });
+  scene.add(new THREE.Mesh(innerGeo, innerMat));
+
+  const wireGeo = new THREE.SphereGeometry(1.01, 20, 20);
+  const wireMat = new THREE.MeshBasicMaterial({ color: 0xff6b00, wireframe: true, transparent: true, opacity: 0.35 });
+  const globe = new THREE.Mesh(wireGeo, wireMat);
+  scene.add(globe);
+
+  const dotGeo = new THREE.BufferGeometry();
+  const dotPositions = [];
+  for (let i = 0; i < 60; i++) {
+    const phi = Math.acos(2 * Math.random() - 1);
+    const theta = 2 * Math.PI * Math.random();
+    const r = 1.03;
+    dotPositions.push(r * Math.sin(phi) * Math.cos(theta), r * Math.cos(phi), r * Math.sin(phi) * Math.sin(theta));
+  }
+  dotGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(dotPositions), 3));
+  scene.add(new THREE.Points(dotGeo, new THREE.PointsMaterial({ color: 0xffaa33, size: 0.05 })));
+
+  const orbitGeo = new THREE.TorusGeometry(1.5, 0.008, 8, 80);
+  const orbitMat = new THREE.MeshBasicMaterial({ color: 0x4488ff, transparent: true, opacity: 0.4 });
+  const orbit = new THREE.Mesh(orbitGeo, orbitMat);
+  orbit.rotation.x = Math.PI / 4;
+  scene.add(orbit);
+
+  const satGeo = new THREE.SphereGeometry(0.05, 8, 8);
+  const satMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+  const sat = new THREE.Mesh(satGeo, satMat);
+  scene.add(sat);
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  let t = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    t += 0.01;
+    globe.rotation.y += 0.005;
+    orbit.rotation.z += 0.008;
+    sat.position.x = Math.cos(t * 1.2) * 1.5;
+    sat.position.y = Math.sin(t * 1.2) * Math.sin(Math.PI / 4) * 1.5;
+    sat.position.z = Math.sin(t * 1.2) * Math.cos(Math.PI / 4) * 1.5;
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+</script>
+
+<script>
+(function() {
+  const canvas = document.getElementById('dataflow-canvas');
+  if (!canvas) return;
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  function resize() {
+    const el = canvas.parentElement;
+    renderer.setSize(el.offsetWidth, el.offsetHeight);
+    camera.aspect = el.offsetWidth / el.offsetHeight;
+    camera.updateProjectionMatrix();
+  }
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 500);
+  camera.position.z = 30;
+
+  const lineMat = new THREE.LineBasicMaterial({ color: 0xff6b00, transparent: true, opacity: 0.06 });
+  for (let x = -20; x <= 20; x += 2) {
+    const pts = [new THREE.Vector3(x, -20, 0), new THREE.Vector3(x, 20, 0)];
+    scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), lineMat));
+  }
+  for (let y = -20; y <= 20; y += 2) {
+    const pts = [new THREE.Vector3(-20, y, 0), new THREE.Vector3(20, y, 0)];
+    scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), lineMat));
+  }
+
+  const flowDots = [];
+  const dotM = new THREE.MeshBasicMaterial({ color: 0xff6b00, transparent: true, opacity: 0.7 });
+  for (let i = 0; i < 30; i++) {
+    const d = new THREE.Mesh(new THREE.SphereGeometry(0.08, 6, 6), dotM);
+    d.userData.isHorz = Math.random() > 0.5;
+    d.userData.pos = (Math.random() - 0.5) * 40;
+    d.userData.lane = Math.round((Math.random() - 0.5) * 10) * 2;
+    d.userData.speed = (Math.random() * 0.1 + 0.05) * (Math.random() > 0.5 ? 1 : -1);
+    flowDots.push(d);
+    scene.add(d);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  function animate() {
+    requestAnimationFrame(animate);
+    flowDots.forEach(d => {
+      d.userData.pos += d.userData.speed;
+      if (Math.abs(d.userData.pos) > 20) d.userData.pos *= -1;
+      if (d.userData.isHorz) d.position.set(d.userData.pos, d.userData.lane, 0);
+      else d.position.set(d.userData.lane, d.userData.pos, 0);
+    });
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+</script>
+
+<script>
+(function() {
+  const canvas = document.getElementById('cta-canvas');
+  if (!canvas) return;
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  function resize() {
+    const el = canvas.parentElement;
+    renderer.setSize(el.offsetWidth, el.offsetHeight);
+    camera.aspect = el.offsetWidth / el.offsetHeight;
+    camera.updateProjectionMatrix();
+  }
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(70, 1, 0.1, 200);
+  camera.position.z = 20;
+
+  const pGeo = new THREE.BufferGeometry();
+  const N = 600;
+  const positions = new Float32Array(N * 3);
+  const velocities = [];
+
+  for (let i = 0; i < N; i++) {
+    const r = Math.random() * 40;
+    const theta = Math.random() * Math.PI * 2;
+    positions[i * 3] = r * Math.cos(theta);
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 40;
+    positions[i * 3 + 2] = r * Math.sin(theta) - 10;
+    velocities.push({
+      x: (Math.random() - 0.5) * 0.02,
+      y: Math.random() * 0.05 + 0.01,
+      z: (Math.random() - 0.5) * 0.02
+    });
+  }
+
+  pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  
+  const pMat = new THREE.PointsMaterial({
+    color: 0xff6b00,
+    size: 0.15,
+    transparent: true,
+    opacity: 0.8,
+    blending: THREE.AdditiveBlending
+  });
+
+  const particles = new THREE.Points(pGeo, pMat);
+  scene.add(particles);
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  function animate() {
+    requestAnimationFrame(animate);
+    const pos = pGeo.attributes.position.array;
+    for (let i = 0; i < N; i++) {
+      pos[i * 3 + 1] += velocities[i].y;
+      if (pos[i * 3 + 1] > 20) pos[i * 3 + 1] = -20;
+      pos[i * 3] += velocities[i].x;
+      pos[i * 3 + 2] += velocities[i].z;
+    }
+    pGeo.attributes.position.needsUpdate = true;
+    particles.rotation.y += 0.002;
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const menuItems = document.querySelectorAll('.menu__item');
+
+  menuItems.forEach(item => {
+    const link = item.querySelector('.menu__item-link');
+    const marquee = item.querySelector('.marquee');
+    const marqueeInner = item.querySelector('.marquee__inner');
+    const marqueePart = item.querySelector('.marquee__part');
+    if(!marqueePart || !link || !marquee || !marqueeInner) return;
+
+    let animation;
+    const speed = 15;
+
+    const setupMarquee = () => {
+      const contentWidth = marqueePart.offsetWidth;
+      if (contentWidth === 0) return;
+      if (animation) animation.kill();
+      animation = gsap.to(marqueeInner, {
+        x: -contentWidth,
+        duration: speed,
+        ease: 'none',
+        repeat: -1
+      });
+    };
+    
+    setTimeout(setupMarquee, 100);
+    window.addEventListener('resize', setupMarquee);
+
+    const distMetric = (x, y, x2, y2) => (x - x2)**2 + (y - y2)**2;
+    const findClosestEdge = (mouseX, mouseY, width, height) => {
+      const topEdgeDist = distMetric(mouseX, mouseY, width / 2, 0);
+      const bottomEdgeDist = distMetric(mouseX, mouseY, width / 2, height);
+      return topEdgeDist < bottomEdgeDist ? 'top' : 'bottom';
+    };
+
+    const animDefaults = { duration: 0.6, ease: 'expo' };
+
+    link.addEventListener('mouseenter', (ev) => {
+      const rect = item.getBoundingClientRect();
+      const x = ev.clientX - rect.left;
+      const y = ev.clientY - rect.top;
+      const edge = findClosestEdge(x, y, rect.width, rect.height);
+      
+      gsap.timeline({ defaults: animDefaults })
+        .set(marquee, { y: edge === 'top' ? '-101%' : '101%' }, 0)
+        .set(marqueeInner, { y: edge === 'top' ? '101%' : '-101%' }, 0)
+        .to([marquee, marqueeInner], { y: '0%' }, 0);
+    });
+
+    link.addEventListener('mouseleave', (ev) => {
+      const rect = item.getBoundingClientRect();
+      const x = ev.clientX - rect.left;
+      const y = ev.clientY - rect.top;
+      const edge = findClosestEdge(x, y, rect.width, rect.height);
+
+      gsap.timeline({ defaults: animDefaults })
+        .to(marquee, { y: edge === 'top' ? '-101%' : '101%' }, 0)
+        .to(marqueeInner, { y: edge === 'top' ? '101%' : '-101%' }, 0);
+    });
+  });
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Initialize Lenis for buttery smooth scrolling
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical',
+        gestureDirection: 'vertical',
+        smooth: true,
+        mouseMultiplier: 1,
+        smoothTouch: false,
+        touchMultiplier: 2,
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0, 0);
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 2. Global Viewport Reveals (Shopify Editions Style)
+    // Reveal all major headings and paragraphs
+    const headings = gsap.utils.toArray('h2, h3, p.text-xl, p.text-lg');
+    headings.forEach(el => {
+        gsap.from(el, {
+            scrollTrigger: {
+                trigger: el,
+                start: "top 90%",
+                toggleActions: "play none none reverse"
+            },
+            y: 40,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out"
+        });
+    });
+
+    // Reveal the grids with Stagger
+    const cardGrids = gsap.utils.toArray('.grid');
+    cardGrids.forEach(grid => {
+        const cards = Array.from(grid.children);
+        if(cards.length > 0) {
+            gsap.from(cards, {
+                scrollTrigger: {
+                    trigger: grid,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 60,
+                opacity: 0,
+                scale: 0.98,
+                duration: 1.2,
+                stagger: 0.15,
+                ease: "power3.out"
+            });
+        }
+    });
+
+    // Subtly shrink and fade in huge showcase sections
+    const showcases = gsap.utils.toArray('.bg-surface-container-lowest.rounded-3xl.overflow-hidden, .bg-zinc-900.rounded-\\[2rem\\]');
+    showcases.forEach(card => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+                toggleActions: "play none none reverse"
+            },
+            y: 80,
+            opacity: 0,
+            duration: 1.5,
+            ease: "expo.out"
+        });
+    });
+});
+</script>
+<script type="module">
+  import createGlobe from "https://cdn.skypack.dev/cobe";
+
+  const canvas = document.getElementById("cobe-globe");
+  if (canvas) {
+    let phi = 0;
+    const isDark = document.documentElement.classList.contains('dark');
+    const globe = createGlobe(canvas, {
+      devicePixelRatio: 2,
+      width: 1600,
+      height: 1600,
+      phi: 0,
+      theta: 0.1,
+      dark: isDark ? 1 : 0,
+      diffuse: 1.2,
+      mapSamples: 16000,
+      mapBrightness: 6,
+      baseColor: isDark ? [0.3, 0.3, 0.3] : [1, 1, 1],
+      markerColor: [0.98, 0.41, 0],
+      glowColor: isDark ? [0.1, 0.1, 0.1] : [1, 1, 1],
+      markers: [
+        { location: [20.5937, 78.9629], size: 0.08 },
+        { location: [37.7595, -122.4367], size: 0.03 }
+      ],
+      onRender: (state) => {
+        state.phi = phi;
+        phi += 0.005;
+      }
+    });
+  }
+</script>
+</body></html>
