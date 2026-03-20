@@ -21,10 +21,11 @@ export default function CtaSection() {
             Join the risk pool. Dynamic weekly premiums based on your zone, with instant trigger-based payouts.
           </p>
 
-          <button className="group relative bg-[#2a2a2c] text-white px-12 py-5 rounded-full font-black text-xl border border-white/5 hover:bg-zinc-800 transition-all overflow-hidden z-10">
-            <span className="relative z-10">Check your premium</span>
+          <a href="https://expo.dev/accounts/sriram_vk/projects/aegis/builds/6a8e6eaf-2bc7-4d58-b55c-a2646c2043ff" target="_blank" rel="noopener noreferrer" className="group relative bg-[#2a2a2c] text-white px-12 py-5 rounded-full font-black text-xl border border-white/5 hover:bg-zinc-800 transition-all overflow-hidden z-10 flex items-center gap-3">
+            <span className="relative z-10">Download Mobile App</span>
+            <span className="material-symbols-outlined relative z-10 text-xl font-black">download</span>
             <div className="absolute top-0 right-0 h-full w-8 bg-[#FF6B00] transform translate-x-4 rotate-[15deg] group-hover:translate-x-2 transition-transform duration-300"></div>
-          </button>
+          </a>
         </div>
       </div>
     </section>
