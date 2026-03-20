@@ -120,6 +120,48 @@
             background-color: #e5e7eb;
             text-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 2px 2px 5px rgba(0, 0, 0, 0.1);
         }
+        @keyframes blurTextAnim {
+            0% { filter: blur(10px); opacity: 0; transform: translateY(-50px); }
+            50% { filter: blur(5px); opacity: 0.5; transform: translateY(5px); }
+            100% { filter: blur(0px); opacity: 1; transform: translateY(0); }
+        }
+        .blur-word {
+            display: inline-block;
+            filter: blur(10px);
+            opacity: 0;
+            transform: translateY(-50px);
+            will-change: transform, filter, opacity;
+        }
+        .blur-word.animate {
+            animation: blurTextAnim 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        #cta-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            border-radius: 2rem;
+            overflow: hidden;
+        }
+        .menu-wrap { width: 100%; height: 100%; overflow: hidden; background-color: #0c0e0f; }
+        .menu { display: flex; flex-direction: column; height: 100%; margin: 0; padding: 0; }
+        .menu__item { flex: 1; position: relative; overflow: hidden; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+        .menu__item:first-child { border-top: none; }
+        .menu__item-link { display: flex; align-items: center; justify-content: center; height: 100%; position: relative; cursor: pointer; text-transform: uppercase; text-decoration: none; white-space: nowrap; font-weight: 900; font-size: 5vh; color: rgba(255,255,255,0.8); transition: color 0.3s; }
+        .menu__item-link:hover { color: #fff; }
+        .marquee { position: absolute; top: 0; left: 0; overflow: hidden; width: 100%; height: 100%; pointer-events: none; transform: translate3d(0, 101%, 0); z-index: 10; }
+        .marquee__inner-wrap { height: 100%; width: 100%; overflow: hidden; }
+        .marquee__inner { display: flex; align-items: center; position: relative; height: 100%; width: fit-content; will-change: transform; }
+        .marquee__part { display: flex; align-items: center; flex-shrink: 0; font-family: 'Manrope', sans-serif; }
+        .marquee span { white-space: nowrap; text-transform: uppercase; font-weight: 900; font-size: 6vh; line-height: 1; padding: 0 2vw; }
+        .marquee__img { width: 12vw; height: 60%; margin: 0 1vw; border-radius: 2vw; background-size: contain; background-position: center; background-repeat: no-repeat; background-color: #fff; padding: 1vw; display: flex; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+        @media (max-width: 768px) {
+            .marquee__img { width: 25vw; padding: 2vw; border-radius: 4vw; }
+            .menu__item-link { font-size: 4vh; }
+            .marquee span { font-size: 5vh; }
+        }
     </style>
 </head>
 <body class="bg-background font-body text-on-surface antialiased overflow-x-hidden">
@@ -127,7 +169,7 @@
 <nav class="fixed top-0 left-0 right-0 z-50 bg-[#f0f1f2] dark:bg-zinc-900 no-border tonal-shift">
 <div class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
 <div class="text-2xl font-black tracking-tighter text-black dark:text-white flex items-center gap-2 uppercase">
-<span class="material-symbols-outlined text-[#9c3f00] dark:text-[#fe6b00]" data-icon="shield">shield</span>
+<div class="w-12 h-12 bg-[#9c3f00] dark:bg-[#fe6b00]" style="-webkit-mask-image: url('logo.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; mask-image: url('logo.png'); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"></div>
                 Aegis
             </div>
 <div class="hidden md:flex items-center gap-8">
@@ -193,10 +235,10 @@
 
 <!-- Hero Content -->
 <div class="relative z-10 flex flex-col items-center text-center max-w-5xl">
-<h1 class="font-headline font-black text-[clamp(4rem,12vw,10rem)] tracking-tighter hero-title flex flex-col gap-0">
-<span class="text-on-surface">Income safety</span>
-<span class="text-on-surface opacity-90">that feels</span>
-<span class="text-inverse-primary italic">effortless</span>
+<h1 id="hero-heading" class="font-headline font-black text-[clamp(4rem,12vw,10rem)] tracking-tighter hero-title flex flex-col gap-0">
+<span class="text-on-surface"><span class="blur-word">Income</span>&nbsp;<span class="blur-word">safety</span></span>
+<span class="text-on-surface opacity-90"><span class="blur-word">that</span>&nbsp;<span class="blur-word">feels</span></span>
+<span class="text-inverse-primary italic"><span class="blur-word">effortless</span></span>
 </h1>
 <p class="mt-12 text-on-surface-variant font-medium text-lg md:text-xl max-w-xl leading-relaxed">
                     Designed for India's gig economy. AI-powered income protection that pays out automatically for weather and disruptions—with zero manual claims.
@@ -222,6 +264,89 @@
 <span class="font-black text-2xl tracking-tighter uppercase">Zomato</span>
 </div>
 </div>
+</section>
+
+<!-- Q-COMMERCE FLOWING MENU SECTION -->
+<section class="py-24 px-6 bg-[#0c0e0f] relative z-20" id="platforms">
+  <div class="max-w-7xl mx-auto flex flex-col items-center">
+    <div class="text-xs font-black uppercase tracking-[0.2em] text-white opacity-40 mb-6">Partner Network</div>
+    <h2 class="text-5xl md:text-7xl font-headline font-black text-white text-center mb-16 tracking-tighter">
+      Seamless coverage across<br/><span class="text-primary-fixed-dim">India's top q-commerce</span>
+    </h2>
+    
+    <div class="menu-wrap rounded-[2rem] border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] w-full" style="height: 60vh;">
+      <nav class="menu">
+        <!-- Blinkit -->
+        <div class="menu__item uppercase">
+          <a class="menu__item-link" href="#">Blinkit</a>
+          <div class="marquee" style="background-color: #F8CB46;">
+            <div class="marquee__inner-wrap">
+              <div class="marquee__inner" aria-hidden="true">
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/blinkit.com');"></div></div>
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/blinkit.com');"></div></div>
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/blinkit.com');"></div></div>
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/blinkit.com');"></div></div>
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/blinkit.com');"></div></div>
+                <div class="marquee__part" style="color: #000;"><span>Blinkit</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/blinkit.com');"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Zepto -->
+        <div class="menu__item uppercase">
+          <a class="menu__item-link" href="#">Zepto</a>
+          <div class="marquee" style="background-color: #480e8e;">
+            <div class="marquee__inner-wrap">
+              <div class="marquee__inner" aria-hidden="true">
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/zeptonow.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/zeptonow.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/zeptonow.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/zeptonow.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/zeptonow.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Zepto</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/zeptonow.com');"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Swiggy Instamart -->
+        <div class="menu__item uppercase">
+          <a class="menu__item-link" href="#">Instamart</a>
+          <div class="marquee" style="background-color: #fc8019;">
+            <div class="marquee__inner-wrap">
+              <div class="marquee__inner" aria-hidden="true">
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/swiggy.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/swiggy.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/swiggy.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/swiggy.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/swiggy.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>Instamart</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/swiggy.com');"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BigBasket -->
+        <div class="menu__item uppercase">
+          <a class="menu__item-link" href="#">BigBasket</a>
+          <div class="marquee" style="background-color: #84c225;">
+            <div class="marquee__inner-wrap">
+              <div class="marquee__inner" aria-hidden="true">
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/bigbasket.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/bigbasket.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/bigbasket.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/bigbasket.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/bigbasket.com');"></div></div>
+                <div class="marquee__part" style="color: #fff;"><span>BigBasket</span><div class="marquee__img" style="background-image: url('https://logo.clearbit.com/bigbasket.com');"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </nav>
+    </div>
+  </div>
 </section>
 
 <!-- Section 1: What we cover -->
@@ -344,7 +469,8 @@
 </div>
 
 <!-- Massive White Card -->
-<div class="bg-surface-container-lowest rounded-3xl shadow-xl border border-outline-variant/10 overflow-hidden">
+<div class="bg-surface-container-lowest rounded-3xl shadow-xl border border-outline-variant/10 overflow-hidden relative">
+<canvas id="dataflow-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-40"></canvas>
 <!-- Tab Navigation -->
 <div class="flex justify-center gap-4 py-8 border-b border-surface-container">
 <button class="px-6 py-2 rounded-full font-bold bg-on-surface text-surface-container-lowest shadow-lg">Parametric Triggers</button>
@@ -551,31 +677,32 @@
 
 <!-- Section 5: Dark CTA Card -->
 <section class="py-32 px-6">
-<div class="max-w-7xl mx-auto">
-<div class="bg-zinc-900 rounded-[2rem] p-12 md:p-24 relative overflow-hidden shadow-[0_0_80px_rgba(255,107,0,0.15)] flex flex-col items-center text-center">
-<!-- Background Pattern -->
-<div class="absolute inset-0 circuit-pattern pointer-events-none opacity-20"></div>
+  <div class="max-w-7xl mx-auto">
+    <div class="bg-zinc-900 rounded-[2rem] p-12 md:p-24 relative overflow-hidden shadow-[0_0_80px_rgba(255,107,0,0.15)] flex flex-col items-center text-center">
+      <canvas id="cta-canvas"></canvas>
+      <div class="absolute inset-0 circuit-pattern pointer-events-none opacity-20"></div>
 
-<!-- Floating Glassmorphic Rectangles -->
-<div class="absolute -top-12 flex gap-4 z-20 pointer-events-none">
-<div class="w-32 h-20 bg-gradient-to-br from-emerald-400/30 to-emerald-600/30 backdrop-blur-xl border border-white/10 rounded-2xl animate-float" style="animation-delay: 0s;"></div>
-<div class="w-40 h-24 bg-gradient-to-br from-blue-400/30 to-blue-600/30 backdrop-blur-xl border border-white/10 rounded-2xl animate-float" style="animation-delay: 1.5s; margin-top: 20px;"></div>
-<div class="w-32 h-20 bg-gradient-to-br from-orange-400/30 to-primary-container/30 backdrop-blur-xl border border-white/10 rounded-2xl animate-float" style="animation-delay: 0.7s;"></div>
-</div>
+      <div class="absolute -top-12 flex gap-4 z-20 pointer-events-none">
+        <div class="w-32 h-20 bg-gradient-to-br from-emerald-400/30 to-emerald-600/30 backdrop-blur-xl border border-white/10 rounded-2xl animate-float"></div>
+        <div class="w-40 h-24 bg-gradient-to-br from-blue-400/30 to-blue-600/30 backdrop-blur-xl border border-white/10 rounded-2xl animate-float" style="animation-delay:1.5s;margin-top:20px;"></div>
+        <div class="w-32 h-20 bg-gradient-to-br from-orange-400/30 to-primary-container/30 backdrop-blur-xl border border-white/10 rounded-2xl animate-float" style="animation-delay:0.7s;"></div>
+      </div>
 
-<h2 class="font-headline font-black text-5xl md:text-8xl tracking-tighter text-white mb-6 relative z-10">
-                Protect income with<br/>
-<span class="text-[#FF6B00]">automated insurance</span>
-</h2>
-<p class="text-gray-400 max-w-md mx-auto mb-12 text-lg relative z-10">
-                Join the risk pool. Dynamic weekly premiums based on your zone, with instant trigger-based payouts.
-            </p>
-<button class="group relative bg-[#2a2a2c] text-white px-12 py-5 rounded-full font-black text-xl border border-white/5 hover:bg-zinc-800 transition-all overflow-hidden">
-<span class="relative z-10">Check your premium</span>
-<div class="absolute top-0 right-0 h-full w-8 bg-[#FF6B00] transform translate-x-4 rotate-[15deg] group-hover:translate-x-2 transition-transform duration-300"></div>
-</button>
-</div>
-</div>
+      <h2 class="font-headline font-black text-5xl md:text-8xl tracking-tighter text-white mb-6 relative z-10">
+        Protect income with<br/>
+        <span class="text-[#FF6B00]">automated insurance</span>
+      </h2>
+
+      <p class="text-gray-400 max-w-md mx-auto mb-12 text-lg relative z-10">
+        Join the risk pool. Dynamic weekly premiums based on your zone, with instant trigger-based payouts.
+      </p>
+
+      <button class="group relative bg-[#2a2a2c] text-white px-12 py-5 rounded-full font-black text-xl border border-white/5 hover:bg-zinc-800 transition-all overflow-hidden z-10">
+        <span class="relative z-10">Check your premium</span>
+        <div class="absolute top-0 right-0 h-full w-8 bg-[#FF6B00] transform translate-x-4 rotate-[15deg] group-hover:translate-x-2 transition-transform duration-300"></div>
+      </button>
+    </div>
+  </div>
 </section>
 
 <!-- Section 6: The Footer -->
@@ -585,7 +712,7 @@
 <!-- Col 1 -->
 <div class="flex flex-col gap-6">
 <div class="text-2xl font-black tracking-tighter text-black flex items-center gap-2 uppercase">
-<span class="material-symbols-outlined text-[#9c3f00]" data-icon="shield">shield</span>
+<div class="w-12 h-12 bg-[#9c3f00]" style="-webkit-mask-image: url('logo.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; mask-image: url('logo.png'); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"></div>
                     Aegis
                 </div>
 <p class="text-on-surface-variant text-sm max-w-xs">
@@ -653,4 +780,290 @@
     </h1>
 </section>
 </main>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const heading = document.getElementById("hero-heading");
+    if (!heading) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const words = entry.target.querySelectorAll('.blur-word');
+                words.forEach((word, index) => {
+                    word.style.animationDelay = `${index * 0.2}s`;
+                    word.classList.add('animate');
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    observer.observe(heading);
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function() {
+  const canvas = document.getElementById('globe-canvas');
+  if (!canvas) return;
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  function resize() {
+    const s = canvas.parentElement.offsetWidth;
+    renderer.setSize(s, s);
+    camera.aspect = 1;
+    camera.updateProjectionMatrix();
+  }
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+  camera.position.z = 3.5;
+
+  scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+  const dl = new THREE.DirectionalLight(0xff6b00, 1.5);
+  dl.position.set(3, 2, 3);
+  scene.add(dl);
+  const dl2 = new THREE.DirectionalLight(0x4488ff, 0.5);
+  dl2.position.set(-3, -2, -1);
+  scene.add(dl2);
+
+  const innerGeo = new THREE.SphereGeometry(1, 32, 32);
+  const innerMat = new THREE.MeshStandardMaterial({ color: 0x1a1a2e, metalness: 0.5, roughness: 0.5 });
+  scene.add(new THREE.Mesh(innerGeo, innerMat));
+
+  const wireGeo = new THREE.SphereGeometry(1.01, 20, 20);
+  const wireMat = new THREE.MeshBasicMaterial({ color: 0xff6b00, wireframe: true, transparent: true, opacity: 0.35 });
+  const globe = new THREE.Mesh(wireGeo, wireMat);
+  scene.add(globe);
+
+  const dotGeo = new THREE.BufferGeometry();
+  const dotPositions = [];
+  for (let i = 0; i < 60; i++) {
+    const phi = Math.acos(2 * Math.random() - 1);
+    const theta = 2 * Math.PI * Math.random();
+    const r = 1.03;
+    dotPositions.push(r * Math.sin(phi) * Math.cos(theta), r * Math.cos(phi), r * Math.sin(phi) * Math.sin(theta));
+  }
+  dotGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(dotPositions), 3));
+  scene.add(new THREE.Points(dotGeo, new THREE.PointsMaterial({ color: 0xffaa33, size: 0.05 })));
+
+  const orbitGeo = new THREE.TorusGeometry(1.5, 0.008, 8, 80);
+  const orbitMat = new THREE.MeshBasicMaterial({ color: 0x4488ff, transparent: true, opacity: 0.4 });
+  const orbit = new THREE.Mesh(orbitGeo, orbitMat);
+  orbit.rotation.x = Math.PI / 4;
+  scene.add(orbit);
+
+  const satGeo = new THREE.SphereGeometry(0.05, 8, 8);
+  const satMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+  const sat = new THREE.Mesh(satGeo, satMat);
+  scene.add(sat);
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  let t = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    t += 0.01;
+    globe.rotation.y += 0.005;
+    orbit.rotation.z += 0.008;
+    sat.position.x = Math.cos(t * 1.2) * 1.5;
+    sat.position.y = Math.sin(t * 1.2) * Math.sin(Math.PI / 4) * 1.5;
+    sat.position.z = Math.sin(t * 1.2) * Math.cos(Math.PI / 4) * 1.5;
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+</script>
+
+<script>
+(function() {
+  const canvas = document.getElementById('dataflow-canvas');
+  if (!canvas) return;
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  function resize() {
+    const el = canvas.parentElement;
+    renderer.setSize(el.offsetWidth, el.offsetHeight);
+    camera.aspect = el.offsetWidth / el.offsetHeight;
+    camera.updateProjectionMatrix();
+  }
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 500);
+  camera.position.z = 30;
+
+  const lineMat = new THREE.LineBasicMaterial({ color: 0xff6b00, transparent: true, opacity: 0.06 });
+  for (let x = -20; x <= 20; x += 2) {
+    const pts = [new THREE.Vector3(x, -20, 0), new THREE.Vector3(x, 20, 0)];
+    scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), lineMat));
+  }
+  for (let y = -20; y <= 20; y += 2) {
+    const pts = [new THREE.Vector3(-20, y, 0), new THREE.Vector3(20, y, 0)];
+    scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), lineMat));
+  }
+
+  const flowDots = [];
+  const dotM = new THREE.MeshBasicMaterial({ color: 0xff6b00, transparent: true, opacity: 0.7 });
+  for (let i = 0; i < 30; i++) {
+    const d = new THREE.Mesh(new THREE.SphereGeometry(0.08, 6, 6), dotM);
+    d.userData.isHorz = Math.random() > 0.5;
+    d.userData.pos = (Math.random() - 0.5) * 40;
+    d.userData.lane = Math.round((Math.random() - 0.5) * 10) * 2;
+    d.userData.speed = (Math.random() * 0.1 + 0.05) * (Math.random() > 0.5 ? 1 : -1);
+    flowDots.push(d);
+    scene.add(d);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  function animate() {
+    requestAnimationFrame(animate);
+    flowDots.forEach(d => {
+      d.userData.pos += d.userData.speed;
+      if (Math.abs(d.userData.pos) > 20) d.userData.pos *= -1;
+      if (d.userData.isHorz) d.position.set(d.userData.pos, d.userData.lane, 0);
+      else d.position.set(d.userData.lane, d.userData.pos, 0);
+    });
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+</script>
+
+<script>
+(function() {
+  const canvas = document.getElementById('cta-canvas');
+  if (!canvas) return;
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  function resize() {
+    const el = canvas.parentElement;
+    renderer.setSize(el.offsetWidth, el.offsetHeight);
+    camera.aspect = el.offsetWidth / el.offsetHeight;
+    camera.updateProjectionMatrix();
+  }
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(70, 1, 0.1, 200);
+  camera.position.z = 20;
+
+  const pGeo = new THREE.BufferGeometry();
+  const N = 600;
+  const positions = new Float32Array(N * 3);
+  const velocities = [];
+
+  for (let i = 0; i < N; i++) {
+    const r = Math.random() * 40;
+    const theta = Math.random() * Math.PI * 2;
+    positions[i * 3] = r * Math.cos(theta);
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 40;
+    positions[i * 3 + 2] = r * Math.sin(theta) - 10;
+    velocities.push({
+      x: (Math.random() - 0.5) * 0.02,
+      y: Math.random() * 0.05 + 0.01,
+      z: (Math.random() - 0.5) * 0.02
+    });
+  }
+
+  pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  
+  const pMat = new THREE.PointsMaterial({
+    color: 0xff6b00,
+    size: 0.15,
+    transparent: true,
+    opacity: 0.8,
+    blending: THREE.AdditiveBlending
+  });
+
+  const particles = new THREE.Points(pGeo, pMat);
+  scene.add(particles);
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  function animate() {
+    requestAnimationFrame(animate);
+    const pos = pGeo.attributes.position.array;
+    for (let i = 0; i < N; i++) {
+      pos[i * 3 + 1] += velocities[i].y;
+      if (pos[i * 3 + 1] > 20) pos[i * 3 + 1] = -20;
+      pos[i * 3] += velocities[i].x;
+      pos[i * 3 + 2] += velocities[i].z;
+    }
+    pGeo.attributes.position.needsUpdate = true;
+    particles.rotation.y += 0.002;
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const menuItems = document.querySelectorAll('.menu__item');
+
+  menuItems.forEach(item => {
+    const link = item.querySelector('.menu__item-link');
+    const marquee = item.querySelector('.marquee');
+    const marqueeInner = item.querySelector('.marquee__inner');
+    const marqueePart = item.querySelector('.marquee__part');
+    if(!marqueePart || !link || !marquee || !marqueeInner) return;
+
+    let animation;
+    const speed = 15;
+
+    const setupMarquee = () => {
+      const contentWidth = marqueePart.offsetWidth;
+      if (contentWidth === 0) return;
+      if (animation) animation.kill();
+      animation = gsap.to(marqueeInner, {
+        x: -contentWidth,
+        duration: speed,
+        ease: 'none',
+        repeat: -1
+      });
+    };
+    
+    setTimeout(setupMarquee, 100);
+    window.addEventListener('resize', setupMarquee);
+
+    const distMetric = (x, y, x2, y2) => (x - x2)**2 + (y - y2)**2;
+    const findClosestEdge = (mouseX, mouseY, width, height) => {
+      const topEdgeDist = distMetric(mouseX, mouseY, width / 2, 0);
+      const bottomEdgeDist = distMetric(mouseX, mouseY, width / 2, height);
+      return topEdgeDist < bottomEdgeDist ? 'top' : 'bottom';
+    };
+
+    const animDefaults = { duration: 0.6, ease: 'expo' };
+
+    link.addEventListener('mouseenter', (ev) => {
+      const rect = item.getBoundingClientRect();
+      const x = ev.clientX - rect.left;
+      const y = ev.clientY - rect.top;
+      const edge = findClosestEdge(x, y, rect.width, rect.height);
+      
+      gsap.timeline({ defaults: animDefaults })
+        .set(marquee, { y: edge === 'top' ? '-101%' : '101%' }, 0)
+        .set(marqueeInner, { y: edge === 'top' ? '101%' : '-101%' }, 0)
+        .to([marquee, marqueeInner], { y: '0%' }, 0);
+    });
+
+    link.addEventListener('mouseleave', (ev) => {
+      const rect = item.getBoundingClientRect();
+      const x = ev.clientX - rect.left;
+      const y = ev.clientY - rect.top;
+      const edge = findClosestEdge(x, y, rect.width, rect.height);
+
+      gsap.timeline({ defaults: animDefaults })
+        .to(marquee, { y: edge === 'top' ? '-101%' : '101%' }, 0)
+        .to(marqueeInner, { y: edge === 'top' ? '101%' : '-101%' }, 0);
+    });
+  });
+});
+</script>
 </body></html>
