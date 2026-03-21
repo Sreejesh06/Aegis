@@ -165,11 +165,11 @@ export default function HeroSection() {
           <div className="bg-white border-2 border-black px-5 py-2 hover:-translate-y-1 transition-transform shadow-[4px_4px_0_#000] rounded-full transform rotate-2">
             <span className="font-black text-xl tracking-tighter text-black">Razorpay</span>
           </div>
-          <div className="bg-white border-[3px] border-black px-5 py-2 hover:-translate-y-1 transition-transform shadow-[4px_4px_0_#fe6b00] rounded-sm transform -rotate-[3deg] text-black">
-            <span className="font-black text-xl tracking-tighter uppercase text-[#fe6b00]">Swiggy</span>
+          <div className="bg-white border-[3px] border-black px-5 py-2 hover:-translate-y-1 transition-transform shadow-[4px_4px_0_#8b5cf6] rounded-sm transform -rotate-[3deg] text-black">
+            <span className="font-black text-xl tracking-tighter uppercase text-[#8b5cf6]">Zepto</span>
           </div>
-          <div className="bg-white border-[3px] border-black px-5 py-2 hover:-translate-y-1 transition-transform shadow-[4px_4px_0_#e23744] rounded-sm transform rotate-[3deg] text-black">
-            <span className="font-black text-xl tracking-tighter uppercase text-[#e23744]">Zomato</span>
+          <div className="bg-white border-[3px] border-black px-5 py-2 hover:-translate-y-1 transition-transform shadow-[4px_4px_0_#00b140] rounded-sm transform rotate-[3deg] text-black">
+            <span className="font-black text-xl tracking-tighter uppercase text-[#00b140]">Blinkit</span>
           </div>
         </div>
       </div>
