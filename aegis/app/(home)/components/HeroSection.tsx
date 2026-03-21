@@ -1,3 +1,4 @@
+// Aegis Landing - Hero Section
 import Link from 'next/link';
 
 export default function HeroSection() {
